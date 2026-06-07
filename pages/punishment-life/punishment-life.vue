@@ -7,7 +7,7 @@
 				<view class="back-btn" @tap="goBack">
 					<text class="back-icon">←</text>
 				</view>
-				<text class="top-title">惩罚-学习成绩</text>
+				<text class="top-title">惩罚-生活习惯</text>
 			</view>
 		</view>
 
@@ -22,7 +22,7 @@
 						</view>
 					</view>
 					<text class="hero-heading">惩罚警告 <text class="hero-lightning">⚡</text></text>
-					<text class="hero-sub">为了更好的进步，正视每一个小小的不足哦</text>
+					<text class="hero-sub">健康的生活习惯让你每天都充满活力哦</text>
 				</view>
 
 				<!-- 乌云统计 -->
@@ -42,7 +42,7 @@
 				<view class="list-header">
 					<text class="list-title">惩罚项详情</text>
 					<view class="list-badge">
-						<text class="list-badge-text">学习分级</text>
+						<text class="list-badge-text">习惯分级</text>
 					</view>
 				</view>
 
@@ -87,13 +87,12 @@
 export default {
 	data() {
 		return {
-			totalClouds: 12,
+			totalClouds: 8,
 			punishments: [
-				{ emoji: '📊', name: '单元测试85分以下', clouds: 3, recorded: false },
-				{ emoji: '📉', name: '单元测试70分以下', clouds: 5, recorded: false },
-				{ emoji: '❌', name: '单元测试不及格', clouds: 10, recorded: false },
-				{ emoji: '👥', name: '被老师点名批评', clouds: 10, recorded: false },
-				{ emoji: '📞', name: '表现差，老师找家长', clouds: 15, recorded: false }
+				{ emoji: '🦷', name: '不刷牙就睡觉', clouds: 3, recorded: false },
+				{ emoji: '🌙', name: '晚上不肯睡觉', clouds: 5, recorded: false },
+				{ emoji: '🍬', name: '偷偷吃零食', clouds: 3, recorded: false },
+				{ emoji: '🧸', name: '不收拾玩具和房间', clouds: 5, recorded: false }
 			]
 		}
 	},

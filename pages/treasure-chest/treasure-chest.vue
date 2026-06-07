@@ -1,8 +1,10 @@
 <template>
 	<view class="page">
-		<view class="bg-blur"></view>
+		<!-- 背景装饰 -->
+		<view class="bg-gradient"></view>
 
-		<view class="fx-container" id="fx-container">
+		<!-- 粒子特效 -->
+		<view class="fx-container">
 			<view
 				v-for="(c, i) in confetti"
 				:key="'c' + i"
@@ -17,25 +19,34 @@
 			>⭐</text>
 		</view>
 
-		<view class="card" :class="{ 'card-hide': cardHidden }">
-			<view class="deco-star top-left">⭐</view>
-			<view class="deco-star top-right">⭐</view>
+		<!-- 全屏居中 glass-jar 卡片 -->
+		<view class="glass-jar-card" :class="{ 'card-hide': cardHidden }">
+			<!-- 装饰星星 -->
+			<view class="deco-star deco-tl">⭐</view>
+			<view class="deco-star deco-tr">⭐</view>
 
-			<view class="chest-area">
-				<view class="chest-glow"></view>
-				<text class="chest-icon">🎁</text>
+			<!-- 大礼物图标 🎁 120px pulse动画 金色 -->
+			<view class="gift-area">
+				<view class="gift-glow"></view>
+				<text class="gift-icon">🎁</text>
 			</view>
 
+			<!-- 文字区域 -->
 			<view class="text-area">
-				<text class="main-title">太棒了！</text>
-				<text class="sub-title">恭喜宝贝获得额外奖励</text>
-				<view class="badge">
-					<text class="badge-star">⭐</text>
-					<text class="badge-text">星星 +10</text>
+				<text class="congrats-title">太棒了！</text>
+				<text class="congrats-sub">恭喜宝贝获得额外奖励</text>
+
+				<!-- 星星+10奖励 pill -->
+				<view class="reward-pill">
+					<text class="reward-star">⭐</text>
+					<text class="reward-text">星星 +10</text>
 				</view>
 			</view>
 
-			<button class="collect-btn" @tap="onCollect">收下奖励</button>
+			<!-- 收下奖励 squishy 按钮 -->
+			<view class="collect-btn" @tap="onCollect">
+				<text class="collect-text">收下奖励</text>
+			</view>
 		</view>
 	</view>
 </template>
@@ -108,25 +119,25 @@
 <style>
 	.page {
 		min-height: 100vh;
-		background-color: #faf9f9;
+		background: linear-gradient(160deg, #fffdf5 0%, #faf9f9 100%);
 		overflow: hidden;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-family: sans-serif;
+		font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif;
 		position: relative;
 	}
 
-	.bg-blur {
+	.bg-gradient {
 		position: fixed;
 		inset: 0;
 		z-index: 0;
-		background: linear-gradient(135deg, #fff8e1 0%, #faf9f9 50%, #fff3cd 100%);
-		filter: blur(40rpx);
-		opacity: 0.6;
-		transform: scale(1.1);
+		background:
+			radial-gradient(circle at 20% 30%, rgba(255, 225, 115, 0.15) 0%, transparent 50%),
+			radial-gradient(circle at 80% 70%, rgba(255, 217, 61, 0.1) 0%, transparent 50%);
 	}
 
+	/* ===== 粒子特效 ===== */
 	.fx-container {
 		position: fixed;
 		inset: 0;
@@ -160,7 +171,8 @@
 		50% { opacity: 0.6; transform: scale(1.2); }
 	}
 
-	.card {
+	/* ===== 全屏居中 glass-jar 卡片 ===== */
+	.glass-jar-card {
 		position: relative;
 		z-index: 10;
 		background: rgba(255, 255, 255, 0.4);
@@ -179,21 +191,24 @@
 		transition: all 0.5s ease-out;
 	}
 
-	.card-hide {
+	.glass-jar-card.card-hide {
 		transform: scale(0.9);
 		opacity: 0;
 	}
 
+	/* 装饰星星 */
 	.deco-star {
 		position: absolute;
 		font-size: 48rpx;
 		animation: starPulse 2s ease-in-out infinite;
 	}
-	.deco-star.top-left {
-		top: -32rpx;
-		left: -32rpx;
+
+	.deco-tl {
+		top: -24rpx;
+		left: -24rpx;
 	}
-	.deco-star.top-right {
+
+	.deco-tr {
 		top: 48rpx;
 		right: -48rpx;
 		animation-delay: 0.5s;
@@ -204,95 +219,101 @@
 		50% { transform: scale(1.3); opacity: 1; }
 	}
 
-	.chest-area {
+	/* ===== 🎁 120px pulse动画 ===== */
+	.gift-area {
 		position: relative;
 		margin-bottom: 48rpx;
-		animation: chestFloat 3s ease-in-out infinite;
 	}
 
-	@keyframes chestFloat {
-		0%, 100% { transform: translateY(0) rotate(0deg); }
-		50% { transform: translateY(-30rpx) rotate(2deg); }
-	}
-
-	.chest-glow {
+	.gift-glow {
 		position: absolute;
-		inset: 0;
+		inset: -40rpx;
 		background-color: #ffe173;
 		filter: blur(60rpx);
 		opacity: 0.4;
 		border-radius: 50%;
-		transform: scale(1.5);
 	}
 
-	.chest-icon {
+	.gift-icon {
 		position: relative;
-		z-index: 10;
+		z-index: 1;
 		font-size: 240rpx;
 		display: block;
+		animation: giftPulse 2s ease-in-out infinite;
 	}
 
+	@keyframes giftPulse {
+		0%, 100% { transform: scale(1); }
+		50% { transform: scale(1.08); }
+	}
+
+	/* ===== 文字区域 ===== */
 	.text-area {
 		margin-bottom: 48rpx;
 	}
 
-	.main-title {
+	.congrats-title {
 		font-size: 52rpx;
 		font-weight: 700;
 		color: #705d00;
 		display: block;
 	}
 
-	.sub-title {
-		font-size: 36rpx;
+	.congrats-sub {
+		font-size: 32rpx;
 		color: #4d4633;
 		display: block;
 		margin-top: 16rpx;
 	}
 
-	.badge {
+	/* ===== 星星+10奖励 pill ===== */
+	.reward-pill {
 		display: inline-flex;
 		align-items: center;
-		gap: 8rpx;
-		background-color: rgba(255, 217, 61, 0.3);
-		padding: 24rpx 48rpx;
+		gap: 12rpx;
+		background: linear-gradient(135deg, #ffd93d, #ffe173);
+		padding: 20rpx 48rpx;
 		border-radius: 999rpx;
-		border: 2rpx solid rgba(255, 217, 61, 0.5);
 		margin-top: 32rpx;
+		box-shadow: 0 4rpx 16rpx rgba(255, 217, 61, 0.3);
 	}
 
-	.badge-star {
+	.reward-star {
 		font-size: 36rpx;
 	}
 
-	.badge-text {
-		font-size: 48rpx;
+	.reward-text {
+		font-size: 40rpx;
 		font-weight: 700;
 		color: #705d00;
 	}
 
+	/* ===== 收下奖励 squishy 按钮 ===== */
 	.collect-btn {
 		width: 100%;
 		background-color: #ffd93d;
 		color: #725e00;
-		font-size: 48rpx;
+		font-size: 44rpx;
 		font-weight: 700;
 		padding: 28rpx 0;
 		border-radius: 999rpx;
-		line-height: 1.4;
-		min-height: 112rpx;
+		text-align: center;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		box-shadow: 0 8rpx 0 0 #e8c426;
+		box-shadow: 4px 0 0 #e8c426;
 		border: none;
 		transition: all 0.1s ease;
 	}
-	.collect-btn::after {
-		border: none;
-	}
+
 	.collect-btn:active {
 		transform: translateY(4rpx);
-		box-shadow: 0 4rpx 0 0 #e8c426;
+		box-shadow: 2px 0 0 #e8c426;
+	}
+
+	.collect-text {
+		font-size: 44rpx;
+		font-weight: 700;
+		color: #725e00;
 	}
 </style>

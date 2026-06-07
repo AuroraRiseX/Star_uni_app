@@ -2,81 +2,78 @@
 	<view class="page">
 		<view style="height: var(--status-bar-height);"></view>
 
-		<!-- Top AppBar -->
+		<!-- Topbar -->
 		<view class="top-bar">
 			<view class="top-bar-left">
 				<view class="back-btn" @tap="goBack">
-					<text class="emoji">←</text>
+					<text class="back-icon">←</text>
 				</view>
 				<text class="page-title">奖品详情</text>
 			</view>
-			<view class="balance-badge">
-				<text class="balance-star">⭐</text>
+			<view class="balance-pill">
+				<text class="balance-emoji">🌟</text>
 				<text class="balance-num">128</text>
 			</view>
 		</view>
 
 		<scroll-view scroll-y class="main-scroll">
-			<!-- Hero Section -->
+			<!-- Hero 区域: aspect-ratio 1.6/1, 渐变背景, 居中卡片视觉 -->
 			<view class="hero-section">
-				<view class="hero-visual">
-					<view class="hero-glow-bg"></view>
-					<view class="hero-glass-bg"></view>
-					<view class="hero-icon-container">
-						<image class="hero-image" src="/static/logo.png" mode="aspectFit"></image>
+				<view class="hero-card">
+					<view class="hero-bread">🍞</view>
+					<text class="hero-card-name">零食兑换卡</text>
+					<view class="hero-card-price">
+						<text class="hero-card-num">10</text>
+						<text class="hero-card-star">🌟</text>
 					</view>
-					<!-- Floating Decorations -->
-					<view class="deco-star star-float" style="top: 32rpx; right: 32rpx; animation-delay: 0.2s;">
-						<text class="deco-star-emoji">⭐</text>
-					</view>
-					<view class="deco-cloud star-float" style="bottom: 80rpx; left: 0; animation-delay: 0.5s;">
-						<text class="deco-cloud-emoji">☁️</text>
-					</view>
-				</view>
-				<view class="hero-text">
-					<text class="hero-title">零食兑换卡</text>
-					<text class="hero-desc">想吃什么零食都可以哦！这是对宝贝认真完成任务的特别奖励。</text>
 				</view>
 			</view>
 
-			<!-- Price & Balance Grid -->
-			<view class="info-grid">
-				<view class="info-card">
-					<text class="info-label">兑换所需</text>
-					<view class="info-value-row">
-						<text class="info-value-lg">10</text>
-						<text class="info-star-emoji">⭐</text>
+			<!-- 标题区 -->
+			<view class="title-section">
+				<text class="main-title">零食兑换卡</text>
+				<text class="main-desc">想吃什么零食都可以哦！这是对宝贝认真完成任务的特别奖励。</text>
+			</view>
+
+			<!-- 价格网格 2列 -->
+			<view class="price-grid">
+				<view class="price-card">
+					<text class="price-label">兑换所需</text>
+					<view class="price-value-row">
+						<text class="price-value">10</text>
+						<text class="price-star">🌟</text>
 					</view>
-					<text class="info-sub">星星</text>
 				</view>
-				<view class="info-card">
-					<text class="info-label">当前余额</text>
-					<view class="info-value-row">
-						<text class="info-value-lg" style="color: #924c00;">128</text>
-						<text class="info-star-emoji" style="color: #ffb780;">⭐</text>
+				<view class="price-card">
+					<text class="price-label">当前余额</text>
+					<view class="price-value-row">
+						<text class="price-value balance-color">128</text>
+						<text class="price-star balance-star-color">🌟</text>
 					</view>
-					<text class="info-sub">充足</text>
+					<view class="sufficient-tag">
+						<text class="sufficient-text">充足</text>
+					</view>
 				</view>
 			</view>
 
-			<!-- Details -->
-			<view class="details-section">
-				<view class="detail-item">
-					<view class="detail-icon detail-icon-1">
-						<text class="detail-emoji">✅</text>
+			<!-- 说明区域 -->
+			<view class="info-section">
+				<view class="info-item">
+					<view class="info-icon-wrap green-bg">
+						<text class="info-icon">✅</text>
 					</view>
-					<view>
-						<text class="detail-title">使用说明</text>
-						<text class="detail-desc">点击兑换后，向爸爸或妈妈出示兑换成功页面，即可挑选你最喜欢的零食。</text>
+					<view class="info-content">
+						<text class="info-title">使用说明</text>
+						<text class="info-desc">点击兑换后，向爸爸或妈妈出示兑换成功页面，即可挑选你最喜欢的零食。</text>
 					</view>
 				</view>
-				<view class="detail-item">
-					<view class="detail-icon detail-icon-2">
-						<text class="detail-emoji">⏳</text>
+				<view class="info-item">
+					<view class="info-icon-wrap purple-bg">
+						<text class="info-icon">⏳</text>
 					</view>
-					<view>
-						<text class="detail-title">有效期</text>
-						<text class="detail-desc">兑换后请在 7 天内领取奖励哦，过期奖励就会飞走啦！</text>
+					<view class="info-content">
+						<text class="info-title">有效期</text>
+						<text class="info-desc">兑换后请在 7 天内领取奖励哦，过期奖励就会飞走啦！</text>
 					</view>
 				</view>
 			</view>
@@ -84,20 +81,19 @@
 			<view style="height: 200rpx;"></view>
 		</scroll-view>
 
-		<!-- Bottom Action Bar -->
-		<view class="bottom-action-bar">
+		<!-- 底部按钮 -->
+		<view class="bottom-bar">
 			<view class="redeem-btn" @tap="redeem">
-				<text class="redeem-icon">🎟️</text>
 				<text class="redeem-text">立即兑换</text>
 			</view>
 		</view>
 
-		<!-- Success Modal -->
+		<!-- 成功弹窗 -->
 		<view class="modal-overlay" :class="{ 'modal-show': showModal }">
 			<view class="modal-backdrop" @tap="closeModal"></view>
 			<view class="modal-card" v-if="showModal">
-				<view class="modal-icon-wrapper">
-					<text class="modal-check-icon">✅</text>
+				<view class="modal-icon-wrap">
+					<text class="modal-check">✅</text>
 				</view>
 				<text class="modal-title">兑换成功！</text>
 				<text class="modal-desc">快去告诉爸爸妈妈，领取你的美味奖励吧！</text>
@@ -135,285 +131,327 @@
 	.page {
 		background-color: #fbf9f4;
 		min-height: 100vh;
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif;
 	}
+
+	/* ===== Topbar ===== */
 	.top-bar {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 12rpx 32rpx;
-		background: rgba(251, 249, 244, 0.8);
+		padding: 16rpx 32rpx;
+		background: rgba(251, 249, 244, 0.85);
 		backdrop-filter: blur(12px);
 		position: sticky;
 		top: 0;
 		z-index: 50;
-		border-bottom: 1px solid rgba(0,0,0,0.05);
+		border-bottom: 1rpx solid rgba(0, 0, 0, 0.04);
 	}
+
 	.top-bar-left {
 		display: flex;
 		align-items: center;
-		gap: 24rpx;
+		gap: 20rpx;
 	}
+
 	.back-btn {
-		width: 80rpx;
-		height: 80rpx;
+		width: 72rpx;
+		height: 72rpx;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		border-radius: 50%;
 	}
+
 	.back-btn:active {
-		transform: scale(0.95);
+		transform: scale(0.9);
 	}
-	.emoji {
-		font-size: 24px;
+
+	.back-icon {
+		font-size: 36rpx;
 		color: #705d00;
 	}
+
 	.page-title {
-		font-size: 20px;
+		font-size: 34rpx;
 		font-weight: 700;
 		color: #705d00;
 	}
-	.balance-badge {
+
+	.balance-pill {
 		display: flex;
 		align-items: center;
-		gap: 12rpx;
-		padding: 12rpx 24rpx;
+		gap: 8rpx;
+		padding: 10rpx 24rpx;
 		background: #ffd214;
-		border-radius: 9999px;
+		border-radius: 999rpx;
 	}
-	.balance-star {
-		font-size: 18px;
+
+	.balance-emoji {
+		font-size: 28rpx;
 	}
+
 	.balance-num {
+		font-size: 28rpx;
 		font-weight: 700;
 		color: #705b00;
-		font-size: 16px;
 	}
+
+	/* ===== Main Scroll ===== */
 	.main-scroll {
 		padding: 0 32rpx;
 		height: calc(100vh - var(--status-bar-height) - 100px);
 	}
+
+	/* ===== Hero Section ===== */
 	.hero-section {
-		margin-top: 48rpx;
+		margin-top: 40rpx;
+		display: flex;
+		justify-content: center;
+	}
+
+	.hero-card {
+		width: 100%;
+		aspect-ratio: 1.6 / 1;
+		border-radius: 24rpx;
+		background: linear-gradient(135deg, #ffd214, #fd8b17);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-	}
-	.hero-visual {
-		position: relative;
-		width: 512rpx;
-		height: 512rpx;
-		display: flex;
-		align-items: center;
 		justify-content: center;
+		box-shadow: 0 16rpx 48rpx rgba(253, 139, 23, 0.25);
+		position: relative;
+		overflow: hidden;
 	}
-	.hero-glow-bg {
+
+	.hero-card::before {
+		content: '';
 		position: absolute;
 		inset: 0;
-		background: #ffe07e;
-		opacity: 0.3;
-		border-radius: 9999px;
-		filter: blur(48px);
+		background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
 	}
-	.hero-glass-bg {
-		position: absolute;
-		inset: 32rpx;
-		background: rgba(255,255,255,0.4);
-		border-radius: 9999px;
-		backdrop-filter: blur(12px);
-		border: 1px solid rgba(255,255,255,0.5);
-	}
-	.hero-icon-container {
+
+	.hero-bread {
+		font-size: 120rpx;
 		position: relative;
-		z-index: 10;
-		width: 384rpx;
-		height: 384rpx;
-		border-radius: 50%;
-		background: rgba(255,255,255,0.6);
-		backdrop-filter: blur(12px);
-		border: 1px solid rgba(255,255,255,0.4);
+		z-index: 1;
+		margin-bottom: 16rpx;
+	}
+
+	.hero-card-name {
+		font-size: 32rpx;
+		font-weight: 700;
+		color: #725e00;
+		position: relative;
+		z-index: 1;
+		margin-bottom: 8rpx;
+	}
+
+	.hero-card-price {
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		box-shadow: 0 20px 50px rgba(114,92,0,0.1);
+		gap: 8rpx;
+		position: relative;
+		z-index: 1;
 	}
-	.hero-image {
-		width: 256rpx;
-		height: 256rpx;
-		object-fit: contain;
+
+	.hero-card-num {
+		font-size: 36rpx;
+		font-weight: 800;
+		color: #725e00;
 	}
-	.deco-star {
-		position: absolute;
+
+	.hero-card-star {
+		font-size: 32rpx;
 	}
-	.deco-star-emoji {
-		font-size: 36px;
-		color: #ffd214;
-	}
-	.deco-cloud {
-		position: absolute;
-	}
-	.deco-cloud-emoji {
-		font-size: 28px;
-		opacity: 0.4;
-		color: #B19CD9;
-	}
-	.star-float {
-		animation: float 3s ease-in-out infinite;
-	}
-	@keyframes float {
-		0%, 100% { transform: translateY(0); }
-		50% { transform: translateY(-10px); }
-	}
-	.hero-text {
-		margin-top: 64rpx;
+
+	/* ===== Title Section ===== */
+	.title-section {
+		margin-top: 48rpx;
 		text-align: center;
 	}
-	.hero-title {
-		font-size: 28px;
+
+	.main-title {
+		font-size: 56rpx;
 		font-weight: 700;
 		color: #1b1c19;
 		display: block;
 		margin-bottom: 16rpx;
 	}
-	.hero-desc {
-		font-size: 16px;
+
+	.main-desc {
+		font-size: 28rpx;
 		font-weight: 500;
 		color: #4d4632;
-		padding: 0 32rpx;
+		padding: 0 16rpx;
 		line-height: 1.6;
 	}
-	.info-grid {
+
+	/* ===== Price Grid ===== */
+	.price-grid {
 		display: flex;
 		gap: 24rpx;
-		margin-top: 48rpx;
+		margin-top: 40rpx;
 	}
-	.info-card {
+
+	.price-card {
 		flex: 1;
 		background: #f5f3ee;
-		padding: 24rpx;
-		border-radius: 24rpx;
-		border: 1px solid rgba(209, 198, 171, 0.3);
+		padding: 28rpx;
+		border-radius: 20rpx;
+		border: 1rpx solid rgba(209, 198, 171, 0.3);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
-		text-align: center;
 	}
-	.info-label {
-		font-size: 12px;
+
+	.price-label {
+		font-size: 22rpx;
 		font-weight: 700;
 		letter-spacing: 0.05em;
 		color: #4d4632;
-		margin-bottom: 8rpx;
+		margin-bottom: 12rpx;
 	}
-	.info-value-row {
+
+	.price-value-row {
 		display: flex;
 		align-items: center;
 		gap: 8rpx;
 	}
-	.info-value-lg {
-		font-size: 32px;
+
+	.price-value {
+		font-size: 52rpx;
 		font-weight: 800;
-		letter-spacing: -0.02em;
 		color: #705d00;
 	}
-	.info-star-emoji {
-		font-size: 24px;
+
+	.balance-color {
+		color: #924c00;
+	}
+
+	.price-star {
+		font-size: 36rpx;
 		color: #ffd214;
 	}
-	.info-sub {
-		font-size: 14px;
-		color: #4d4632;
-		margin-top: 4rpx;
+
+	.balance-star-color {
+		color: #ffb780;
 	}
-	.details-section {
-		margin-top: 48rpx;
+
+	.sufficient-tag {
+		margin-top: 12rpx;
+		padding: 6rpx 20rpx;
+		background: rgba(168, 214, 114, 0.2);
+		border-radius: 999rpx;
+	}
+
+	.sufficient-text {
+		font-size: 20rpx;
+		font-weight: 700;
+		color: #A8D672;
+	}
+
+	/* ===== Info Section ===== */
+	.info-section {
+		margin-top: 40rpx;
 		display: flex;
 		flex-direction: column;
-		gap: 24rpx;
+		gap: 20rpx;
 	}
-	.detail-item {
+
+	.info-item {
 		display: flex;
 		align-items: flex-start;
 		gap: 24rpx;
-		padding: 32rpx;
+		padding: 28rpx;
 		border-radius: 20rpx;
 		background: rgba(234, 232, 227, 0.2);
-		border: 1px solid rgba(209, 198, 171, 0.2);
+		border: 1rpx solid rgba(209, 198, 171, 0.2);
 	}
-	.detail-icon {
-		width: 80rpx;
-		height: 80rpx;
+
+	.info-icon-wrap {
+		width: 72rpx;
+		height: 72rpx;
 		border-radius: 50%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		flex-shrink: 0;
 	}
-	.detail-icon-1 {
+
+	.green-bg {
 		background: rgba(168, 214, 114, 0.2);
 	}
-	.detail-icon-2 {
+
+	.purple-bg {
 		background: rgba(177, 156, 217, 0.2);
 	}
-	.detail-emoji {
-		font-size: 22px;
+
+	.info-icon {
+		font-size: 32rpx;
 	}
-	.detail-title {
-		font-size: 16px;
+
+	.info-content {
+		flex: 1;
+	}
+
+	.info-title {
+		font-size: 30rpx;
 		font-weight: 700;
 		color: #1b1c19;
 		display: block;
 		margin-bottom: 8rpx;
 	}
-	.detail-desc {
-		font-size: 14px;
+
+	.info-desc {
+		font-size: 26rpx;
 		color: #4d4632;
 		line-height: 1.5;
 	}
-	.bottom-action-bar {
+
+	/* ===== Bottom Bar ===== */
+	.bottom-bar {
 		position: fixed;
 		bottom: 0;
 		left: 0;
 		width: 100%;
-		padding: 32rpx;
-		background: rgba(251, 249, 244, 0.8);
+		padding: 28rpx 32rpx;
+		padding-bottom: calc(28rpx + env(safe-area-inset-bottom));
+		background: rgba(251, 249, 244, 0.85);
 		backdrop-filter: blur(20px);
-		border-top: 1px solid rgba(209, 198, 171, 0.2);
+		border-top: 1rpx solid rgba(209, 198, 171, 0.2);
 		display: flex;
 		justify-content: center;
-		align-items: center;
 		z-index: 50;
 		box-sizing: border-box;
 	}
+
 	.redeem-btn {
 		width: 100%;
-		max-width: 640rpx;
 		background: linear-gradient(90deg, #ffd214, #fd8b17);
 		color: #725e00;
-		font-size: 20px;
+		font-size: 34rpx;
 		font-weight: 700;
-		padding: 32rpx 0;
-		border-radius: 9999px;
+		padding: 28rpx 0;
+		border-radius: 999rpx;
+		text-align: center;
+		box-shadow: 0 12rpx 32rpx rgba(255, 210, 20, 0.25);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 16rpx;
-		box-shadow: 0 8rpx 32rpx rgba(255, 210, 20, 0.2);
-		transition: all 0.2s;
 	}
+
 	.redeem-btn:active {
-		transform: scale(0.95);
+		transform: scale(0.96);
 	}
-	.redeem-icon {
-		font-size: 22px;
-	}
+
 	.redeem-text {
-		font-size: 20px;
+		font-size: 34rpx;
 		font-weight: 700;
 		color: #725e00;
 	}
+
+	/* ===== Modal ===== */
 	.modal-overlay {
 		position: fixed;
 		inset: 0;
@@ -426,24 +464,27 @@
 		pointer-events: none;
 		transition: opacity 0.3s;
 	}
+
 	.modal-overlay.modal-show {
 		opacity: 1;
 		pointer-events: auto;
 	}
+
 	.modal-backdrop {
 		position: absolute;
 		inset: 0;
 		background: rgba(27, 28, 25, 0.4);
 		backdrop-filter: blur(12px);
 	}
+
 	.modal-card {
 		position: relative;
 		width: 100%;
 		max-width: 560rpx;
-		background: rgba(255,255,255,0.6);
-		backdrop-filter: blur(12px);
-		border: 1px solid rgba(255,255,255,0.4);
-		border-radius: 24rpx;
+		background: rgba(255, 255, 255, 0.7);
+		backdrop-filter: blur(16px);
+		border: 2rpx solid rgba(255, 255, 255, 0.5);
+		border-radius: 32rpx;
 		padding: 64rpx;
 		text-align: center;
 		display: flex;
@@ -451,51 +492,56 @@
 		align-items: center;
 		animation: bounce-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 	}
+
 	@keyframes bounce-in {
 		0% { transform: scale(0.3); opacity: 0; }
 		50% { transform: scale(1.05); opacity: 1; }
 		70% { transform: scale(0.9); }
 		100% { transform: scale(1); }
 	}
-	.modal-icon-wrapper {
-		width: 192rpx;
-		height: 192rpx;
+
+	.modal-icon-wrap {
+		width: 160rpx;
+		height: 160rpx;
 		background: #ffd214;
 		border-radius: 50%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin-bottom: 48rpx;
-		animation: float 3s ease-in-out infinite;
+		margin-bottom: 40rpx;
 	}
-	.modal-check-icon {
-		font-size: 42px;
-		color: #ffffff;
+
+	.modal-check {
+		font-size: 72rpx;
 	}
+
 	.modal-title {
-		font-size: 20px;
+		font-size: 36rpx;
 		font-weight: 700;
 		color: #705d00;
 		display: block;
 		margin-bottom: 16rpx;
 	}
+
 	.modal-desc {
-		font-size: 16px;
+		font-size: 28rpx;
 		font-weight: 500;
 		color: #4d4632;
 		margin-bottom: 48rpx;
 	}
+
 	.modal-btn {
 		width: 100%;
 		padding: 24rpx 0;
 		background: #705d00;
 		color: #ffffff;
 		font-weight: 700;
-		font-size: 16px;
-		border-radius: 9999px;
+		font-size: 30rpx;
+		border-radius: 999rpx;
 		text-align: center;
 	}
+
 	.modal-btn:active {
-		transform: scale(0.95);
+		transform: scale(0.96);
 	}
 </style>

@@ -1,0 +1,18 @@
+<!-- 自定义底部导航栏 - 1:1 复刻原型设计 -->
+<view class="custom-tab-bar">
+  <view
+    wx:for="{{list}}"
+    wx:key="index"
+    class="nav-item {{selected === index ? 'active' : ''}}"
+    data-path="{{item.pagePath}}"
+    data-index="{{index}}"
+    bindtap="switchTab"
+  >
+    <image
+      class="nav-icon"
+      src="{{selected === index ? item.iconActive : item.iconNormal}}"
+      mode="aspectFit"
+    />
+    <text class="nav-label">{{item.text}}</text>
+  </view>
+</view>

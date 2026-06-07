@@ -100,6 +100,15 @@ export default {
 				uni.showToast({ title: '兑换成功!', icon: 'success' })
 			}, 1200)
 		}
+	},
+	onShow() {
+		// 设置自定义 tab-bar 选中状态为"商店"（index=2）
+		if (typeof this.$mp !== 'undefined' && this.$mp.page) {
+			const tabBar = this.$mp.page.getTabBar && this.$mp.page.getTabBar()
+			if (tabBar) {
+				tabBar.setData({ selected: 2 })
+			}
+		}
 	}
 }
 </script>

@@ -2,50 +2,83 @@
 	<view class="page">
 		<view style="height: var(--status-bar-height);"></view>
 
-		<view class="top-bar">
-			<view class="top-left">
-				<text class="back-btn">←</text>
-				<text class="top-title">宝贝管理</text>
+		<!-- Topbar-sj -->
+		<view class="topbar-sj">
+			<view class="topbar-left">
+				<view class="back-btn" @tap="goBack">
+					<text class="back-icon">←</text>
+				</view>
+				<text class="topbar-title">宝贝管理</text>
 			</view>
-			<text class="info-btn">ℹ️</text>
+			<view class="info-icon-wrap">
+				<text class="info-icon">ℹ️</text>
+			</view>
 		</view>
 
 		<scroll-view scroll-y class="scroll-area">
-			<view class="intro">
+			<!-- 居中说明文字 -->
+			<view class="intro-section">
 				<text class="intro-text">在这里管理您的家庭成员，记录每个宝贝的成长足迹。</text>
 			</view>
 
-			<view class="list">
-				<view class="child-card" v-for="(child, index) in children" :key="index">
-					<view class="card-left">
-						<view class="avatar">
-							<image class="avatar-img" :src="child.avatar" mode="aspectFill"></image>
+			<!-- 宝贝列表 -->
+			<view class="baby-list">
+				<!-- 米米 -->
+				<view class="baby-card">
+					<view class="baby-left">
+						<view class="baby-avatar">
+							<image
+								class="avatar-img"
+								src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3P44riaTroN9h2_E1YZ-tLtL1-wGM8KqyMuowOKBxcAHyhCFGYkXrTt5PZGLGu_u7JzyEpwV62rjk9Wa32OLI5YUpti_QAHOgOasQfsZWcbh7y3hHdL4p0Mh8v-pP8PLvI2o1VrtgQ8pmq-GyqOijVacbierLgBQIS-WU0mjDxQyhZOtv1ZW58s8dQwAsBjAdT1uzhcft3UY5fK6YfEtZ1B6opKdHX1DM-J5uRYeKddcBy7E5ZeeygygscKg7j6bVCs0HBGdVzu1W"
+								mode="aspectFill"
+							></image>
 						</view>
-						<view class="child-info">
-							<text class="child-name">{{child.name}}</text>
-							<text class="child-stars">已收集 {{child.stars}} 颗星星</text>
+						<view class="baby-info">
+							<text class="baby-name">米米 (Mimi)</text>
+							<text class="baby-stars">已收集 128 颗星星</text>
 						</view>
 					</view>
-					<button class="edit-btn" @tap="onEdit(child)">
-						<text class="edit-icon">✏️</text>
-						<text>编辑</text>
-					</button>
+					<view class="edit-btn" @tap="onEdit('米米')">
+						<text class="edit-btn-text">✏️ 编辑</text>
+					</view>
 				</view>
 
-				<view class="empty-state">
-					<text class="empty-icon">👶</text>
-					<text class="empty-text">添加更多宝贝，开启精彩旅程</text>
+				<!-- 乐乐 -->
+				<view class="baby-card">
+					<view class="baby-left">
+						<view class="baby-avatar">
+							<image
+								class="avatar-img"
+								src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMCnT9CsruoFN3L4mlF4ajjihcZn7yDgEwzPSAuFaRpcJL4MVfMdHS7nNYi73sEbLgWI-Ffoj1tlkz5NM2NDZ4dPBm3g1FVuLS_yoklvjM9cJGEjBNfLHStB9Tj4ocm7gsBEW_eO2_QnEOzfGD9SCevXaQPA7uTREhFHvUssDAVPObrg9ZoQQ4uSUV3AMXAejXOyqploo0p89Ifzu03TxTa9oC7v33i91pG8ZNpI4LD04WYLkgchiQLfrEvJzbdQk6LcMbfrkwsmh6"
+								mode="aspectFill"
+							></image>
+						</view>
+						<view class="baby-info">
+							<text class="baby-name">乐乐 (Lele)</text>
+							<text class="baby-stars">已收集 85 颗星星</text>
+						</view>
+					</view>
+					<view class="edit-btn" @tap="onEdit('乐乐')">
+						<text class="edit-btn-text">✏️ 编辑</text>
+					</view>
 				</view>
 			</view>
 
-			<view class="bottom-spacer"></view>
+			<!-- 添加新宝贝虚线区域 opacity 0.4 -->
+			<view class="add-dashed-area">
+				<text class="dashed-icon">👶</text>
+				<text class="dashed-text">添加更多宝贝，开启精彩旅程</text>
+			</view>
+
+			<view style="height: 200rpx;"></view>
 		</scroll-view>
 
+		<!-- 底部"添加新宝贝" squishy 按钮 -->
 		<view class="bottom-bar">
-			<button class="add-btn" @tap="onAddBaby">
-				<text class="add-icon">＋</text>
-				<text>添加新宝贝</text>
-			</button>
+			<view class="add-btn" @tap="onAddBaby">
+				<text class="add-btn-icon">＋</text>
+				<text class="add-btn-text">添加新宝贝</text>
+			</view>
 		</view>
 	</view>
 </template>
@@ -53,26 +86,16 @@
 <script>
 	export default {
 		data() {
-			return {
-				children: [
-					{
-						name: '米米 (Mimi)',
-						stars: 128,
-						avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD3P44riaTroN9h2_E1YZ-tLtL1-wGM8KqyMuowOKBxcAHyhCFGYkXrTt5PZGLGu_u7JzyEpwV62rjk9Wa32OLI5YUpti_QAHOgOasQfsZWcbh7y3hHdL4p0Mh8v-pP8PLvI2o1VrtgQ8pmq-GyqOijVacbierLgBQIS-WU0mjDxQyhZOtv1ZW58s8dQwAsBjAdT1uzhcft3UY5fK6YfEtZ1B6opKdHX1DM-J5uRYeKddcBy7E5ZeeygygscKg7j6bVCs0HBGdVzu1W'
-					},
-					{
-						name: '乐乐 (Lele)',
-						stars: 85,
-						avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBMCnT9CsruoFN3L4mlF4ajjihcZn7yDgEwzPSAuFaRpcJL4MVfMdHS7nNYi73sEbLgWI-Ffoj1tlkz5NM2NDZ4dPBm3g1FVuLS_yoklvjM9cJGEjBNfLHStB9Tj4ocm7gsBEW_eO2_QnEOzfGD9SCevXaQPA7uTREhFHvUssDAVPObrg9ZoQQ4uSUV3AMXAejXOyqploo0p89Ifzu03TxTa9oC7v33i91pG8ZNpI4LD04WYLkgchiQLfrEvJzbdQk6LcMbfrkwsmh6'
-					}
-				]
-			}
+			return {}
 		},
 		methods: {
-			onEdit(child) {
+			goBack() {
+				uni.navigateBack()
+			},
+			onEdit(name) {
 				uni.showToast({
 					icon: 'none',
-					title: `编辑 ${child.name}`
+					title: '编辑 ' + name
 				})
 			},
 			onAddBaby() {
@@ -96,137 +119,168 @@
 			radial-gradient(circle at 90% 80%, rgba(255, 132, 0, 0.05) 0%, transparent 40%);
 	}
 
-	.top-bar {
+	/* ===== Topbar-sj ===== */
+	.topbar-sj {
 		position: fixed;
 		top: 0;
 		width: 100%;
 		z-index: 50;
-		background-color: rgba(255,255,255,0.4);
-		backdrop-filter: blur(10px);
-		-webkit-backdrop-filter: blur(10px);
-		border-bottom: 2rpx solid rgba(255,255,255,0.2);
+		background: rgba(250, 249, 249, 0.4);
+		backdrop-filter: blur(24rpx);
+		-webkit-backdrop-filter: blur(24rpx);
+		border-bottom: 2rpx solid rgba(255, 255, 255, 0.2);
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		padding: 16rpx 40rpx;
 		padding-top: calc(16rpx + var(--status-bar-height));
 	}
-	.top-left {
+
+	.topbar-left {
 		display: flex;
 		align-items: center;
-		gap: 8rpx;
+		gap: 16rpx;
 	}
+
 	.back-btn {
-		font-size: 48rpx;
-		color: #705d00;
-		padding: 8rpx;
+		width: 72rpx;
+		height: 72rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
 	}
-	.top-title {
+
+	.back-btn:active {
+		transform: scale(0.9);
+	}
+
+	.back-icon {
+		font-size: 40rpx;
+		color: #705d00;
+	}
+
+	.topbar-title {
 		font-size: 48rpx;
 		font-weight: 700;
 		color: #944a00;
 	}
-	.info-btn {
-		font-size: 40rpx;
-		padding: 8rpx;
+
+	.info-icon-wrap {
+		width: 72rpx;
+		height: 72rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
+	.info-icon {
+		font-size: 36rpx;
+	}
+
+	/* ===== Scroll Area ===== */
 	.scroll-area {
 		flex: 1;
-		padding: 192rpx 40rpx 200rpx;
+		padding: 200rpx 40rpx 220rpx;
 	}
 
-	.intro {
-		margin-bottom: 80rpx;
+	/* ===== Intro Section ===== */
+	.intro-section {
+		margin-bottom: 64rpx;
 		text-align: center;
 	}
+
 	.intro-text {
-		font-size: 36rpx;
+		font-size: 32rpx;
 		color: #4d4633;
-		line-height: 1.5;
+		line-height: 1.6;
 	}
 
-	.list {
+	/* ===== Baby List ===== */
+	.baby-list {
 		display: flex;
 		flex-direction: column;
-		gap: 32rpx;
+		gap: 28rpx;
 	}
 
-	.child-card {
+	.baby-card {
 		background: rgba(255, 255, 255, 0.4);
 		backdrop-filter: blur(20px);
 		-webkit-backdrop-filter: blur(20px);
 		border: 3rpx solid rgba(255, 255, 255, 0.6);
 		border-radius: 32rpx;
-		padding: 48rpx;
+		padding: 40rpx;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		box-shadow: 0 60rpx 120rpx -24rpx rgba(255, 132, 0, 0.1);
-		transition: transform 0.2s;
-	}
-	.child-card:active {
-		transform: translateY(-4rpx);
+		box-shadow: 0 40rpx 100rpx -24rpx rgba(255, 132, 0, 0.1);
 	}
 
-	.card-left {
+	.baby-card:active {
+		transform: translateY(-2rpx);
+	}
+
+	.baby-left {
 		display: flex;
 		align-items: center;
-		gap: 48rpx;
+		gap: 32rpx;
 	}
 
-	.avatar {
+	.baby-avatar {
 		width: 128rpx;
 		height: 128rpx;
 		border-radius: 50%;
 		overflow: hidden;
 		border: 4rpx solid #ffe173;
+		flex-shrink: 0;
 	}
+
 	.avatar-img {
 		width: 100%;
 		height: 100%;
 	}
 
-	.child-info {
+	.baby-info {
 		display: flex;
 		flex-direction: column;
 	}
-	.child-name {
+
+	.baby-name {
 		font-size: 48rpx;
 		font-weight: 700;
 		color: #1a1c1c;
 	}
-	.child-stars {
+
+	.baby-stars {
 		font-size: 24rpx;
 		font-weight: 600;
 		color: #7e7761;
 		margin-top: 8rpx;
 	}
 
+	/* 编辑按钮: 圆角pill, 边框#d0c6ad */
 	.edit-btn {
-		display: flex;
-		align-items: center;
-		gap: 8rpx;
 		padding: 16rpx 32rpx;
 		border-radius: 999rpx;
 		border: 2rpx solid #d0c6ad;
 		background: transparent;
-		color: #705d00;
-		font-size: 28rpx;
-		font-weight: 700;
-		line-height: 1.2;
-		min-width: auto;
-	}
-	.edit-btn::after {
-		border: none;
-	}
-	.edit-icon {
-		font-size: 36rpx;
+		flex-shrink: 0;
 	}
 
-	.empty-state {
-		margin-top: 80rpx;
-		padding: 80rpx;
+	.edit-btn:active {
+		opacity: 0.7;
+	}
+
+	.edit-btn-text {
+		font-size: 26rpx;
+		font-weight: 700;
+		color: #705d00;
+	}
+
+	/* ===== 添加新宝贝虚线区域 opacity 0.4 ===== */
+	.add-dashed-area {
+		margin-top: 64rpx;
+		padding: 64rpx 40rpx;
 		border: 4rpx dashed #d0c6ad;
 		border-radius: 32rpx;
 		display: flex;
@@ -234,52 +288,59 @@
 		align-items: center;
 		opacity: 0.4;
 	}
-	.empty-icon {
-		font-size: 96rpx;
+
+	.dashed-icon {
+		font-size: 80rpx;
 		margin-bottom: 16rpx;
 	}
-	.empty-text {
-		font-size: 32rpx;
+
+	.dashed-text {
+		font-size: 28rpx;
 		color: #7e7761;
 	}
 
-	.bottom-spacer {
-		height: 32rpx;
-	}
-
+	/* ===== Bottom Bar ===== */
 	.bottom-bar {
 		position: fixed;
 		bottom: 0;
 		width: 100%;
-		padding: 40rpx;
-		padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
+		padding: 32rpx 40rpx;
+		padding-bottom: calc(32rpx + env(safe-area-inset-bottom));
 		background: linear-gradient(to top, #faf9f9 60%, transparent);
+		display: flex;
+		justify-content: center;
 	}
+
+	/* squishy 按钮: #ffd93d, box-shadow 4px 0 #e8c426 */
 	.add-btn {
 		width: 100%;
-		height: 112rpx;
 		background-color: #ffd93d;
 		color: #725e00;
-		border-radius: 32rpx;
-		font-size: 48rpx;
+		font-size: 44rpx;
 		font-weight: 700;
+		padding: 28rpx 0;
+		border-radius: 999rpx;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		gap: 16rpx;
-		box-shadow: 0 8rpx 0px #944a00;
-		border: none;
-		line-height: 1.4;
-	}
-	.add-btn::after {
+		box-shadow: 4px 0 0 #e8c426;
 		border: none;
 	}
+
 	.add-btn:active {
 		transform: translateY(4rpx);
-		box-shadow: 0 4rpx 0px #944a00;
+		box-shadow: 2px 0 0 #e8c426;
 	}
-	.add-icon {
-		font-size: 48rpx;
+
+	.add-btn-icon {
+		font-size: 44rpx;
 		font-weight: 700;
+	}
+
+	.add-btn-text {
+		font-size: 44rpx;
+		font-weight: 700;
+		color: #725e00;
 	}
 </style>

@@ -167,8 +167,47 @@
         "navigationBarTitleText": "宝贝管理",
         "navigationStyle": "custom"
       }
+    },
+    {
+      "path": "pages/punishment-learning/punishment-learning",
+      "style": {
+        "navigationBarTitleText": "惩罚-学习习惯",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/punishment-life/punishment-life",
+      "style": {
+        "navigationBarTitleText": "惩罚-生活习惯",
+        "navigationStyle": "custom"
+      }
     }
   ],
+  "tabBar": {
+    "custom": true,
+    "color": "#4d4632",
+    "selectedColor": "#613100",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/reward-center/reward-center",
+        "text": "奖惩"
+      },
+      {
+        "pagePath": "pages/prize-universal/prize-universal",
+        "text": "商店"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "星星罐",

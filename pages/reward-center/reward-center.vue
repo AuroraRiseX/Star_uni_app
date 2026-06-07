@@ -42,6 +42,7 @@
 					v-for="(item, index) in categories"
 					:key="index"
 					class="category-card"
+					@tap="goCategoryDetail(item)"
 				>
 					<view class="category-header">
 						<view class="category-left">
@@ -90,25 +91,6 @@
 				</view>
 			</view>
 		</scroll-view>
-		<!-- Bottom Nav -->
-		<view class="bottom-nav">
-			<view class="nav-item" @tap="navTo('home')">
-				<text class="nav-icon">🏠</text>
-				<text class="nav-label">首页</text>
-			</view>
-			<view class="nav-item nav-item-active" @tap="navTo('reward')">
-				<text class="nav-icon nav-icon-active">⭐</text>
-				<text class="nav-label nav-label-active">奖惩</text>
-			</view>
-			<view class="nav-item" @tap="navTo('shop')">
-				<text class="nav-icon">🛒</text>
-				<text class="nav-label">店铺</text>
-			</view>
-			<view class="nav-item" @tap="navTo('profile')">
-				<text class="nav-icon">👤</text>
-				<text class="nav-label">我的</text>
-			</view>
-		</view>
 	</view>
 </template>
 
@@ -120,58 +102,47 @@
 				categories: [
 					{
 						name: '学习习惯',
-						tag: '专注进取',
+						tag: '改正拖拉',
 						icon: '📖',
-						bgColor: '#ffd93d',
-						iconColor: '#725e00',
-						current: 5,
-						total: 5,
-						progressColor: '#725c00',
-						isGift: true
+						bgColor: '#ccd7ee',
+						iconColor: '#525d71',
+						current: 12,
+						total: 20,
+						progressColor: '#7A869A',
+						punishPage: '/pages/punishment-learning/punishment-learning'
 					},
 					{
 						name: '生活习惯',
-						tag: '作息规律',
+						tag: '早睡早起',
 						icon: '🌙',
-						bgColor: '#ffdcc4',
-						iconColor: '#6f3800',
-						current: 3,
-						total: 5,
-						progressColor: '#924c00',
-						isGift: false
-					},
-					{
-						name: '学习科目',
-						tag: '勤学好问',
-						icon: '📐',
-						bgColor: '#ccd7ee',
-						iconColor: '#525d71',
-						current: 2,
-						total: 5,
-						progressColor: '#545f72',
-						isGift: false
+						bgColor: 'rgba(168, 214, 114, 0.2)',
+						iconColor: '#A8D672',
+						current: 5,
+						total: 15,
+						progressColor: '#A8D672',
+						punishPage: '/pages/punishment-life/punishment-life'
 					},
 					{
 						name: '学习成绩',
-						tag: '突破自我',
-						icon: '🏆',
-						bgColor: 'rgba(168, 214, 114, 0.2)',
-						iconColor: '#A8D672',
-						current: 4,
-						total: 5,
-						progressColor: '#A8D672',
-						isGift: false
+						tag: '查漏补缺',
+						icon: '🏫',
+						bgColor: 'rgba(177, 156, 217, 0.2)',
+						iconColor: '#B19CD9',
+						current: 8,
+						total: 30,
+						progressColor: '#B19CD9',
+						punishPage: '/pages/punishment-academic/punishment-academic'
 					},
 					{
 						name: '性格养成',
-						tag: '善良诚实',
-						icon: '❤️',
-						bgColor: 'rgba(177, 156, 217, 0.2)',
-						iconColor: '#B19CD9',
-						current: 1,
-						total: 5,
-						progressColor: '#B19CD9',
-						isGift: false
+						tag: '戒骄戒躁',
+						icon: '😊',
+						bgColor: '#ffdcc4',
+						iconColor: '#6f3800',
+						current: 3,
+						total: 20,
+						progressColor: '#7A869A',
+						punishPage: '/pages/punishment-character/punishment-character'
 					}
 				]
 			}
@@ -191,15 +162,20 @@
 					duration: 2000
 				})
 			},
-			navTo(page) {
-				const routes = {
-					home: '/pages/index/index',
-					reward: '/pages/reward-center/reward-center',
-					shop: '/pages/prize-snack/prize-snack',
-					profile: '/pages/profile/profile'
+			goCategoryDetail(item) {
+				if (item.punishPage) {
+					uni.navigateTo({ url: item.punishPage })
+				} else if (item.rewardPage) {
+					uni.navigateTo({ url: item.rewardPage })
 				}
-				if (routes[page]) {
-					uni.navigateTo({ url: routes[page] })
+			}
+		},
+		onShow() {
+			// 设置自定义 tab-bar 选中状态为"奖惩"（index=1）
+			if (typeof this.$mp !== 'undefined' && this.$mp.page) {
+				const tabBar = this.$mp.page.getTabBar && this.$mp.page.getTabBar()
+				if (tabBar) {
+					tabBar.setData({ selected: 1 })
 				}
 			}
 		}
@@ -216,8 +192,10 @@
 	}
 	.top-bar {
 		width: 100%;
-		position: sticky;
+		position: fixed;
 		top: 0;
+		left: 0;
+		right: 0;
 		z-index: 40;
 		background: rgba(251, 249, 244, 0.8);
 		backdrop-filter: blur(12px);
@@ -249,7 +227,7 @@
 		font-size: 20px;
 		line-height: 1.4;
 		font-weight: 700;
-		color: #725c00;
+		color: #924c00;
 		font-family: 'Plus Jakarta Sans', 'PingFang SC', sans-serif;
 	}
 	.detail-btn {
@@ -268,6 +246,7 @@
 	}
 	.main-scroll {
 		padding: 24px 24px;
+		padding-top: 136px;
 		max-width: 672px;
 		margin: 0 auto;
 	}
@@ -453,54 +432,5 @@
 		0%, 100% { transform: rotate(0deg); }
 		25% { transform: rotate(-5deg); }
 		75% { transform: rotate(5deg); }
-	}
-	.bottom-nav {
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		z-index: 50;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-		padding: 8px 16px 16px;
-		background: rgba(245, 243, 238, 0.9);
-		backdrop-filter: blur(20px);
-		-webkit-backdrop-filter: blur(20px);
-		border-top: 1px solid rgba(209, 198, 171, 0.3);
-		border-radius: 1rem 1rem 0 0;
-		box-shadow: 0 -4px 20px 0 rgba(0, 0, 0, 0.05);
-	}
-	.nav-item {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		padding: 8px 16px;
-		border-radius: 1rem;
-		color: #48473a;
-	}
-	.nav-item:active {
-		transform: scale(0.9);
-	}
-	.nav-item-active {
-		background: #ffd214;
-		color: #705b00;
-	}
-	.nav-icon {
-		font-size: 24px;
-	}
-	.nav-icon-active {
-		font-weight: 700;
-	}
-	.nav-label {
-		font-size: 12px;
-		font-weight: 700;
-		letter-spacing: 0.05em;
-		margin-top: 4px;
-		font-family: 'Plus Jakarta Sans', 'PingFang SC', sans-serif;
-	}
-	.nav-label-active {
-		font-weight: 700;
 	}
 </style>
