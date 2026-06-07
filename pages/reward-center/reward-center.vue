@@ -180,17 +180,7 @@
 					uni.navigateTo({ url })
 				}
 			},
-			goHome() {
-				uni.switchTab({ url: '/pages/index/index' })
 			},
-			goReward() {},
-			goShop() {
-				uni.switchTab({ url: '/pages/prize-universal/prize-universal' })
-			},
-			goProfile() {
-				uni.switchTab({ url: '/pages/profile/profile' })
-			}
-		},
 		onShow() {
 			// 设置自定义 tab-bar 选中状态为"奖惩"（index=1）
 			if (typeof this.$mp !== 'undefined' && this.$mp.page) {

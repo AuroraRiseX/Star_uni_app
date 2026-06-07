@@ -147,25 +147,6 @@
 			</view>
 		</view>
 
-		<!-- Bottom Navigation -->
-		<view class="bottom-nav">
-			<view class="nav-item nav-active">
-				<text class="nav-icon">🏠</text>
-				<text class="nav-label">首页</text>
-			</view>
-			<view class="nav-item" @tap="goTo('/pages/star-jar/star-jar')">
-				<text class="nav-icon">⭐</text>
-				<text class="nav-label">奖惩</text>
-			</view>
-			<view class="nav-item" @tap="goTo('/pages/prize-snack/prize-snack')">
-				<text class="nav-icon">🛍️</text>
-				<text class="nav-label">店铺</text>
-			</view>
-			<view class="nav-item" @tap="goTo('/pages/profile/profile')">
-				<text class="nav-icon">👤</text>
-				<text class="nav-label">我的</text>
-			</view>
-		</view>
 	</view>
 </template>
 
@@ -194,14 +175,6 @@
 			},
 			addNewPlan() {
 				uni.showToast({ title: '添加新计划', icon: 'none' })
-			},
-			goTo(path) {
-				const tabBarPages = ['/pages/index/index', '/pages/reward-center/reward-center', '/pages/prize-universal/prize-universal', '/pages/profile/profile']
-				if (tabBarPages.includes(path)) {
-					uni.switchTab({ url: path })
-				} else {
-					uni.navigateTo({ url: path })
-				}
 			}
 		}
 	}
@@ -535,47 +508,5 @@
 		font-size: 20px;
 		font-weight: 700;
 	}
-	.bottom-nav {
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-		padding: 16rpx 32rpx 32rpx;
-		background: rgba(250, 249, 249, 0.8);
-		backdrop-filter: blur(20px);
-		border-top: 1px solid rgba(255, 255, 255, 0.2);
-		z-index: 50;
-		border-radius: 24rpx 24rpx 0 0;
-		box-sizing: border-box;
-	}
-	.nav-item {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		padding: 8rpx 32rpx;
-	}
-	.nav-item:active {
-		opacity: 0.7;
-	}
-	.nav-active {
-		background: #ffd93d;
-		color: #725e00;
-		border-radius: 20rpx;
-	}
-	.nav-icon {
-		font-size: 20px;
-	}
-	.nav-label {
-		font-size: 12px;
-		font-weight: 600;
-		color: #4d4633;
-		margin-top: 4rpx;
-	}
-	.nav-active .nav-label {
-		color: #725e00;
-	}
+
 </style>

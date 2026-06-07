@@ -61,24 +61,7 @@
 				<text class="add-hint">添加宝贝后即可为其开启独立的星星奖赏计划</text>
 			</view>
 		</scroll-view>
-		<view class="bottom-nav">
-			<view class="nav-item" @tap="navTo('home')">
-				<text class="nav-icon">🏠</text>
-				<text class="nav-label">Home</text>
-			</view>
-			<view class="nav-item" @tap="navTo('jar')">
-				<text class="nav-icon">⭐</text>
-				<text class="nav-label">Jar Info</text>
-			</view>
-			<view class="nav-item" @tap="navTo('shop')">
-				<text class="nav-icon">🛒</text>
-				<text class="nav-label">Shop</text>
-			</view>
-			<view class="nav-item nav-active" @tap="navTo('profile')">
-				<text class="nav-icon">👤</text>
-				<text class="nav-label nav-label-active">Profile</text>
-			</view>
-		</view>
+
 	</view>
 </template>
 
@@ -115,23 +98,6 @@
 			selectBaby(index) {},
 			addBaby() {
 				uni.navigateTo({ url: '/pages/baby-management/baby-management' })
-			},
-			navTo(page) {
-				const routes = {
-					home: '/pages/index/index',
-					jar: '/pages/star-jar/star-jar',
-					shop: '/pages/prize-snack/prize-snack',
-					profile: '/pages/profile/profile'
-				}
-				const tabBarPages = ['/pages/index/index', '/pages/reward-center/reward-center', '/pages/prize-universal/prize-universal', '/pages/profile/profile']
-				const url = routes[page]
-				if (url) {
-					if (tabBarPages.includes(url)) {
-						uni.switchTab({ url: url })
-					} else {
-						uni.navigateTo({ url: url })
-					}
-				}
 			}
 		}
 	}
@@ -398,51 +364,5 @@
 		color: rgba(77, 70, 51, 0.6);
 		display: block;
 	}
-	.bottom-nav {
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		z-index: 50;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-		padding: 8px 16px 16px;
-		background: rgba(244, 243, 243, 0.9);
-		backdrop-filter: blur(20px);
-		-webkit-backdrop-filter: blur(20px);
-		border-top: 1px solid rgba(208, 198, 173, 0.3);
-		box-shadow: 0 -4px 20px 0 rgba(0, 0, 0, 0.05);
-		border-radius: 1rem 1rem 0 0;
-	}
-	.nav-item {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		padding: 8px 16px;
-		color: #48473a;
-	}
-	.nav-item:active {
-		transform: scale(0.9);
-	}
-	.nav-active {
-		background: #ffd93d;
-		border-radius: 1rem;
-		color: #725e00;
-	}
-	.nav-icon {
-		font-size: 24px;
-	}
-	.nav-label {
-		font-size: 12px;
-		font-weight: 700;
-		line-height: 16px;
-		margin-top: 4px;
-		letter-spacing: 0.05em;
-		font-family: 'Quicksand', 'PingFang SC', sans-serif;
-	}
-	.nav-label-active {
-		font-weight: 700;
-	}
+
 </style>

@@ -17,7 +17,7 @@
 
     <scroll-view class="content" scroll-y>
       <view class="segmented-toggle">
-        <view class="toggle-item toggle-inactive">
+        <view class="toggle-item toggle-inactive" @tap="goReward">
           <text class="toggle-text">🌟 奖励赚取</text>
         </view>
         <view class="toggle-item toggle-active">
@@ -128,24 +128,6 @@
       <view class="bottom-spacer"></view>
     </scroll-view>
 
-    <view class="bottom-nav">
-      <view class="nav-item" @tap="goPage('home')">
-        <text class="nav-icon">🏠</text>
-        <text class="nav-label">首页</text>
-      </view>
-      <view class="nav-item nav-item-active" @tap="goPage('reward')">
-        <text class="nav-icon">⭐</text>
-        <text class="nav-label">奖惩</text>
-      </view>
-      <view class="nav-item" @tap="goPage('shop')">
-        <text class="nav-icon">🛒</text>
-        <text class="nav-label">店铺</text>
-      </view>
-      <view class="nav-item" @tap="goPage('profile')">
-        <text class="nav-icon">👤</text>
-        <text class="nav-label">我的</text>
-      </view>
-    </view>
   </view>
 </template>
 
@@ -164,16 +146,8 @@ export default {
       }
       uni.navigateTo({ url: routes[type] || '' })
     },
-    goPage(page) {
-      var routes = {
-        'home': '/pages/index/index',
-        'reward': '/pages/punishment-center/punishment-center',
-        'shop': '/pages/prize-universal/prize-universal',
-        'profile': '/pages/profile/profile'
-      }
-      if (page === 'home' || page === 'shop' || page === 'profile') {
-        uni.switchTab({ url: routes[page] })
-      }
+    goReward() {
+      uni.navigateBack()
     }
   }
 }
@@ -465,53 +439,5 @@ export default {
   height: 32rpx;
 }
 
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 50;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 16rpx 24rpx 32rpx;
-  background: rgba(245, 243, 238, 0.9);
-  backdrop-filter: blur(20rpx);
-  border-top: 1px solid rgba(209, 198, 171, 0.3);
-  border-radius: 24rpx 24rpx 0 0;
-  box-shadow: 0 -8rpx 40rpx rgba(0,0,0,0.05);
-  box-sizing: border-box;
-}
 
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 16rpx 32rpx;
-  color: #3c475a;
-  transition: all 0.2s;
-}
-
-.nav-item:active {
-  transform: scale(0.9);
-}
-
-.nav-item-active {
-  background: #ffd214;
-  color: #705b00;
-  border-radius: 16rpx;
-}
-
-.nav-icon {
-  font-size: 36rpx;
-  margin-bottom: 8rpx;
-}
-
-.nav-label {
-  font-size: 20rpx;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
 </style>

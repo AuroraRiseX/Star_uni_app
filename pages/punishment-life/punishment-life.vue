@@ -98,7 +98,7 @@ export default {
 	},
 	methods: {
 		goBack() {
-			uni.navigateTo({ url: '/pages/punishment-center/punishment-center' })
+			uni.navigateBack()
 		},
 		onRecord(index) {
 			var item = this.punishments[index]
