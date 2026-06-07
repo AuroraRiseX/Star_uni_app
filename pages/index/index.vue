@@ -6,7 +6,7 @@
 		<!-- 顶部导航栏 topbar-sj -->
 		<view class="topbar-sj">
 			<view class="topbar-left">
-				<view class="topbar-avatar">
+				<view class="topbar-avatar" @tap="goToProfile">
 					<image class="topbar-avatar-img" src="/static/logo.png" mode="aspectFill"></image>
 				</view>
 				<text class="topbar-title">麦兜的星星罐</text>
@@ -160,10 +160,13 @@ export default {
 			uni.navigateTo({ url: '/pages/star-jar-detail/star-jar-detail' })
 		},
 		addReward() {
-			uni.showToast({ title: '添加奖励', icon: 'none' })
+			uni.navigateTo({ url: '/pages/punishment-center/punishment-center' })
 		},
 		tapJar() {
 			uni.showToast({ title: '&#10024;', icon: 'none' })
+		},
+		goToProfile() {
+			uni.switchTab({ url: '/pages/profile/profile' })
 		},
 		goRewardCenter() {
 			uni.switchTab({ url: '/pages/reward-center/reward-center' })

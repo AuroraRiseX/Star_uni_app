@@ -117,7 +117,9 @@
 		},
 		onLoad() {},
 		methods: {
-			goBack() {},
+			goBack() {
+				uni.navigateBack()
+			},
 			onRedeem() {
 				this.showSuccess = true;
 			},

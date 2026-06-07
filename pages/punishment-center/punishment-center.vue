@@ -156,14 +156,24 @@ export default {
       uni.showToast({ title: '明细', icon: 'none' })
     },
     goCategory(type) {
-      if (type === 'character') {
-        uni.navigateTo({ url: '/pages/punishment-character/punishment-character' })
-      } else {
-        uni.showToast({ title: type, icon: 'none' })
+      var routes = {
+        'study': '/pages/punishment-learning/punishment-learning',
+        'life': '/pages/punishment-life/punishment-life',
+        'academic': '/pages/punishment-academic/punishment-academic',
+        'character': '/pages/punishment-character/punishment-character'
       }
+      uni.navigateTo({ url: routes[type] || '' })
     },
     goPage(page) {
-      uni.showToast({ title: page, icon: 'none' })
+      var routes = {
+        'home': '/pages/index/index',
+        'reward': '/pages/punishment-center/punishment-center',
+        'shop': '/pages/prize-universal/prize-universal',
+        'profile': '/pages/profile/profile'
+      }
+      if (page === 'home' || page === 'shop' || page === 'profile') {
+        uni.switchTab({ url: routes[page] })
+      }
     }
   }
 }

@@ -181,6 +181,13 @@
         "navigationBarTitleText": "惩罚-生活习惯",
         "navigationStyle": "custom"
       }
+    },
+    {
+      "path": "pages/privacy/privacy",
+      "style": {
+        "navigationBarTitleText": "隐私协议",
+        "navigationStyle": "custom"
+      }
     }
   ],
   "tabBar": {

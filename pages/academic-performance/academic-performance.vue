@@ -131,7 +131,7 @@ export default {
 	},
 	methods: {
 		goBack() {
-			uni.navigateBack({ delta: 1 })
+			uni.switchTab({ url: '/pages/index/index' })
 		},
 		onMore() {
 			uni.showToast({ title: '更多操作', icon: 'none' })
@@ -145,7 +145,13 @@ export default {
 			if (task.done) return
 			task.done = true
 			this.progress.current = this.tasks.filter(function(t) { return t.done }).length
-			uni.showToast({ title: '任务完成! +⭐', icon: 'success' })
+			if (this.progress.current >= this.progress.total) {
+				setTimeout(() => {
+					uni.navigateTo({ url: '/pages/treasure-chest/treasure-chest' })
+				}, 800)
+			} else {
+				uni.showToast({ title: '任务完成! +⭐', icon: 'success' })
+			}
 		},
 		onAddPlan() {
 			uni.showToast({ title: '添加新计划', icon: 'none' })

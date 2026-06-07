@@ -119,13 +119,13 @@
 				uni.navigateTo({ url: '/pages/settings/settings' })
 			},
 			goPrivacy() {
-				uni.showToast({ title: '隐私协议', icon: 'none' })
+				uni.navigateTo({ url: '/pages/privacy/privacy' })
 			},
 			goAbout() {
 				uni.showToast({ title: '关于我们', icon: 'none' })
 			},
 			handleLogout() {
-				uni.redirectTo({ url: '/pages/profile-logout/profile-logout' })
+				uni.navigateTo({ url: '/pages/profile-logout/profile-logout' })
 			}
 		}
 	}

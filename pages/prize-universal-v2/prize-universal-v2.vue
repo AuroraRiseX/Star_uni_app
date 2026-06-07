@@ -80,20 +80,34 @@
       <view class="bottom-spacer"></view>
     </scroll-view>
 
-    <view class="bottom-bar">
-      <view class="redeem-btn" @tap="onRedeem">
-        <text class="redeem-icon">🛍️</text>
-        <text class="redeem-text">立即兑换</text>
+      <view class="bottom-bar">
+        <view class="redeem-btn" @tap="onRedeem">
+          <text class="redeem-icon">🛍️</text>
+          <text class="redeem-text">立即兑换</text>
+        </view>
+      </view>
+
+      <!-- Success Modal -->
+      <view class="modal-overlay" :class="{ 'modal-show': showModal }">
+        <view class="modal-backdrop" @tap="closeModal"></view>
+        <view class="modal-card" v-if="showModal">
+          <view class="modal-icon-wrap">
+            <text class="modal-check">✅</text>
+          </view>
+          <text class="modal-title">兑换成功！</text>
+          <text class="modal-desc">向爸爸妈妈出示此页面，实现你的大愿望吧！</text>
+          <view class="modal-btn" @tap="closeModal">太棒了</view>
+        </view>
       </view>
     </view>
-  </view>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      isRedeeming: false
+      isRedeeming: false,
+      showModal: false
     }
   },
   methods: {
@@ -105,8 +119,11 @@ export default {
       this.isRedeeming = true
       setTimeout(() => {
         this.isRedeeming = false
-        uni.showToast({ title: '兑换成功!', icon: 'success' })
-      }, 1200)
+        this.showModal = true
+      }, 800)
+    },
+    closeModal() {
+      this.showModal = false
     }
   }
 }
@@ -457,5 +474,98 @@ export default {
 
 .redeem-text {
   font-size: 36rpx;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32rpx;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.modal-overlay.modal-show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(27, 28, 25, 0.4);
+  backdrop-filter: blur(12px);
+}
+
+.modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 560rpx;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  border: 2rpx solid rgba(255, 255, 255, 0.5);
+  border-radius: 32rpx;
+  padding: 64rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: bounce-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.05); opacity: 1; }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+.modal-icon-wrap {
+  width: 160rpx;
+  height: 160rpx;
+  background: #ffd214;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40rpx;
+}
+
+.modal-check {
+  font-size: 72rpx;
+}
+
+.modal-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #705d00;
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.modal-desc {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #4d4632;
+  margin-bottom: 48rpx;
+}
+
+.modal-btn {
+  width: 100%;
+  padding: 24rpx 0;
+  background: #705d00;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 30rpx;
+  border-radius: 999rpx;
+  text-align: center;
+}
+
+.modal-btn:active {
+  transform: scale(0.96);
 }
 </style>

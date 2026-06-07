@@ -104,7 +104,7 @@
 				}
 				this.showOverlay = true
 				setTimeout(() => {
-					console.log('Starting journey for:', this.babyName)
+					uni.switchTab({ url: '/pages/index/index' })
 				}, 1500)
 			}
 		}

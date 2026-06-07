@@ -109,9 +109,13 @@
 			goBack() {
 				uni.navigateBack()
 			},
-			showDetail() {},
+			showDetail() {
+				uni.navigateTo({ url: '/pages/baby-management/baby-management' })
+			},
 			selectBaby(index) {},
-			addBaby() {},
+			addBaby() {
+				uni.navigateTo({ url: '/pages/baby-management/baby-management' })
+			},
 			navTo(page) {
 				const routes = {
 					home: '/pages/index/index',
@@ -119,8 +123,14 @@
 					shop: '/pages/prize-snack/prize-snack',
 					profile: '/pages/profile/profile'
 				}
-				if (routes[page]) {
-					uni.navigateTo({ url: routes[page] })
+				const tabBarPages = ['/pages/index/index', '/pages/reward-center/reward-center', '/pages/prize-universal/prize-universal', '/pages/profile/profile']
+				const url = routes[page]
+				if (url) {
+					if (tabBarPages.includes(url)) {
+						uni.switchTab({ url: url })
+					} else {
+						uni.navigateTo({ url: url })
+					}
 				}
 			}
 		}

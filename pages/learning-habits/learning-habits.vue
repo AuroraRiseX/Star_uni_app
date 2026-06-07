@@ -196,7 +196,12 @@
 				uni.showToast({ title: '添加新计划', icon: 'none' })
 			},
 			goTo(path) {
-				uni.switchTab({ url: path })
+				const tabBarPages = ['/pages/index/index', '/pages/reward-center/reward-center', '/pages/prize-universal/prize-universal', '/pages/profile/profile']
+				if (tabBarPages.includes(path)) {
+					uni.switchTab({ url: path })
+				} else {
+					uni.navigateTo({ url: path })
+				}
 			}
 		}
 	}

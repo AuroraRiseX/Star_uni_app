@@ -99,19 +99,12 @@
 				}
 				this.stars = items
 			},
-			onCollect() {
-				this.cardHidden = true
-				setTimeout(() => {
-					uni.showModal({
-						title: '提示',
-						content: '奖励已放入星空罐！',
-						showCancel: false,
-						success: () => {
-							uni.navigateBack()
-						}
-					})
-				}, 500)
-			}
+		onCollect() {
+			this.cardHidden = true
+			setTimeout(() => {
+				uni.switchTab({ url: '/pages/index/index' })
+			}, 500)
+		}
 		}
 	}
 </script>

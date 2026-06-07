@@ -95,13 +95,15 @@
 			onEdit(name) {
 				uni.showToast({
 					icon: 'none',
-					title: '编辑 ' + name
+					title: '正在编辑 ' + name + ' 的资料...',
+					duration: 1500
 				})
 			},
 			onAddBaby() {
 				uni.showToast({
 					icon: 'none',
-					title: '添加新宝贝'
+					title: '正在准备添加新宝贝...',
+					duration: 1500
 				})
 			}
 		}

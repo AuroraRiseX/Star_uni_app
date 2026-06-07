@@ -149,9 +149,15 @@
 		},
 		methods: {
 			switchTab(tab) {
-				this.activeTab = tab
+				if (tab === 'punish') {
+					uni.navigateTo({ url: '/pages/punishment-center/punishment-center' })
+				} else {
+					this.activeTab = tab
+				}
 			},
-			showDetail() {},
+			showDetail() {
+				uni.navigateTo({ url: '/pages/star-jar-detail/star-jar-detail' })
+			},
 			isGiftItem(index) {
 				return this.categories[index].current >= this.categories[index].total
 			},
@@ -163,11 +169,26 @@
 				})
 			},
 			goCategoryDetail(item) {
-				if (item.punishPage) {
-					uni.navigateTo({ url: item.punishPage })
-				} else if (item.rewardPage) {
-					uni.navigateTo({ url: item.rewardPage })
+				const pageMap = {
+					'学习习惯': '/pages/learning-subjects/learning-subjects',
+					'性格养成': '/pages/character-building/character-building',
+					'学习成绩': '/pages/academic-performance/academic-performance',
+					'生活习惯': '/pages/life-habits/life-habits'
 				}
+				const url = pageMap[item.name]
+				if (url) {
+					uni.navigateTo({ url })
+				}
+			},
+			goHome() {
+				uni.switchTab({ url: '/pages/index/index' })
+			},
+			goReward() {},
+			goShop() {
+				uni.switchTab({ url: '/pages/prize-universal/prize-universal' })
+			},
+			goProfile() {
+				uni.switchTab({ url: '/pages/profile/profile' })
 			}
 		},
 		onShow() {

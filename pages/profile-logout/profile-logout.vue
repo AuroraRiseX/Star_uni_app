@@ -128,12 +128,13 @@ export default {
 			this.loginModalVisible = false
 		},
 		handleLogin() {
-			uni.showToast({ title: '登录功能', icon: 'none' })
+			this.loginModalVisible = false
+			uni.switchTab({ url: '/pages/profile/profile' })
 		},
 		goHome() { uni.switchTab({ url: '/pages/index/index' }) },
-		goReward() { uni.showToast({ title: '奖惩中心', icon: 'none' }) },
-		goShop() { uni.showToast({ title: '店铺', icon: 'none' }) },
-		goProfile() {}
+		goReward() { uni.switchTab({ url: '/pages/reward-center/reward-center' }) },
+		goShop() { uni.navigateTo({ url: '/pages/prize-snack/prize-snack' }) },
+		goProfile() { uni.switchTab({ url: '/pages/profile/profile' }) }
 	}
 }
 </script>

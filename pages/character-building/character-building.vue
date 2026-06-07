@@ -109,10 +109,14 @@ export default {
 	},
 	methods: {
 		goBack() {
-			uni.navigateBack({ delta: 1 })
+			uni.switchTab({ url: '/pages/index/index' })
 		},
 		showRules() {
-			uni.showToast({ title: '规则详情', icon: 'none' })
+			uni.showModal({
+				title: '规则详情',
+				content: '完成每日任务即可获得星星奖励！每完成5个任务即可开启今日宝箱，获得额外星星奖励。继续加油吧！',
+				showCancel: false
+			})
 		},
 		onTaskTap(index) {
 			var task = this.tasks[index]
@@ -123,7 +127,13 @@ export default {
 			if (task.done) return
 			task.done = true
 			this.progress.current = this.tasks.filter(function(t) { return t.done }).length
-			uni.showToast({ title: '任务完成! +⭐', icon: 'success' })
+			if (this.progress.current >= this.progress.total) {
+				setTimeout(() => {
+					uni.navigateTo({ url: '/pages/treasure-chest/treasure-chest' })
+				}, 800)
+			} else {
+				uni.showToast({ title: '任务完成! +⭐', icon: 'success' })
+			}
 		},
 		onAddPlan() {
 			uni.showToast({ title: '添加新计划', icon: 'none' })

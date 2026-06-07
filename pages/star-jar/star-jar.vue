@@ -130,13 +130,18 @@
 				uni.navigateTo({ url: '/pages/star-jar-detail/star-jar-detail' })
 			},
 			addReward() {
-				uni.showToast({ title: '添加奖励', icon: 'none' })
+				uni.switchTab({ url: '/pages/reward-center/reward-center' })
 			},
 			tapJar() {
 				uni.showToast({ title: '✨', icon: 'none' })
 			},
 			goTo(path) {
-				uni.switchTab({ url: path })
+				const tabBarPages = ['/pages/index/index', '/pages/reward-center/reward-center', '/pages/prize-universal/prize-universal', '/pages/profile/profile']
+				if (tabBarPages.includes(path)) {
+					uni.switchTab({ url: path })
+				} else {
+					uni.navigateTo({ url: path })
+				}
 			}
 		}
 	}
