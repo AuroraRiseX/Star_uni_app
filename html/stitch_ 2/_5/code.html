@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>奖品详情 - 星星罐</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .star-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#525d71",
+                        "surface-cream": "#FFFDF9",
+                        "inverse-primary": "#edc200",
+                        "surface-container-high": "#eae8e3",
+                        "on-secondary-fixed-variant": "#6f3800",
+                        "inverse-on-surface": "#f2f1ec",
+                        "primary-fixed": "#ffe07e",
+                        "secondary-container": "#fd8b17",
+                        "secondary-fixed-dim": "#ffb780",
+                        "tertiary-fixed": "#d8e3fa",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#2f1400",
+                        "tertiary-container": "#ccd7ee",
+                        "surface-dim": "#dbdad5",
+                        "surface-container-low": "#f5f3ee",
+                        "surface": "#fbf9f4",
+                        "on-secondary-container": "#613100",
+                        "primary-fixed-dim": "#edc200",
+                        "on-error-container": "#93000a",
+                        "energy-green": "#A8D672",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#4d4632",
+                        "on-secondary": "#ffffff",
+                        "glass-border": "rgba(255, 255, 255, 0.4)",
+                        "primary": "#725c00",
+                        "on-primary-fixed": "#231b00",
+                        "on-surface": "#1b1c19",
+                        "surface-tint": "#725c00",
+                        "secondary": "#924c00",
+                        "on-primary-container": "#705b00",
+                        "on-background": "#1b1c19",
+                        "outline": "#7f765f",
+                        "on-primary-fixed-variant": "#564500",
+                        "surface-variant": "#e4e2dd",
+                        "inverse-surface": "#30312e",
+                        "surface-bright": "#fbf9f4",
+                        "cloud-gray": "#7A869A",
+                        "on-tertiary-fixed-variant": "#3c475a",
+                        "tertiary": "#545f72",
+                        "primary-container": "#ffd214",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "energy-purple": "#B19CD9",
+                        "background": "#fbf9f4",
+                        "on-tertiary-fixed": "#111c2c",
+                        "secondary-fixed": "#ffdcc4",
+                        "surface-container": "#f0eee9",
+                        "outline-variant": "#d1c6ab",
+                        "tertiary-fixed-dim": "#bcc7dd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "section-gap": "32px",
+                        "container-padding": "24px",
+                        "card-inner": "20px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "hero-numeral": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "hero-numeral": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-primary-container">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-50 bg-surface/80 backdrop-blur-md flex justify-between items-center px-container-padding py-unit shadow-sm">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-150 ease-in-out">
+<span class="material-symbols-outlined text-primary">arrow_back_ios_new</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">奖品详情</h1>
+<div class="w-10"></div> <!-- Spacer for balance -->
+</header>
+<main class="pb-32">
+<!-- Hero Section -->
+<section class="relative px-container-padding pt-6 overflow-hidden">
+<div class="relative w-full rounded-xl overflow-hidden shadow-sm flex items-center justify-center bg-gradient-to-br from-energy-purple/20 to-tertiary-container/30 h-40">
+<!-- Background Decorative Circles -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-energy-purple/20 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-primary-container/20 rounded-full blur-3xl"></div>
+<!-- Main Illustration Placeholder -->
+<div class="relative z-10 floating group">
+<div class="w-64 h-40 bg-energy-purple rounded-lg shadow-2xl relative border-4 border-white transform rotate-3 flex items-center justify-between px-6 overflow-hidden">
+<div class="absolute inset-0 star-shimmer opacity-30"></div>
+<div class="flex flex-col items-start z-10">
+<span class="material-symbols-outlined text-4xl text-white mb-1" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<div class="font-headline-md text-white tracking-widest">万能卡</div>
+</div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-6xl text-white opacity-40" style="font-variation-settings: 'FILL' 1;">grade</span>
+</div>
+<!-- Repositioned Sparkles -->
+<span class="material-symbols-outlined absolute top-2 right-4 text-white text-xl animate-pulse">spark</span>
+<span class="material-symbols-outlined absolute bottom-4 left-4 text-white text-sm animate-bounce">grade</span>
+</div>
+</div>
+<!-- Abstract Map/Setting Imagery within data-alt -->
+<img class="hidden" data-alt="A magical, glowing 3D illustration of a purple rectangular card floating in a dreamy space. The card features gold sparkles and a star icon, surrounded by soft-focus lavender and yellow light clouds. The style is Japanese dopamine micro-flat, with clean lines, soft-focus depth, and a warm, healing aesthetic consistent with a child-friendly reward app. High-key lighting highlights the tactile glassmorphism textures and toy-like charm." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD2Plj7wfIEcsKzV8oP9Uo7nWTLr7KlANFgfUYxah_LVtbh0qN_z83kVGJOUDe2OnlA3IRJeX_N8qR-oWKhEIhWOnkQlQZ4XYQOiZ4IahNHH3Mc12Y4ua0-Li9xKmTDQEp5phQfDCbJ2sBovZasUxhlOV7d4g9JeiPf1uT4xzGU-3Nrr947nEa-lDgnEgLHlN2ly0RWAHVM72_EffyMpIq4PfIZRJwyV9SH19vvsnYFUmeNdq__n1l4LCGACX0-alsg0NNN9rDPECh"/>
+</div>
+</section>
+<!-- Title & Description -->
+<section class="px-container-padding mt-6">
+<div class="flex items-center gap-2 mb-2">
+<span class="px-3 py-1 bg-energy-purple/20 text-on-tertiary-container rounded-full text-xs font-bold uppercase tracking-wider">稀有奖品</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-3">万能卡</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                可以实现一个合理的愿望！这是对宝贝努力完成任务的特别奖励。
+            </p>
+</section>
+<!-- Statistics Section (Bento Style) -->
+<section class="px-container-padding mt-8 grid grid-cols-2 gap-4">
+<!-- Cost Card -->
+<div class="bg-surface-container-low p-card-inner rounded-lg border border-outline-variant/30">
+<div class="text-on-surface-variant text-sm mb-1">兑换所需</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-headline-md text-headline-md text-primary">50 颗</span>
+</div>
+</div>
+<!-- Balance Card -->
+<div class="bg-surface-container-low p-card-inner rounded-lg border border-outline-variant/30 flex flex-col justify-between">
+<div>
+<div class="text-on-surface-variant text-sm mb-1">当前余额</div>
+<div class="font-headline-md text-headline-md text-on-surface">128 颗</div>
+</div>
+<div class="mt-2 flex items-center gap-1.5 px-2 py-0.5 bg-energy-green/20 w-fit rounded-full">
+<div class="w-2 h-2 bg-energy-green rounded-full"></div>
+<span class="text-[10px] font-bold text-on-surface-variant">余额充足</span>
+</div>
+</div>
+</section>
+<!-- Details Section -->
+<section class="px-container-padding mt-8 space-y-6">
+<!-- Instructions -->
+<div>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-secondary text-xl">info</span>
+<h3 class="font-headline-md text-on-surface">使用说明</h3>
+</div>
+<div class="bg-surface-container-lowest p-card-inner rounded-lg border border-outline-variant/20 shadow-sm">
+<p class="text-on-surface-variant font-body-md">
+                        点击兑换后，向爸爸或妈妈出示兑换成功页面，即可商量并实现你的大愿望。
+                    </p>
+</div>
+</div>
+<!-- Validity -->
+<div>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-secondary text-xl">schedule</span>
+<h3 class="font-headline-md text-on-surface">有效期</h3>
+</div>
+<div class="bg-surface-container-lowest p-card-inner rounded-lg border border-outline-variant/20 shadow-sm flex items-start gap-3">
+<div class="w-1.5 h-1.5 bg-secondary rounded-full mt-2.5 shrink-0"></div>
+<p class="text-on-surface-variant font-body-md">
+                        兑换后请在30天内使用哦，过期的愿望会飞走哒！
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Sticky Bottom Action Button -->
+<footer class="fixed bottom-0 left-0 w-full p-container-padding z-50 bg-gradient-to-t from-surface via-surface to-transparent">
+<div class="max-w-md mx-auto">
+<button class="w-full h-16 bg-gradient-to-r from-primary to-secondary text-white font-headline-md text-headline-md rounded-full shadow-lg shadow-primary/20 hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2" id="redeem-btn">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+                立即兑换
+            </button>
+</div>
+</footer>
+<!-- Micro-interactions Script -->
+<script>
+        document.getElementById('redeem-btn').addEventListener('click', function() {
+            // Simple visual feedback for button click
+            const btn = this;
+            const originalContent = btn.innerHTML;
+            
+            btn.innerHTML = `
+                <svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                处理中...
+            `;
+            
+            setTimeout(() => {
+                btn.classList.replace('from-primary', 'from-energy-green');
+                btn.classList.replace('to-secondary', 'to-energy-green');
+                btn.innerHTML = `
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    兑换成功!
+                `;
+                
+                // Trigger a confetti-like sparkle effect (simulated)
+                console.log('Confetti effect triggered');
+            }, 1200);
+        });
+    </script>
+</body></html>

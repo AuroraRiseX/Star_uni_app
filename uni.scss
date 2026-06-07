@@ -1,0 +1,123 @@
+/* 星星罐 Theme Variables */
+
+/* Colors */
+$on-surface: #1a1c1c;
+$on-surface-variant: #4d4633;
+$primary: #705d00;
+$primary-container: #ffd93d;
+$primary-fixed: #ffe173;
+$primary-fixed-dim: #e8c426;
+$on-primary-container: #725e00;
+$secondary: #944a00;
+$secondary-container: #fc8200;
+$secondary-fixed: #ffdcc6;
+$secondary-fixed-dim: #ffb784;
+$on-secondary-container: #5d2c00;
+$tertiary: #605f51;
+$tertiary-container: #dfdccb;
+$tertiary-fixed: #e6e3d1;
+$tertiary-fixed-dim: #cac7b6;
+$on-tertiary-container: #626153;
+$surface: #faf9f9;
+$surface-dim: #dadada;
+$surface-bright: #faf9f9;
+$surface-container-lowest: #ffffff;
+$surface-container-low: #f4f3f3;
+$surface-container: #eeeeed;
+$surface-container-high: #e9e8e8;
+$surface-container-highest: #e3e2e2;
+$surface-variant: #e3e2e2;
+$background: #faf9f9;
+$outline: #7e7761;
+$outline-variant: #d0c6ad;
+$error: #ba1a1a;
+$error-container: #ffdad6;
+$on-error: #ffffff;
+$on-error-container: #93000a;
+$inverse-surface: #2f3131;
+$inverse-on-surface: #f1f0f0;
+$inverse-primary: #e8c426;
+$energy-green: #A8D672;
+$energy-purple: #B19CD9;
+$cloud-gray: #7A869A;
+
+/* Spacing */
+$container-margin: 20px;
+$gutter: 16px;
+$base: 8px;
+$xs: 4px;
+$sm: 12px;
+$md: 24px;
+$lg: 40px;
+$xl: 64px;
+$card-inner: 20px;
+$container-padding: 24px;
+$section-gap: 32px;
+$unit: 8px;
+
+/* Border Radius */
+$radius-default: 1rem;
+$radius-lg: 2rem;
+$radius-xl: 3rem;
+$radius-full: 9999px;
+
+/* Font Sizes */
+$font-headline-lg: 32px;
+$font-headline-lg-mobile: 26px;
+$font-headline-md: 24px;
+$font-body-lg: 18px;
+$font-body-md: 16px;
+$font-label-lg: 14px;
+$font-label-sm: 12px;
+
+/* Mixins */
+@mixin glass-card {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+}
+
+@mixin glass-jar {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+@mixin squishy-button($color: #b08d00) {
+  box-shadow: 0 4px 0px $color;
+  transition: all 0.1s ease;
+  &:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0px $color;
+  }
+}
+
+@mixin cloud-shadow {
+  box-shadow: 0 10px 30px -5px rgba(255, 132, 0, 0.1);
+}
+
+@mixin active-press {
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes gentle-float-fall {
+  0% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(10px) rotate(5deg); }
+  50% { transform: translateY(5px) rotate(-3deg); }
+  75% { transform: translateY(15px) rotate(8deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}

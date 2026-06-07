@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700&amp;family=Quicksand:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#626153",
+                    "tertiary-fixed-dim": "#cac7b6",
+                    "outline": "#7e7761",
+                    "surface-bright": "#faf9f9",
+                    "secondary-fixed-dim": "#ffb784",
+                    "inverse-surface": "#2f3131",
+                    "surface-container": "#eeeeed",
+                    "secondary-container": "#fc8200",
+                    "on-tertiary-fixed-variant": "#48473a",
+                    "tertiary": "#605f51",
+                    "on-surface": "#1a1c1c",
+                    "on-primary-container": "#725e00",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#e9e8e8",
+                    "primary": "#705d00",
+                    "surface-container-low": "#f4f3f3",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#e6e3d1",
+                    "on-secondary-fixed-variant": "#713700",
+                    "on-secondary-fixed": "#301400",
+                    "primary-fixed-dim": "#e8c426",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#d0c6ad",
+                    "on-primary-fixed-variant": "#554500",
+                    "on-primary-fixed": "#221b00",
+                    "surface-tint": "#705d00",
+                    "on-surface-variant": "#4d4633",
+                    "surface-dim": "#dadada",
+                    "inverse-primary": "#e8c426",
+                    "tertiary-container": "#dfdccb",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#ffe173",
+                    "on-background": "#1a1c1c",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#f1f0f0",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#1d1c11",
+                    "on-secondary-container": "#5d2c00",
+                    "surface-variant": "#e3e2e2",
+                    "surface": "#faf9f9",
+                    "secondary-fixed": "#ffdcc6",
+                    "background": "#faf9f9",
+                    "surface-container-highest": "#e3e2e2",
+                    "primary-container": "#ffd93d",
+                    "secondary": "#944a00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "64px",
+                    "base": "8px",
+                    "sm": "12px",
+                    "md": "24px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "lg": "40px",
+                    "container-margin": "20px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Quicksand"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Quicksand"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-md": ["Quicksand"],
+                    "label-sm": ["Quicksand"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["26px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #faf9f9;
+            color: #1a1c1c;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(255, 255, 255, 0.6);
+        }
+        .cloud-shadow {
+            box-shadow: 0 10px 30px -5px rgba(255, 132, 0, 0.1);
+        }
+        .squishy-button {
+            box-shadow: 0 4px 0px #b08d00;
+            transition: all 0.1s ease;
+        }
+        .squishy-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0px #b08d00;
+        }
+        .floating-star {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        .avatar-option {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .avatar-option.active {
+            border-color: #705d00;
+            transform: scale(1.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col items-center justify-center p-container-margin relative overflow-hidden">
+<!-- Decorative Background Elements -->
+<div class="absolute -top-20 -left-20 w-64 h-64 bg-primary-fixed opacity-30 blur-3xl rounded-full"></div>
+<div class="absolute -bottom-20 -right-20 w-80 h-80 bg-secondary-fixed opacity-20 blur-3xl rounded-full"></div>
+<!-- Floating Stars Atmospheric Effect -->
+<div class="absolute top-10 right-10 floating-star" style="animation-delay: 0s;">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[40px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div class="absolute bottom-40 left-10 floating-star" style="animation-delay: 2s;">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-[32px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<!-- Main Registration Container -->
+<main class="w-full max-w-md z-10 space-y-lg">
+<!-- Header -->
+<header class="text-center space-y-base animate-fade-in">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">欢迎来到星星罐</h1>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-80">开启宝贝的第一个习惯养成计划</p>
+</header>
+<!-- Profile Section Card -->
+<section class="glass-card rounded-xl p-md cloud-shadow space-y-md">
+<!-- Avatar Selection -->
+<div class="space-y-sm">
+<label class="font-label-lg text-label-lg text-on-tertiary-fixed-variant block">选择一个小头像</label>
+<div class="flex justify-between items-center py-base">
+<!-- Default Avatars -->
+<button class="avatar-option active w-16 h-16 rounded-full border-4 border-transparent overflow-hidden bg-surface-container-low cursor-pointer" onclick="selectAvatar(this)">
+<img alt="Avatar 1" class="w-full h-full object-cover" data-alt="A soft, hand-drawn style digital illustration of a cheerful toddler boy avatar with messy blond hair and bright eyes. The style is minimalist and uses a warm, creamy color palette with gentle pastel highlights. The mood is friendly and inviting, following a child-centric, healing aesthetic for a parenting app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1pHi45H4nUVY_OfqqSw_1Gpx7MztbkTQ7SPy0nlMdlqc8d3S013EXlnXsdNYSd2T4oJtIQUMHHJNG7UEbdst170Z524UuI03qKvcEflBLcvnNDDV4b-BGUwTNkj-lYvXr6wQJXyQJaedFAIyEohPW8U6TfhHv_N1qsoqPuVib63OmzNXSBn8w480olq-5tppxXp6ImQCeHkjL8NWbzRJSzReFmODrWKcpVWqQkOjls1BSsqamvHWWNUkuWagXxCN9vjD-w42rhJ1f"/>
+</button>
+<button class="avatar-option w-16 h-16 rounded-full border-4 border-transparent overflow-hidden bg-surface-container-low cursor-pointer" onclick="selectAvatar(this)">
+<img alt="Avatar 2" class="w-full h-full object-cover" data-alt="A charming digital illustration of a little girl avatar with pigtails and a gentle smile, rendered in a warm, Komorebi-inspired art style. The lighting is soft and high-key, using shades of soft peach and sunshine yellow. The character design is rounded and safe-feeling, perfect for a behavior tracking application for families." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIu6dAvzS3DHRepjpNgmkCjPQqcNrOKvMDu6zv_nvp0VkqLoJtmmbKRk3Qq1OHf-2AIIfvxi7ZYolzdFwylwKrWqILaCCeCucNDnbZ-bQC8VnF64fnQLEWk30SjyABlKH66amGU_Y5ziyywEtRE2pfynfHrKJU0ge6S6Uuap76CwlOruQf2PrfJra62bR3p6_4IVZwpiUIiPEYy3Z4VIQlKSTvSKgk9RavDEmfDZbrqsV78hlVD80CTkPmgN9OSc0OOHguP4CF-miM"/>
+</button>
+<button class="avatar-option w-16 h-16 rounded-full border-4 border-transparent overflow-hidden bg-surface-container-low cursor-pointer" onclick="selectAvatar(this)">
+<img alt="Avatar 3" class="w-full h-full object-cover" data-alt="A cute, minimalist digital artwork of a baby wearing a cozy yellow hood, featuring soft line art and a warm watercolor texture. The background is a clean, creamy white, maintaining the brand's healing and gentle encouragement aesthetic. The lighting is diffuse and warm, evoking a sense of childhood wonder and security." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4MTNFYauIJZOr2TXRIz30t4e52_QALIUl_-vZCByYokN31zo2KIjpGkoW5gUsYCV_7Q7no-FJou55qZN6EUWLy5ChfkHbCaEiNQM64VoMDWz33IBnLUVr2LjVXv-Q0KNtLcqz2N5azR66b1gwidrIuecd9g_HCDp-H6DAO7UMNfH7w2ShpU3Yv39M3TmvZVMddnZ4P3yTudpT64YVsPj6n0yvVHsjhRsu1yFUw-jobQZduPTYBFluitfdImOxF3KO5fq2o90s3PXe"/>
+</button>
+<!-- Upload Button -->
+<button class="w-16 h-16 rounded-full border-2 border-dashed border-outline-variant flex items-center justify-center text-outline-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[32px]">add_a_photo</span>
+</button>
+</div>
+</div>
+<!-- Name Input -->
+<div class="space-y-sm">
+<label class="font-label-lg text-label-lg text-on-tertiary-fixed-variant block" for="babyName">宝贝的名字</label>
+<div class="relative">
+<input class="w-full h-14 px-md bg-surface-container-lowest border-2 border-surface-container-highest rounded-lg font-body-lg text-body-lg focus:outline-none focus:border-secondary transition-all placeholder:text-outline-variant/60" id="babyName" placeholder="例如：小星星" type="text"/>
+<div class="absolute right-md top-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-outline-variant">edit</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Terms & Privacy (Microcopy) -->
+<div class="text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant/60">点击下方按钮即表示您同意我们的<br/><span class="underline">用户协议</span> 与 <span class="underline">隐私政策</span></p>
+</div>
+<!-- Footer Action -->
+<div class="pt-md">
+<button class="squishy-button w-full h-[56px] bg-primary-container text-on-primary-container font-headline-md text-headline-md rounded-lg flex items-center justify-center gap-base" onclick="startJourney()">
+                开启成长之旅
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</button>
+</div>
+</main>
+<!-- Success Feedback Overlay (Hidden) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center pointer-events-none opacity-0 transition-opacity duration-500" id="successOverlay">
+<div class="bg-surface-container-lowest p-lg rounded-xl cloud-shadow flex flex-col items-center gap-md scale-90 transition-transform duration-500">
+<div class="w-20 h-20 bg-primary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[48px] text-on-primary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-headline-md text-headline-md text-on-surface">出发啦！</p>
+</div>
+</div>
+<script>
+        // Simple avatar selection logic
+        function selectAvatar(element) {
+            // Remove active class from all
+            document.querySelectorAll('.avatar-option').forEach(el => {
+                el.classList.remove('active');
+            });
+            // Add to selected
+            element.classList.add('active');
+            
+            // Subtle click vibration effect logic
+            element.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                element.style.transform = 'scale(1.1)';
+            }, 100);
+        }
+
+        // Action function
+        function startJourney() {
+            const name = document.getElementById('babyName').value;
+            if (!name) {
+                // Focus and shake if empty (UX feedback)
+                const input = document.getElementById('babyName');
+                input.classList.add('border-error');
+                setTimeout(() => input.classList.remove('border-error'), 1000);
+                return;
+            }
+
+            // Visual feedback
+            const overlay = document.getElementById('successOverlay');
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+            overlay.querySelector('div').classList.remove('scale-90');
+            overlay.querySelector('div').classList.add('scale-100');
+
+            setTimeout(() => {
+                // Here we would normally navigate
+                console.log("Starting journey for:", name);
+            }, 1500);
+        }
+
+        // Interactive background parallax
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            document.querySelectorAll('.floating-star').forEach((star, index) => {
+                const speed = (index + 1) * 20;
+                star.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
+</body></html>

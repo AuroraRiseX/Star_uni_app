@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>学习成绩 - 奖励详情</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glass-jar-effect {
+            background: rgba(255, 253, 249, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#ffdcc4",
+                      "on-secondary-fixed-variant": "#6f3800",
+                      "surface-cream": "#FFFDF9",
+                      "on-surface-variant": "#4d4632",
+                      "outline": "#7f765f",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed": "#2f1400",
+                      "error-container": "#ffdad6",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#3c475a",
+                      "inverse-primary": "#edc200",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#edc200",
+                      "secondary-container": "#fd8b17",
+                      "cloud-gray": "#7A869A",
+                      "surface-container": "#f0eee9",
+                      "tertiary": "#545f72",
+                      "inverse-on-surface": "#f2f1ec",
+                      "background": "#fbf9f4",
+                      "surface-tint": "#725c00",
+                      "surface-dim": "#dbdad5",
+                      "on-secondary-container": "#613100",
+                      "secondary": "#924c00",
+                      "surface-variant": "#e4e2dd",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-fixed": "#111c2c",
+                      "surface-container-highest": "#e4e2dd",
+                      "tertiary-fixed-dim": "#bcc7dd",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#ffd214",
+                      "energy-purple": "#B19CD9",
+                      "surface-bright": "#fbf9f4",
+                      "on-primary-fixed-variant": "#564500",
+                      "outline-variant": "#d1c6ab",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#231b00",
+                      "on-background": "#1b1c19",
+                      "tertiary-fixed": "#d8e3fa",
+                      "inverse-surface": "#30312e",
+                      "surface-container-low": "#f5f3ee",
+                      "surface": "#fbf9f4",
+                      "secondary-fixed-dim": "#ffb780",
+                      "on-surface": "#1b1c19",
+                      "glass-border": "rgba(255, 255, 255, 0.4)",
+                      "primary-fixed": "#ffe07e",
+                      "on-tertiary-container": "#525d71",
+                      "on-secondary": "#ffffff",
+                      "primary": "#725c00",
+                      "energy-green": "#A8D672",
+                      "surface-container-high": "#eae8e3",
+                      "tertiary-container": "#ccd7ee",
+                      "on-primary-container": "#705b00"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "container-padding": "24px",
+                      "section-gap": "32px",
+                      "card-inner": "20px",
+                      "unit": "8px"
+              },
+              "fontFamily": {
+                      "hero-numeral": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "label-caps": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "hero-numeral": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                      "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- Top AppBar -->
+<header class="w-full sticky top-0 z-50 bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center px-gutter h-16 w-full max-w-7xl mx-auto">
+<button class="material-symbols-outlined text-primary p-2 active:scale-95 transition-transform" data-icon="arrow_back">arrow_back</button>
+<h1 class="ml-4 font-headline-md text-headline-md text-primary">学习成绩</h1>
+<div class="flex-grow"></div>
+<button class="material-symbols-outlined text-on-surface-variant p-2" data-icon="more_vert">more_vert</button>
+</div>
+</header>
+<main class="max-w-md mx-auto px-gutter mt-section-gap">
+<!-- Hero Progress Zone -->
+<section class="glass-jar-effect rounded-lg p-container-padding text-center relative overflow-hidden mb-section-gap">
+<div class="relative z-10">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">今日进度</p>
+<div class="flex items-baseline justify-center gap-1 mb-4">
+<span class="font-hero-numeral text-hero-numeral text-primary">4</span>
+<span class="font-headline-lg text-headline-lg text-outline-variant">/5</span>
+</div>
+<!-- Capsule Progress Bar -->
+<div class="relative h-6 bg-surface-container rounded-full w-full p-1 mb-4">
+<div class="absolute top-1 left-1 bottom-1 bg-gradient-to-r from-primary-container to-secondary-container rounded-full w-[80%] flex items-center justify-end pr-2 overflow-hidden">
+<div class="shimmer absolute inset-0"></div>
+<span class="material-symbols-outlined text-white text-sm fill-icon" data-icon="stars">stars</span>
+</div>
+<div class="absolute -right-2 -top-4 scale-125 transform active:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary-container text-4xl fill-icon" data-icon="redeem">redeem</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    再接再厉，集齐星星即可开启今日宝箱！✨
+                </p>
+</div>
+<!-- Decorative Background Clouds -->
+<div class="absolute -bottom-4 -left-4 opacity-10 blur-xl w-32 h-32 bg-primary-container rounded-full"></div>
+<div class="absolute -top-4 -right-4 opacity-10 blur-xl w-24 h-24 bg-secondary-container rounded-full"></div>
+</section>
+<!-- Task List Header -->
+<div class="flex items-center justify-between mb-4 px-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">日常任务清单</h2>
+<span class="font-label-caps text-label-caps text-primary bg-primary-container/20 px-3 py-1 rounded-full">进行中</span>
+</div>
+<!-- Task Grid (Bento Style) -->
+<div class="grid gap-4">
+<!-- Task Item 1 -->
+<div class="bg-surface-cream border border-outline-variant/30 rounded-lg p-card-inner flex items-center justify-between shadow-sm active:scale-98 transition-transform">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="quiz">quiz</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface">单元测试95分以上</h3>
+<p class="font-label-caps text-label-caps text-primary">+5 颗星星</p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+<!-- Task Item 2 (Completed) -->
+<div class="bg-surface-variant/30 border border-transparent rounded-lg p-card-inner flex items-center justify-between opacity-80">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-energy-green/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-energy-green" data-icon="workspace_premium">workspace_premium</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface line-through">获得学校的奖状</h3>
+<p class="font-label-caps text-label-caps text-energy-green">已完成 (+10 颗星星)</p>
+</div>
+</div>
+<div class="w-10 h-10 rounded-full bg-energy-green flex items-center justify-center text-white">
+<span class="material-symbols-outlined fill-icon" data-icon="check_circle">check_circle</span>
+</div>
+</div>
+<!-- Task Item 3 -->
+<div class="bg-surface-cream border border-outline-variant/30 rounded-lg p-card-inner flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-energy-purple/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-energy-purple" data-icon="edit_note">edit_note</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface">课堂听写、默写满分</h3>
+<p class="font-label-caps text-label-caps text-primary">+5 颗星星</p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+<!-- Task Item 4 -->
+<div class="bg-surface-cream border border-outline-variant/30 rounded-lg p-card-inner flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-secondary-fixed/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="sentiment_very_satisfied">sentiment_very_satisfied</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface">被老师表扬</h3>
+<p class="font-label-caps text-label-caps text-primary">+2 颗星星</p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+<!-- Task Item 5 -->
+<div class="bg-surface-cream border border-outline-variant/30 rounded-lg p-card-inner flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="functions">functions</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface">数学获得95分以上</h3>
+<p class="font-label-caps text-label-caps text-primary">+10 颗星星</p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<!-- Stats Bento Section -->
+<section class="mt-section-gap grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low rounded-lg p-4 flex flex-col items-center justify-center border border-outline-variant/20">
+<span class="material-symbols-outlined text-secondary mb-1" data-icon="calendar_today">calendar_today</span>
+<p class="font-label-caps text-label-caps text-outline">坚持天数</p>
+<p class="font-headline-lg text-headline-lg text-secondary">15</p>
+</div>
+<div class="bg-surface-container-low rounded-lg p-4 flex flex-col items-center justify-center border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary mb-1 fill-icon" data-icon="military_tech">military_tech</span>
+<p class="font-label-caps text-label-caps text-outline">获得勋章</p>
+<p class="font-headline-lg text-headline-lg text-primary">6</p>
+</div>
+</section>
+</main>
+<!-- Bottom Action Button -->
+<div class="fixed bottom-0 w-full p-gutter bg-gradient-to-t from-background via-background to-transparent pb-safe">
+<button class="w-full bg-gradient-to-r from-primary-container to-secondary-container text-on-secondary-container font-headline-md text-headline-md py-4 rounded-lg shadow-lg active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+            自定义添加新计划
+        </button>
+</div>
+<!-- Navigation Mock (Matching Shared Components Structure) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-lg bg-surface-container-lowest shadow-[0_-4px_20px_rgba(0,0,0,0.05)] md:hidden">
+<div class="flex justify-around items-center w-full px-4 py-2 pb-safe">
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-caps text-label-caps">首页</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-4 py-1.5">
+<span class="material-symbols-outlined fill-icon" data-icon="assignment">assignment</span>
+<span class="font-label-caps text-label-caps">任务</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-label-caps text-label-caps">商店</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps">我的</span>
+</div>
+</div>
+</nav>
+<script>
+        // Simple micro-interaction for treasure chest
+        const chest = document.querySelector('[data-icon="redeem"]');
+        if (chest) {
+            setInterval(() => {
+                chest.parentElement.classList.toggle('rotate-12');
+                setTimeout(() => {
+                    chest.parentElement.classList.toggle('rotate-12');
+                }, 500);
+            }, 3000);
+        }
+
+        // Star click effect
+        document.querySelectorAll('.bg-surface-cream').forEach(card => {
+            card.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const star = document.createElement('span');
+                star.className = 'material-symbols-outlined absolute pointer-events-none text-primary-container fill-icon animate-ping';
+                star.style.left = (e.clientX - rect.left) + 'px';
+                star.style.top = (e.clientY - rect.top) + 'px';
+                star.innerText = 'stars';
+                this.appendChild(star);
+                setTimeout(() => star.remove(), 1000);
+            });
+        });
+    </script>
+</body></html>

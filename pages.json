@@ -1,0 +1,180 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "星星罐",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/welcome/welcome",
+      "style": {
+        "navigationBarTitleText": "欢迎",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/baby-switch/baby-switch",
+      "style": {
+        "navigationBarTitleText": "切换宝贝",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/reward-center/reward-center",
+      "style": {
+        "navigationBarTitleText": "奖惩中心",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/learning-habits/learning-habits",
+      "style": {
+        "navigationBarTitleText": "学习习惯",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/star-jar/star-jar",
+      "style": {
+        "navigationBarTitleText": "星星罐",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/star-jar-detail/star-jar-detail",
+      "style": {
+        "navigationBarTitleText": "星星罐明细",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/prize-snack/prize-snack",
+      "style": {
+        "navigationBarTitleText": "奖品详情",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/prize-universal/prize-universal",
+      "style": {
+        "navigationBarTitleText": "奖品详情",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/life-habits/life-habits",
+      "style": {
+        "navigationBarTitleText": "生活习惯",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/profile/profile",
+      "style": {
+        "navigationBarTitleText": "我的",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/profile-logout/profile-logout",
+      "style": {
+        "navigationBarTitleText": "我的",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/settings/settings",
+      "style": {
+        "navigationBarTitleText": "通用设置",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/learning-subjects/learning-subjects",
+      "style": {
+        "navigationBarTitleText": "学习科目",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/character-building/character-building",
+      "style": {
+        "navigationBarTitleText": "性格养成",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/academic-performance/academic-performance",
+      "style": {
+        "navigationBarTitleText": "学习成绩",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/prize-snack-v2/prize-snack-v2",
+      "style": {
+        "navigationBarTitleText": "奖品详情",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/prize-universal-v2/prize-universal-v2",
+      "style": {
+        "navigationBarTitleText": "奖品详情",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/prize-game/prize-game",
+      "style": {
+        "navigationBarTitleText": "奖品详情",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/punishment-center/punishment-center",
+      "style": {
+        "navigationBarTitleText": "惩罚记录",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/punishment-character/punishment-character",
+      "style": {
+        "navigationBarTitleText": "惩罚-性格养成",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/punishment-academic/punishment-academic",
+      "style": {
+        "navigationBarTitleText": "惩罚-学习成绩",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/treasure-chest/treasure-chest",
+      "style": {
+        "navigationBarTitleText": "宝箱奖励",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/baby-management/baby-management",
+      "style": {
+        "navigationBarTitleText": "宝贝管理",
+        "navigationStyle": "custom"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "星星罐",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#FAF9F9",
+    "navigationStyle": "custom"
+  },
+  "uniIdRouter": {}
+}
