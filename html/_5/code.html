@@ -1,0 +1,332 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>星星罐 - 品德修养惩罚</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e4e2dd",
+                    "secondary-fixed-dim": "#ffb780",
+                    "outline-variant": "#d1c6ab",
+                    "on-tertiary-fixed-variant": "#3c475a",
+                    "inverse-primary": "#edc200",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "background": "#fbf9f4",
+                    "surface-bright": "#fbf9f4",
+                    "on-error-container": "#93000a",
+                    "energy-purple": "#B19CD9",
+                    "on-primary-fixed-variant": "#564500",
+                    "on-tertiary-container": "#525d71",
+                    "surface-cream": "#FFFDF9",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#924c00",
+                    "outline": "#7f765f",
+                    "primary-fixed": "#ffe07e",
+                    "secondary-container": "#fd8b17",
+                    "tertiary": "#545f72",
+                    "secondary-fixed": "#ffdcc4",
+                    "surface-variant": "#e4e2dd",
+                    "primary-container": "#ffd214",
+                    "inverse-on-surface": "#f2f1ec",
+                    "glass-border": "rgba(255, 255, 255, 0.4)",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#edc200",
+                    "on-tertiary-fixed": "#111c2c",
+                    "on-surface-variant": "#4d4632",
+                    "surface": "#fbf9f4",
+                    "on-background": "#1b1c19",
+                    "surface-tint": "#725c00",
+                    "surface-dim": "#dbdad5",
+                    "on-secondary-container": "#613100",
+                    "surface-container-high": "#eae8e3",
+                    "energy-green": "#A8D672",
+                    "on-secondary-fixed-variant": "#6f3800",
+                    "tertiary-fixed-dim": "#bcc7dd",
+                    "on-primary-fixed": "#231b00",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#30312e",
+                    "on-secondary-fixed": "#2f1400",
+                    "on-primary-container": "#705b00",
+                    "on-surface": "#1b1c19",
+                    "primary": "#725c00",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#d8e3fa",
+                    "surface-container-low": "#f5f3ee",
+                    "tertiary-container": "#ccd7ee",
+                    "on-primary": "#ffffff",
+                    "cloud-gray": "#7A869A",
+                    "surface-container": "#f0eee9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "32px",
+                    "gutter": "16px",
+                    "container-padding": "24px",
+                    "unit": "8px",
+                    "card-inner": "20px"
+            },
+            "fontFamily": {
+                    "hero-numeral": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-caps": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "hero-numeral": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                    "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .cloud-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container/30" data-mode="connect">
+<!-- Top App Bar -->
+<header class="w-full sticky top-0 z-50 bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center px-4 h-16 w-full max-w-7xl mx-auto">
+<button class="p-2 -ml-2 hover:bg-surface-variant/50 transition-colors active:scale-95 transition-transform rounded-full">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="ml-2 font-headline-md text-headline-md text-primary">惩罚-性格养成</h1>
+</div>
+</header>
+<main class="pb-32">
+<!-- Hero Section -->
+<section class="flex flex-col items-center py-section-gap px-gutter">
+<div class="relative w-40 h-40 flex items-center justify-center">
+<div class="absolute inset-0 bg-surface-container-high rounded-full opacity-50 scale-110"></div>
+<div class="relative z-10 w-32 h-32 bg-surface-container-highest rounded-full flex items-center justify-center cloud-float shadow-inner" style="transform: translate(3.179487px, 0.373303px);">
+<span class="material-symbols-outlined text-[64px] text-cloud-gray" style="font-variation-settings: 'FILL' 1;">cloud</span>
+<span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl">😟</span>
+</div>
+</div>
+<h2 class="mt-6 font-headline-lg-mobile text-headline-lg-mobile text-on-background flex items-center gap-2">
+                惩罚警告 <span class="text-secondary-container">⚡</span>
+</h2>
+<p class="mt-2 text-on-surface-variant text-center px-8 font-body-md">
+                良好的品德需要时刻提醒自己哦
+            </p>
+</section>
+<!-- Statistics Card -->
+<section class="px-gutter mb-section-gap">
+<div class="glass-effect rounded-lg p-container-padding flex items-center gap-6 shadow-sm">
+<div class="relative w-20 h-20 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-surface-container-highest" cx="40" cy="40" fill="transparent" r="36" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-cloud-gray rounded-full" cx="40" cy="40" fill="transparent" r="36" stroke="currentColor" stroke-dasharray="226" stroke-dashoffset="150" stroke-width="6"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="font-hero-numeral text-headline-md text-cloud-gray">12</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-on-surface">当前乌云总数</h3>
+<p class="text-on-surface-variant font-body-md mt-1">
+                        累计积攒了 <span class="text-cloud-gray font-bold">12</span> 朵乌云
+                    </p>
+</div>
+</div>
+</section>
+<!-- List Header -->
+<section class="px-gutter mb-4">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-on-surface">惩罚项详情</h3>
+<span class="text-label-caps font-label-caps text-on-surface-variant px-3 py-1 bg-surface-container rounded-full">品德分级</span>
+</div>
+</section>
+<!-- Punishment Items List -->
+<section class="px-gutter space-y-3">
+<!-- Item 1 -->
+<div class="bg-surface-cream rounded-lg p-card-inner border border-outline-variant/30 flex items-center justify-between shadow-sm active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-low rounded-full flex items-center justify-center text-2xl shadow-sm">
+                        😤
+                    </div>
+<div>
+<h4 class="font-headline-md text-on-surface">乱发脾气</h4>
+<div class="flex items-center gap-1 text-cloud-gray font-bold mt-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">cloud</span>
+<span class="text-label-caps font-label-caps">+3 乌云</span>
+</div>
+</div>
+</div>
+<button class="bg-surface-container-highest text-on-surface px-5 py-2 rounded-full font-label-caps active:bg-surface-variant transition-colors">
+                    记录
+                </button>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-cream rounded-lg p-card-inner border border-outline-variant/30 flex items-center justify-between shadow-sm active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-low rounded-full flex items-center justify-center text-2xl shadow-sm">
+                        💢
+                    </div>
+<div>
+<h4 class="font-headline-md text-on-surface">和长辈顶嘴</h4>
+<div class="flex items-center gap-1 text-cloud-gray font-bold mt-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">cloud</span>
+<span class="text-label-caps font-label-caps">+5 乌云</span>
+</div>
+</div>
+</div>
+<button class="bg-surface-container-highest text-on-surface px-5 py-2 rounded-full font-label-caps active:bg-surface-variant transition-colors">
+                    记录
+                </button>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface-cream rounded-lg p-card-inner border border-outline-variant/30 flex items-center justify-between shadow-sm active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-low rounded-full flex items-center justify-center text-2xl shadow-sm">
+                        🗣️
+                    </div>
+<div>
+<h4 class="font-headline-md text-on-surface">说脏话</h4>
+<div class="flex items-center gap-1 text-cloud-gray font-bold mt-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">cloud</span>
+<span class="text-label-caps font-label-caps">+5 乌云</span>
+</div>
+</div>
+</div>
+<button class="bg-surface-container-highest text-on-surface px-5 py-2 rounded-full font-label-caps active:bg-surface-variant transition-colors">
+                    记录
+                </button>
+</div>
+<!-- Item 4 -->
+<div class="bg-surface-cream rounded-lg p-card-inner border border-outline-variant/30 flex items-center justify-between shadow-sm active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-low rounded-full flex items-center justify-center text-2xl shadow-sm">
+                        😭
+                    </div>
+<div>
+<h4 class="font-headline-md text-on-surface">无故哭闹</h4>
+<div class="flex items-center gap-1 text-cloud-gray font-bold mt-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">cloud</span>
+<span class="text-label-caps font-label-caps">+3 乌云</span>
+</div>
+</div>
+</div>
+<button class="bg-surface-container-highest text-on-surface px-5 py-2 rounded-full font-label-caps active:bg-surface-variant transition-colors">
+                    记录
+                </button>
+</div>
+<!-- Item 5 -->
+<div class="bg-surface-cream rounded-lg p-card-inner border border-outline-variant/30 flex items-center justify-between shadow-sm active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-low rounded-full flex items-center justify-center text-2xl shadow-sm">
+                        🤥
+                    </div>
+<div>
+<h4 class="font-headline-md text-on-surface">撒谎，屡教不改</h4>
+<div class="flex items-center gap-1 text-cloud-gray font-bold mt-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">cloud</span>
+<span class="text-label-caps font-label-caps">+10 乌云</span>
+</div>
+</div>
+</div>
+<button class="bg-surface-container-highest text-on-surface px-5 py-2 rounded-full font-label-caps active:bg-surface-variant transition-colors">
+                    记录
+                </button>
+</div>
+</section>
+<!-- Footer Quote -->
+<section class="px-gutter mt-section-gap">
+<div class="bg-surface-container rounded-lg p-6 border-dashed border-2 border-outline-variant/50 text-center">
+<p class="font-body-md text-on-surface-variant italic">
+                    “下一次一定会做得更好，加油小主人！”
+                </p>
+</div>
+</section>
+<!-- Illustration Spacer -->
+<div class="mt-8 flex justify-center opacity-40">
+<img alt="Decoration" class="w-24 h-24 object-contain grayscale" data-alt="A soft, minimalist illustration of a small star trying to climb back into a glass jar, rendered in a Japanese micro-flat style. The aesthetic is clean and warm with light beige backgrounds and thin organic strokes. Lighting is soft and diffuse, creating a healing and encouraging atmosphere with pastel yellow and white tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgI3TC_s2yBAH5RDrAoHNxIDtzDNv_JzeiWxKLmAb9XYsKZT_D9_1YGE5QvKORfOBaLzt19Iu-T77qSUEMqZMcrTM31Lz-N_BirkdJMJbyhZVphgZgRho7rbl2ncfAMeZdcL9wpgbpr5d0274B12teI2baYDGlVIFy4dBWjS9liIFigpDrDCTjMTH9NcukgV2AvUVqH6HV4adw1Os3rqC_bzgJiqLfYALmMqXR64OWuPw16fqM81jFX1XLoRC0O71pHFqpLdCvEn7J">
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-lg bg-surface-container-lowest shadow-[0_-4px_20px_rgba(0,0,0,0.05)] md:hidden">
+<div class="flex justify-around items-center w-full px-4 py-2 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-label-caps">首页</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-4 py-1.5 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<span class="font-label-caps text-label-caps">奖惩</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-caps text-label-caps">商店</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps">我的</span>
+</a>
+</div>
+</nav>
+<script>
+        // Simple micro-interaction for record buttons
+        document.querySelectorAll('button').forEach(btn => {
+            if(btn.innerText === '记录') {
+                btn.addEventListener('click', () => {
+                    btn.classList.add('bg-cloud-gray', 'text-white');
+                    btn.innerText = '已记录';
+                    setTimeout(() => {
+                        btn.classList.remove('bg-cloud-gray', 'text-white');
+                        btn.innerText = '记录';
+                    }, 2000);
+                });
+            }
+        });
+
+        // Background parallax effect for subtle dopamine feel
+        window.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 10;
+            const y = (e.clientY / window.innerHeight) * 10;
+            document.querySelector('.cloud-float').style.transform = `translate(${x}px, ${y}px)`;
+        });
+    </script>
+</body></html>

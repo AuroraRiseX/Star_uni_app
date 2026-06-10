@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>奖品详情 - 去游乐场</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#e8c426",
+                        "secondary-fixed-dim": "#ffb784",
+                        "inverse-surface": "#2f3131",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#725e00",
+                        "inverse-on-surface": "#f1f0f0",
+                        "secondary-fixed": "#ffdcc6",
+                        "surface-dim": "#dadada",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#d0c6ad",
+                        "on-error-container": "#93000a",
+                        "secondary": "#944a00",
+                        "surface": "#faf9f9",
+                        "primary-container": "#ffd93d",
+                        "on-secondary-fixed-variant": "#713700",
+                        "on-surface": "#1a1c1c",
+                        "secondary-container": "#fc8200",
+                        "on-surface-variant": "#4d4633",
+                        "surface-tint": "#705d00",
+                        "surface-container-high": "#e9e8e8",
+                        "on-secondary-container": "#5d2c00",
+                        "background": "#faf9f9",
+                        "tertiary-container": "#dfdccb",
+                        "surface-variant": "#e3e2e2",
+                        "on-tertiary-fixed": "#1d1c11",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#301400",
+                        "tertiary": "#605f51",
+                        "tertiary-fixed": "#e6e3d1",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#7e7761",
+                        "on-tertiary-fixed-variant": "#48473a",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f4f3f3",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#626153",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e3e2e2",
+                        "on-primary-fixed": "#221b00",
+                        "tertiary-fixed-dim": "#cac7b6",
+                        "primary-fixed": "#ffe173",
+                        "primary": "#705d00",
+                        "surface-bright": "#faf9f9",
+                        "on-primary-fixed-variant": "#554500",
+                        "surface-container": "#eeeeed",
+                        "on-background": "#1a1c1c",
+                        "inverse-primary": "#e8c426"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding": "20px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "lg": "40px",
+                        "base": "8px",
+                        "md": "24px",
+                        "xl": "64px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Quicksand"],
+                        "label-sm": ["Quicksand"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Quicksand"],
+                        "body-md": ["Quicksand"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["26px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(255, 255, 255, 0.6);
+        }
+        .cloud-shadow {
+            box-shadow: 0 10px 30px rgba(255, 132, 0, 0.1);
+        }
+        .squishy-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #554500;
+        }
+        .squishy-btn {
+            box-shadow: 0 4px 0 #554500;
+            transition: all 0.1s ease;
+        }
+        .star-badge {
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface-bright/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm">
+<div class="flex justify-between items-center px-container-padding h-16 w-full max-w-md mx-auto">
+<button aria-label="返回" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low/50 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile text-primary">奖品详情</h1>
+<button aria-label="设置" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low/50 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-primary">settings</span>
+</button>
+</div>
+</header>
+<main class="max-w-md mx-auto pt-16 pb-32">
+<!-- Hero Section -->
+<section class="relative px-container-padding pt-md">
+<div class="relative w-full aspect-square rounded-xl overflow-hidden shadow-sm group">
+<img alt="游乐场奖品预览" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvOEt3FEvdHaemHX0VaB23r58PmoW1bYnOKPRARnfOaeGeXJ9jGuVEqSsnbAspjVfbEOJmzZOL0VtGlrOcjR47tdsNw_LfSUe65sF57g8O1B_WYCQO9XCfovaE6aj2tVhUFs25xNueswy_ZiVmKV26rSF40JgSj-dgq9oI4RNjd_42VTug-gOygi32pylDMFC-AJwMcp2SOnDwC_YX5EFDWszC5meubtqi03-mYe9CA3rZb3KrFZZuuqhI"/>
+<!-- Super Prize Badge -->
+<div class="absolute top-4 left-4 glass-effect px-4 py-2 rounded-full flex items-center gap-2 animate-bounce">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-label-lg text-label-lg text-primary">超级大奖</span>
+</div>
+</div>
+</section>
+<!-- Content Section -->
+<section class="px-container-padding mt-md">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">去游乐场</h2>
+<p class="text-on-surface-variant font-body-md mt-xs leading-relaxed">
+                        和爸爸妈妈一起去游乐场玩一天！可以坐摩天轮、过山车，还有超多好玩的项目。这是给宝贝坚持好习惯的超级大奖！
+                    </p>
+</div>
+</div>
+<!-- Stats Row -->
+<div class="grid grid-cols-2 gap-sm mt-md">
+<div class="bg-surface-container-low p-md rounded-lg cloud-shadow">
+<p class="text-on-surface-variant font-label-sm mb-xs">兑换所需</p>
+<div class="flex items-center gap-1">
+<span class="font-headline-md text-headline-md text-primary">150</span>
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg cloud-shadow relative overflow-hidden">
+<p class="text-on-surface-variant font-label-sm mb-xs">当前余额</p>
+<div class="flex items-center gap-1">
+<span class="font-headline-md text-headline-md text-on-surface">128</span>
+<span class="material-symbols-outlined text-on-surface-variant/40 text-xl" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<!-- Status Indicator -->
+<div class="mt-xs inline-flex items-center gap-1 bg-error-container/30 text-error px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-sm">info</span>
+<span class="text-label-sm">余额不足</span>
+</div>
+</div>
+</div>
+<!-- Info Section -->
+<div class="mt-md bg-white p-md rounded-lg border border-outline-variant/20 cloud-shadow">
+<div class="flex items-center gap-2 mb-sm">
+<span class="material-symbols-outlined text-secondary">info</span>
+<h3 class="font-label-lg text-label-lg text-on-surface">使用说明</h3>
+</div>
+<p class="text-on-surface-variant font-body-md">
+                    宝贝在达到星星数量后，请点击下方按钮兑换。兑换成功后，请将生成的成功页面展示给爸爸妈妈，他们会带你去实现梦想哦！
+                </p>
+</div>
+<!-- Progress to Reward -->
+<div class="mt-lg p-md bg-secondary-fixed/30 rounded-lg">
+<div class="flex justify-between items-center mb-sm">
+<span class="text-label-lg font-label-lg text-secondary">距离目标还差 22 颗星星</span>
+<span class="material-symbols-outlined text-secondary animate-pulse">rocket_launch</span>
+</div>
+<div class="h-4 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[85%] rounded-full shadow-inner"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- Fixed Footer Action -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface-bright/90 backdrop-blur-lg pt-4 pb-8 px-container-padding z-50">
+<div class="max-w-md mx-auto">
+<button class="w-full h-14 bg-primary-container text-on-primary-container font-headline-md text-headline-md rounded-lg squishy-btn flex items-center justify-center gap-2 opacity-60 cursor-not-allowed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">confirmation_number</span>
+                立即兑换
+            </button>
+<p class="text-center text-on-surface-variant/60 font-label-sm mt-md">再接再厉！每天坚持好习惯，星星会变多哦 ✨</p>
+</div>
+</footer>
+<!-- Bottom Navigation (Simplified version for context as per JSON structure hints) -->
+<nav class="fixed bottom-0 left-0 w-full hidden md:flex justify-around items-center px-4 pb-4 pt-2 max-w-md mx-auto bg-surface-container-lowest/90 backdrop-blur-lg border-t border-outline-variant/20 z-[60]">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 px-4 py-1">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-label-caps">首页</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-fixed-dim text-on-primary-container dark:text-on-primary-fixed rounded-xl px-4 py-1">
+<span class="material-symbols-outlined">stars</span>
+<span class="font-label-caps text-label-caps">奖励</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 px-4 py-1">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-caps text-label-caps">店铺</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 px-4 py-1">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps">我的</span>
+</div>
+</nav>
+<script>
+        // Simple micro-interaction for the star particles or hover states
+        document.querySelectorAll('.squishy-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                if (btn.classList.contains('cursor-not-allowed')) return;
+                // Add click ripple or animation if active
+            });
+        });
+    </script>
+</body></html>

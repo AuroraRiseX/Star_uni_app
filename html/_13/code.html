@@ -1,0 +1,266 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>奖品详情 - Star Jar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-jar-effect {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .star-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        body {
+            background-color: #fbf9f4;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-cream": "#FFFDF9",
+                        "secondary-container": "#fd8b17",
+                        "background": "#fbf9f4",
+                        "surface-bright": "#fbf9f4",
+                        "surface-variant": "#e4e2dd",
+                        "surface-container-low": "#f5f3ee",
+                        "primary-fixed-dim": "#edc200",
+                        "on-surface-variant": "#4d4632",
+                        "energy-purple": "#B19CD9",
+                        "surface-container-high": "#eae8e3",
+                        "outline": "#7f765f",
+                        "surface": "#fbf9f4",
+                        "secondary": "#924c00",
+                        "secondary-fixed": "#ffdcc4",
+                        "on-secondary-container": "#613100",
+                        "on-primary-container": "#705b00",
+                        "surface-dim": "#dbdad5",
+                        "tertiary-container": "#ccd7ee",
+                        "glass-border": "rgba(255, 255, 255, 0.4)",
+                        "on-background": "#1b1c19",
+                        "energy-green": "#A8D672",
+                        "tertiary": "#545f72",
+                        "outline-variant": "#d1c6ab",
+                        "primary-fixed": "#ffe07e",
+                        "primary-container": "#ffd214",
+                        "primary": "#725c00",
+                        "on-surface": "#1b1c19",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "32px",
+                        "container-padding": "24px",
+                        "unit": "8px",
+                        "gutter": "16px",
+                        "card-inner": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "hero-numeral": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                        "hero-numeral": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+            @keyframes bounce-in {
+                0% { transform: scale(0.3); opacity: 0; }
+                50% { transform: scale(1.05); opacity: 1; }
+                70% { transform: scale(0.9); }
+                100% { transform: scale(1); }
+            }
+            .animate-bounce-in {
+                animation: bounce-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+        </style><style>
+            @keyframes bounce-in {
+                0% { transform: scale(0.3); opacity: 0; }
+                50% { transform: scale(1.05); opacity: 1; }
+                70% { transform: scale(0.9); }
+                100% { transform: scale(1); }
+            }
+            .animate-bounce-in {
+                animation: bounce-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+        </style></head>
+<body class="font-body-md text-on-background selection:bg-primary-fixed">
+<!-- Top AppBar (from Shared Components Logic) -->
+<header class="w-full top-0 sticky z-50 bg-surface/80 backdrop-blur-md flex justify-between items-center px-container-padding py-unit shadow-sm">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95" onclick="history.back()">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">奖品详情</h1>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-primary-container rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-on-primary-container" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-bold text-on-primary-container">128</span>
+</div>
+</header>
+<main class="max-w-md mx-auto px-container-padding pb-32">
+<!-- Hero Section -->
+<section class="mt-section-gap flex flex-col items-center"><div class="w-full max-w-md mx-auto px-4">
+<div class="relative w-full aspect-[1.6/1] rounded-xl overflow-hidden shadow-lg border border-white/50 bg-gradient-to-br from-primary-container to-secondary-container flex items-center justify-center p-6">
+<!-- Patterned Background Overlay -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
+<!-- Glassmorphism Card Content -->
+<div class="relative z-10 w-full h-full glass-jar-effect rounded-lg flex items-center gap-6 p-4">
+<div class="w-32 h-32 flex-shrink-0 bg-white/40 rounded-lg flex items-center justify-center shadow-sm">
+<img alt="零食兑换卡" class="w-24 h-24 object-contain drop-shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDysz5kfnCYp0bN5BbVWY0TjsXOVbuHne3yWgVeCjtyjpy9CDPf4rvTuNgNeYI76p-HoTLiEsXv8EQULonpDD8YqX_PHqBzKvR-5TexYNxeqirnFHSIdhYJzo0y5ZMF8hDXjYAAXepfO2N1Ndgo38EDeYLARySygLcTluoHytoaiBndXa22RGmPa7JM_PmA6A5h39jvsz9kdbdbekoVnBhEllnUzMMjRgzTnyz9xt0kNVRnjVl9lmrHz3bS9H4M4OvP6iYdvYx6yVG">
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-label-caps font-label-caps text-primary/60 mb-1">REWARD CARD</span>
+<h3 class="font-headline-md text-headline-md text-primary leading-tight">零食兑换卡</h3>
+<div class="mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-bold text-primary">10 星星</span>
+</div>
+</div>
+</div>
+<!-- Decorative Star -->
+<div class="absolute top-2 right-2 star-float">
+<span class="material-symbols-outlined text-white/60 text-3xl" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<div class="mt-8 text-center">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">零食兑换卡</h2>
+<p class="text-on-surface-variant font-body-md px-4 leading-relaxed">
+        想吃什么零食都可以哦！这是对宝贝认真完成任务的特别奖励。
+    </p>
+</div></section>
+<!-- Price & Balance Section -->
+<section class="mt-section-gap grid grid-cols-2 gap-gutter">
+<div class="bg-surface-container-low p-card-inner rounded-lg border border-outline-variant/30 flex flex-col items-center justify-center text-center">
+<span class="text-label-caps font-label-caps text-on-surface-variant mb-1">兑换所需</span>
+<div class="flex items-center gap-1">
+<span class="font-hero-numeral text-headline-lg text-primary">10</span>
+<span class="material-symbols-outlined text-primary-container text-2xl" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<span class="text-on-surface-variant text-[14px]">星星</span>
+</div>
+<div class="bg-surface-container-low p-card-inner rounded-lg border border-outline-variant/30 flex flex-col items-center justify-center text-center">
+<span class="text-label-caps font-label-caps text-on-surface-variant mb-1">当前余额</span>
+<div class="flex items-center gap-1">
+<span class="font-hero-numeral text-headline-lg text-secondary">128</span>
+<span class="material-symbols-outlined text-secondary-fixed-dim text-2xl" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<span class="text-on-surface-variant text-[14px]">充足</span>
+</div>
+</section>
+<!-- Details Info -->
+<section class="mt-section-gap space-y-4">
+<div class="flex items-start gap-4 p-4 rounded-lg bg-surface-container-highest/20 border border-outline-variant/20">
+<div class="w-10 h-10 rounded-full bg-energy-green/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-energy-green">verified_user</span>
+</div>
+<div>
+<h4 class="font-headline-md text-[16px] text-on-surface">使用说明</h4>
+<p class="text-on-surface-variant text-[14px]">点击兑换后，向爸爸或妈妈出示兑换成功页面，即可挑选你最喜欢的零食。</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-lg bg-surface-container-highest/20 border border-outline-variant/20">
+<div class="w-10 h-10 rounded-full bg-energy-purple/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-energy-purple">history</span>
+</div>
+<div>
+<h4 class="font-headline-md text-[16px] text-on-surface">有效期</h4>
+<p class="text-on-surface-variant text-[14px]">兑换后请在 7 天内领取奖励哦，过期奖励就会飞走啦！</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Bar -->
+<div class="fixed bottom-0 left-0 w-full p-container-padding bg-surface/80 backdrop-blur-xl border-t border-outline-variant/20 flex justify-center items-center z-50">
+<button class="w-full max-w-md bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container font-headline-md py-4 rounded-full shadow-lg shadow-primary-container/20 transition-all active:scale-95 flex items-center justify-center gap-3" id="redeemBtn">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">confirmation_number</span>
+            立即兑换
+        </button>
+</div>
+<!-- Success Feedback Overlay (Hidden by default) -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-container-padding hidden" id="successModal">
+<div class="absolute inset-0 bg-on-surface/40 backdrop-blur-md"></div>
+<div class="relative w-full max-w-xs glass-jar-effect p-8 rounded-xl text-center flex flex-col items-center animate-bounce-in">
+<div class="w-24 h-24 bg-primary-container rounded-full flex items-center justify-center mb-6 star-float">
+<span class="material-symbols-outlined text-white text-5xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">兑换成功！</h3>
+<p class="text-on-surface-variant mb-6">快去告诉爸爸妈妈，领取你的美味奖励吧！</p>
+<button class="w-full py-3 bg-primary text-white font-bold rounded-full" onclick="closeModal()">太棒了</button>
+</div>
+</div>
+<script>
+        const redeemBtn = document.getElementById('redeemBtn');
+        const successModal = document.getElementById('successModal');
+
+        redeemBtn.addEventListener('click', () => {
+            // Basic haptic feel
+            redeemBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> 处理中...';
+            
+            setTimeout(() => {
+                successModal.classList.remove('hidden');
+                redeemBtn.innerHTML = '<span class="material-symbols-outlined" style="font-variation-settings: \'FILL\' 1;">confirmation_number</span> 立即兑换';
+            }, 800);
+        });
+
+        function closeModal() {
+            successModal.classList.add('hidden');
+        }
+
+        // Add bounce animation style dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes bounce-in {
+                0% { transform: scale(0.3); opacity: 0; }
+                50% { transform: scale(1.05); opacity: 1; }
+                70% { transform: scale(0.9); }
+                100% { transform: scale(1); }
+            }
+            .animate-bounce-in {
+                animation: bounce-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body></html>

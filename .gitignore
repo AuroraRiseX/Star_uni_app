@@ -3,3 +3,4 @@ unpackage/dist/
 .DS_Store
 *.log
 .hbuilderx/
+opencode.json

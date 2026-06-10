@@ -1,0 +1,248 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700&amp;family=Quicksand:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#faf9f9",
+                    "secondary": "#944a00",
+                    "tertiary-fixed": "#e6e3d1",
+                    "secondary-container": "#fc8200",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#4d4633",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#5d2c00",
+                    "tertiary-fixed-dim": "#cac7b6",
+                    "secondary-fixed-dim": "#ffb784",
+                    "primary-fixed-dim": "#e8c426",
+                    "inverse-surface": "#2f3131",
+                    "surface-variant": "#e3e2e2",
+                    "primary-container": "#ffd93d",
+                    "primary-fixed": "#ffe173",
+                    "primary": "#705d00",
+                    "on-tertiary-container": "#626153",
+                    "on-primary-fixed": "#221b00",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#301400",
+                    "secondary-fixed": "#ffdcc6",
+                    "on-tertiary-fixed": "#1d1c11",
+                    "inverse-on-surface": "#f1f0f0",
+                    "surface-container-low": "#f4f3f3",
+                    "on-background": "#1a1c1c",
+                    "surface-container-high": "#e9e8e8",
+                    "on-primary-fixed-variant": "#554500",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#605f51",
+                    "background": "#faf9f9",
+                    "outline": "#7e7761",
+                    "surface-container": "#eeeeed",
+                    "on-surface": "#1a1c1c",
+                    "surface-dim": "#dadada",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#dfdccb",
+                    "on-secondary-fixed-variant": "#713700",
+                    "surface": "#faf9f9",
+                    "on-primary-container": "#725e00",
+                    "surface-tint": "#705d00",
+                    "surface-container-highest": "#e3e2e2",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#d0c6ad",
+                    "on-tertiary": "#ffffff",
+                    "inverse-primary": "#e8c426",
+                    "on-tertiary-fixed-variant": "#48473a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-margin": "20px",
+                    "gutter": "16px",
+                    "xl": "64px",
+                    "sm": "12px",
+                    "lg": "40px",
+                    "md": "24px",
+                    "base": "8px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Quicksand"],
+                    "body-md": ["Quicksand"],
+                    "label-lg": ["Quicksand"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Quicksand"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["26px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #faf9f9;
+            color: #1a1c1c;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(255, 255, 255, 0.6);
+        }
+        .cloud-shadow {
+            box-shadow: 0 30px 60px -12px rgba(255, 132, 0, 0.1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen font-body-md text-body-md" data-mode="connect">
+<!-- TopAppBar Navigation Shell (Suppressed as per rules for sub-page with back action) -->
+<header class="fixed top-0 w-full z-50 bg-white/40 backdrop-blur-xl border-b border-white/20 h-16 flex items-center px-container-margin max-w-7xl mx-auto left-0 right-0 shadow-[0_30px_60px_-12px_rgba(255,132,0,0.1)]">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-low text-primary hover:opacity-80 transition-opacity active:scale-95" onclick="window.history.back()">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-secondary">隐私协议</h1>
+</div>
+<div class="ml-auto">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="info">info</span>
+</div>
+</header>
+<main class="pt-24 pb-12 px-container-margin max-w-3xl mx-auto">
+<!-- Hero Decorative Header -->
+<div class="mb-lg relative h-48 rounded-lg overflow-hidden glass-card cloud-shadow flex items-center justify-center">
+<div class="absolute inset-0 z-0 bg-gradient-to-br from-primary-fixed/30 to-secondary-fixed/20"></div>
+<img class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-60" data-alt="A warm and gentle conceptual digital art piece representing security and privacy. A large translucent glass jar sits in the center of a soft cream space, containing glowing warm yellow stars that emit a soft light. The lighting is ethereal and high-key, creating a safe and trustworthy atmosphere with pastel sunset tones and minimal aesthetic, emphasizing the brand identity of Star Jar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6muHNJgOxU-QE_JW4kpcUhVGYSyZwNrM8M7zR7Su2hYQcfIRYqgFwHQVvwB7s22vWCC_uir9AGjID9tZuyeZtFZpwCnFQbcytsG-5NeytVnFcszbr-PBjxDhOIesxH8_HxlkJtFrnwqkrU6T6fKxL2T7rd1G4yXXJ512xAW9M5z69SZycOez2dMgxvupRCPJF3qkFoAk4Uz1A0dyV-PJ8miHJPfYv95H6UebRZmOsKeWvnXM_7KycTWb1koD1Tn7hyFi226LT2uoT">
+<div class="relative z-10 text-center px-md">
+<div class="w-16 h-16 bg-primary-container rounded-full flex items-center justify-center mx-auto mb-sm cloud-shadow">
+<span class="material-symbols-outlined text-on-primary-container text-4xl" data-icon="verified_user">verified_user</span>
+</div>
+<p class="font-label-lg text-label-lg text-secondary uppercase tracking-widest">Privacy Policy &amp; Terms</p>
+</div>
+</div>
+<!-- Content Canvas -->
+<article class="glass-card p-md md:p-lg rounded-lg cloud-shadow space-y-md" style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;">
+<header>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-xs">隐私政策与用户协议</h2>
+<p class="text-on-surface-variant italic">生效日期：2023年10月24日</p>
+</header>
+<section class="space-y-sm opacity-100" style="transition: opacity 0.5s ease-in;">
+<h3 class="font-headline-md text-headline-md text-secondary">1. 我们如何收集信息</h3>
+<p class="text-body-md text-on-surface-variant leading-relaxed">
+                    在您使用星星罐的过程中，为了向您提供核心服务（如建立星星罐、记录行为数据、同步多设备状态），我们可能会收集您提供的儿童昵称、年龄范围以及您的联系方式等信息 。
+                </p>
+<p class="text-body-md text-on-surface-variant leading-relaxed">
+                    我们承诺：<span class="bg-primary-fixed/20 border-b-2 border-primary-container px-1">绝不向任何第三方机构出售您的家庭隐私数据。</span> 所有的行为记录仅用于为您生成周报和月度行为趋势分析。
+                </p>
+</section>
+<section class="space-y-sm opacity-100" style="transition: opacity 0.5s ease-in;">
+<h3 class="font-headline-md text-headline-md text-secondary">2. 信息的存储与保护</h3>
+<p class="text-body-md text-on-surface-variant leading-relaxed"></p><p class="p1" style="font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;PingFang SC&quot;; color: rgb(0, 0, 0);">为了让“星星”像实物一样珍贵，我们采用了行业标准的存储方式来加密保障这些数据的安全。</p><p></p>
+<ul class="list-none space-y-base pl-sm">
+<li class="flex gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span class="text-body-md">SSL/TLS 传输加密</span>
+</li>
+<li class="flex gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span class="text-body-md">静态数据 AES-256 加密</span>
+</li>
+<li class="flex gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span class="text-body-md">定期进行第三方安全审计</span>
+</li>
+</ul>
+</section>
+<section class="space-y-sm opacity-100" style="transition: opacity 0.5s ease-in;">
+<div class="p-sm rounded-lg bg-surface-container-high border-l-4 border-secondary">
+<h4 class="font-label-lg text-label-lg text-secondary mb-xs">💡 开发者提示</h4>
+<p class="text-body-md text-on-surface-variant">
+                        作为家长，您可以随时在“我的 -&gt; 设置”中导出您的所有行为记录数据，或者选择永久注销账户并删除所有相关联的“星星”。
+                    </p>
+</div>
+</section>
+<section class="space-y-sm opacity-100" style="transition: opacity 0.5s ease-in;">
+<h3 class="font-headline-md text-headline-md text-secondary">3. 关于我们</h3>
+<p class="text-body-md text-on-surface-variant leading-relaxed">
+<strong class="text-on-surface font-bold">Star Jar</strong> 团队由一群充满热情的教育工作者和 UI 设计师组成。我们相信“温柔的鼓励”能够激发孩子们内心最强大的自驱力。
+                </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm pt-sm">
+<div class="glass-card p-sm rounded-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="mail">mail</span>
+<div>
+<p class="text-label-sm text-outline">联系我们</p>
+<p class="text-body-md font-bold">support@starjar.app</p>
+</div>
+</div>
+<div class="glass-card p-sm rounded-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="language">language</span>
+<div>
+<p class="text-label-sm text-outline">官方网站</p>
+<p class="text-body-md font-bold">www.starjar.app</p>
+</div>
+</div>
+</div>
+</section>
+<footer class="pt-lg border-t border-outline-variant/30 text-center">
+<p class="text-label-sm text-on-tertiary-fixed-variant">Star Jar © 2023 Crafted with Love &amp; Stars</p>
+</footer>
+</article>
+</main>
+<!-- Navigation Shell Suppressed as it's a sub-page -->
+<script>
+        // Micro-interaction: Smooth appearance of content
+        document.addEventListener('DOMContentLoaded', () => {
+            const article = document.querySelector('article');
+            article.style.opacity = '0';
+            article.style.transform = 'translateY(20px)';
+            article.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            
+            setTimeout(() => {
+                article.style.opacity = '1';
+                article.style.transform = 'translateY(0)';
+            }, 100);
+        });
+
+        // Interactive "Highlight" effect on scrolling
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const triggerBottom = window.innerHeight / 5 * 4;
+
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if(sectionTop < triggerBottom) {
+                    section.classList.add('opacity-100');
+                    section.style.transition = 'opacity 0.5s ease-in';
+                }
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>宝贝管理 - Star Jar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&amp;family=Quicksand:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#cac7b6",
+                      "tertiary": "#605f51",
+                      "inverse-on-surface": "#f1f0f0",
+                      "primary": "#705d00",
+                      "surface-dim": "#dadada",
+                      "tertiary-container": "#dfdccb",
+                      "on-secondary-container": "#5d2c00",
+                      "on-error-container": "#93000a",
+                      "surface-container": "#eeeeed",
+                      "inverse-primary": "#e8c426",
+                      "on-primary-fixed": "#221b00",
+                      "on-primary-container": "#725e00",
+                      "surface-bright": "#faf9f9",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed-variant": "#554500",
+                      "primary-container": "#ffd93d",
+                      "surface-tint": "#705d00",
+                      "surface-container-highest": "#e3e2e2",
+                      "primary-fixed": "#ffe173",
+                      "error": "#ba1a1a",
+                      "surface-container-low": "#f4f3f3",
+                      "surface": "#faf9f9",
+                      "secondary-fixed-dim": "#ffb784",
+                      "on-secondary-fixed-variant": "#713700",
+                      "error-container": "#ffdad6",
+                      "background": "#faf9f9",
+                      "surface-container-high": "#e9e8e8",
+                      "on-primary": "#ffffff",
+                      "secondary": "#944a00",
+                      "primary-fixed-dim": "#e8c426",
+                      "inverse-surface": "#2f3131",
+                      "on-surface": "#1a1c1c",
+                      "secondary-container": "#fc8200",
+                      "on-surface-variant": "#4d4633",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed": "#e6e3d1",
+                      "on-tertiary-fixed-variant": "#48473a",
+                      "on-tertiary-container": "#626153",
+                      "on-secondary-fixed": "#301400",
+                      "on-background": "#1a1c1c",
+                      "surface-variant": "#e3e2e2",
+                      "on-tertiary-fixed": "#1d1c11",
+                      "outline": "#7e7761",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed": "#ffdcc6",
+                      "on-tertiary": "#ffffff",
+                      "outline-variant": "#d0c6ad"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "12px",
+                      "container-margin": "20px",
+                      "lg": "40px",
+                      "xl": "64px",
+                      "xs": "4px",
+                      "md": "24px",
+                      "gutter": "16px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "label-sm": ["Quicksand"],
+                      "body-md": ["Quicksand"],
+                      "label-lg": ["Quicksand"],
+                      "body-lg": ["Quicksand"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["26px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Cloud shadow for buttons/cards */
+        .cloud-shadow {
+            box-shadow: 0 15px 30px -5px rgba(255, 132, 0, 0.1);
+        }
+        
+        /* Squishy button effect */
+        .btn-squish {
+            box-shadow: 0 4px 0 0 #e8c426; /* inverse-primary as darker yellow */
+            transition: all 0.15s ease;
+        }
+        .btn-squish:active {
+            transform: translateY(4px);
+            box-shadow: 0 0px 0 0 #e8c426;
+        }
+
+        /* Form input focus state overrides */
+        input:focus {
+            outline: none;
+            border-color: #fc8200 !important; /* secondary-container / sunset orange */
+            box-shadow: 0 0 0 1px #fc8200 !important;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen antialiased flex flex-col font-body-md">
+<!-- TopAppBar Secondary Screen (No Nav Shell logic applies here as it's a task-focused sub-page) -->
+<header class="sticky top-0 z-40 bg-surface/80 backdrop-blur-md w-full px-container-margin py-base flex items-center shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)]">
+<button class="p-2 -ml-2 text-primary hover:bg-surface-variant/50 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">arrow_back_ios_new</span>
+</button>
+<h1 class="flex-1 text-center font-headline-md text-headline-md text-primary font-bold mr-[36px]">宝贝管理</h1>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-md mx-auto px-container-margin py-lg flex flex-col gap-lg">
+<!-- Profile Picture Section -->
+<section class="flex flex-col items-center justify-center relative">
+<div class="relative group cursor-pointer">
+<!-- Avatar Container -->
+<div class="w-32 h-32 rounded-full glass-panel cloud-shadow overflow-hidden p-xs relative border-4 border-white">
+<img alt="Current baby profile" class="w-full h-full object-cover rounded-full" data-alt="A brightly lit, high-quality photograph of a smiling toddler looking off-camera. The lighting is soft and natural, emphasizing a warm, optimistic mood consistent with a modern light-mode UI. The background is a gently blurred, abstract mix of soft pastel yellows and creamy whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrWfeaJQ-lzYuWLBeavL0svXCWCsnd_TjesOjLkIdqFJM1ltwdeVti-gPwHz5OJwdGfsYBh9ruFRX6IVQoUtOduklG-5Qeps2QTwowoiFZvfFsz5m07p_cG1LMzDerQmYTLdJ0lGwVQ1x5dqy21K_ZuGfNI6UwvOXJ0GPeACVLGr6xRlZgbghRCQsh3cB-_Y1OtCT5oDSMWzd5E_-kXyeBF781C-70uNJTIIjqHSjSjsyXNhp7BO3j7b06x8y4cKDwYoI6Oo_Zl74k"/>
+</div>
+<!-- Edit Badge -->
+<div class="absolute bottom-0 right-0 bg-primary-container text-on-primary-container w-10 h-10 rounded-full flex items-center justify-center shadow-lg border-2 border-white transform translate-x-2 -translate-y-2 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined icon-fill text-[20px]">edit</span>
+</div>
+</div>
+<p class="mt-sm font-label-lg text-label-lg text-on-surface-variant">点击更换头像</p>
+</section>
+<!-- Form Fields Section -->
+<section class="bg-white rounded-lg p-md cloud-shadow flex flex-col gap-md">
+<!-- Nickname -->
+<div class="flex flex-col gap-base">
+<label class="font-label-lg text-label-lg text-primary" for="nickname">宝贝昵称</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">face</span>
+<input class="w-full bg-surface-bright border-2 border-surface-variant rounded-full py-3 pl-12 pr-4 font-body-lg text-body-lg text-on-surface transition-colors placeholder:text-outline-variant" id="nickname" placeholder="输入宝贝昵称" type="text" value="小星星"/>
+</div>
+</div>
+<!-- Gender -->
+<div class="flex flex-col gap-base">
+<label class="font-label-lg text-label-lg text-primary">性别</label>
+<div class="flex gap-4">
+<label class="flex-1 relative cursor-pointer group">
+<input checked="" class="peer sr-only" name="gender" type="radio" value="boy"/>
+<div class="w-full py-3 bg-surface-bright border-2 border-surface-variant rounded-full flex items-center justify-center gap-2 transition-all peer-checked:border-primary peer-checked:bg-primary-container/20 peer-checked:text-primary text-on-surface-variant">
+<span class="material-symbols-outlined">boy</span>
+<span class="font-body-md text-body-md">男孩</span>
+</div>
+</label>
+<label class="flex-1 relative cursor-pointer group">
+<input class="peer sr-only" name="gender" type="radio" value="girl"/>
+<div class="w-full py-3 bg-surface-bright border-2 border-surface-variant rounded-full flex items-center justify-center gap-2 transition-all peer-checked:border-primary peer-checked:bg-primary-container/20 peer-checked:text-primary text-on-surface-variant">
+<span class="material-symbols-outlined">girl</span>
+<span class="font-body-md text-body-md">女孩</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Birthday -->
+<div class="flex flex-col gap-base">
+<label class="font-label-lg text-label-lg text-primary" for="birthday">生日</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">cake</span>
+<input class="w-full bg-surface-bright border-2 border-surface-variant rounded-full py-3 pl-12 pr-4 font-body-lg text-body-lg text-on-surface transition-colors placeholder:text-outline-variant" id="birthday" type="date" value="2020-05-15"/>
+</div>
+</div>
+</section>
+<!-- Avatar Selection Grid -->
+<section class="flex flex-col gap-md">
+<h2 class="font-label-lg text-label-lg text-primary px-2">推荐头像</h2>
+<div class="grid grid-cols-4 gap-4">
+<!-- Avatar 1 -->
+<button class="aspect-square rounded-full border-4 border-transparent hover:border-primary-container focus:border-primary transition-all overflow-hidden relative group">
+<img alt="Avatar option 1" class="w-full h-full object-cover" data-alt="A close up, high key photograph of a cute, fluffy golden retriever puppy. The lighting is soft and bright, emphasizing the warm yellow and cream tones of the design system. The background is pure white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRJiyCBjrOvPaJvkAV5F6s4EV_-iFpl2VOIUZKkE6xpqHSDpUEk7GMh5-I34oJR-X24RiF3lbUdNHLDfZ5EdXKVF-Yyc1PPyEeAqXkl2uHQvUvj9wTYWdJ3CMJz25PIEm12IiEx77nJlyKuntn6JHAUXwhttBgUxYk9it9qVFwXo27RZ65_J5BV42467lCdXAkyCEZJd5qGCW7pzNbnbu4OnJa2XL-ojo10VUAXm9UsgQHPRAyaUf3mGByLpilSA2T463yyIDEyZ5_"/>
+</button>
+<!-- Avatar 2 -->
+<button class="aspect-square rounded-full border-4 border-transparent hover:border-primary-container focus:border-primary transition-all overflow-hidden relative group">
+<img alt="Avatar option 2" class="w-full h-full object-cover" data-alt="A stylized 3D rendered illustration of a happy cartoon star character. The star is vibrant yellow with a soft, squishy appearance, set against a light cream background. High fidelity lighting with soft ambient shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC27CsEBQL1Q76Mm1VizvzwflpMFZPtcEtR1EX0wH3g4WA-xlCidK90GUuv5iB0MqHCEBT_gxaftt2W9Eqg9ML8KpChfagW7Ci84DphqlHcm14mpcoR18cvi_N5ys6czSFgHe8-5gw-Gnox1aeK9OTKH2oLyMQWnUBi6_Woea9IVi8S1UHQPnkxabwNR9atg8RTLwhfDcDLguHNFX7rpJ7mMH4wJY2AVcNM_aOPqQSQF1QjZ6mlgA4lcmzPukPoqPtSL-V3Y_Vgg7o0"/>
+</button>
+<!-- Avatar 3 -->
+<button class="aspect-square rounded-full border-4 border-transparent hover:border-primary-container focus:border-primary transition-all overflow-hidden relative group">
+<img alt="Avatar option 3" class="w-full h-full object-cover" data-alt="A high quality photograph of a young child playing with colorful wooden blocks. Warm, natural lighting highlights the child's joyful expression. The color palette focuses on soft yellows, creamy whites, and subtle warm tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLIFPTYvNkv9o61MZ20LQT-RCVo_y946PlJ1g7MkKhFa7eLdsr1coRoJ7TO9oSKtvQ9GA7AU7mW0O3OwEqJ7PCzhFNFRSraWPeDgrBx_G8ixuu05JqeWIYEO_g1G3ztHM54fSJVFl12Tu-0EUBp5CIsMilxheAzF2zzlKpYMtPcqVJoXwcYtc5eqHzHqji13meE_mkkPSTOgicoI3sVBb40wMcvBYd0AVKAJtH6IFlNbeDasvKDZJYkCBV0aUoUYoAA7krwBZYW7qN"/>
+</button>
+<!-- Avatar 4 (Selected state demo) -->
+<button class="aspect-square rounded-full border-4 border-primary transition-all overflow-hidden relative group ring-2 ring-primary-container ring-offset-2 ring-offset-surface">
+<img alt="Avatar option 4 selected" class="w-full h-full object-cover" data-alt="A brightly lit, high-quality photograph of a smiling toddler looking off-camera. The lighting is soft and natural, emphasizing a warm, optimistic mood. Same image as the main profile picture to show selected state." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAysru1iVh7m_gb4hBIaF1rBfZ65tIviAHUUKKfJpz3cwJ8UtUCXpqNRgw_TQZIhj-IJtImUXOBxO8eEqKJpiehm794zGBZfVSQEDNKaobJftVcA1tJUnhaYQWezpnCxe9FVc7NuOZBr4kIzES67jNiU2KIjqNW5CYk0eK6NpwWWHA_NAw4RxWahUhb6nHGdD3nwNsqnApP1Ni8YRPsR5MryRYAniRGrTIrp36N9EiWiULrluuDCekfxFM2w0-jEVmBFomqK3EypMyt"/>
+<div class="absolute inset-0 bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined icon-fill text-white drop-shadow-md">check_circle</span>
+</div>
+</button>
+</div>
+</section>
+<!-- Spacer for bottom fixed button -->
+<div class="h-24"></div>
+</main>
+<!-- Bottom Fixed Action Area -->
+<div class="fixed bottom-0 left-0 w-full bg-gradient-to-t from-surface via-surface to-transparent pt-8 pb-container-margin px-container-margin z-40">
+<div class="max-w-md mx-auto">
+<button class="w-full bg-primary-container text-on-primary-container font-headline-md text-headline-md font-bold rounded-full py-4 btn-squish flex items-center justify-center gap-2">
+<span class="material-symbols-outlined icon-fill text-[28px]">save</span>
+                保存设置
+            </button>
+</div>
+</div>
+</body></html>

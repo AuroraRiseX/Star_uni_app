@@ -1,408 +1,296 @@
 <template>
-	<view class="page">
-		<!-- 状态栏占位 -->
-		<view style="height: var(--status-bar-height);"></view>
+  <view class="page-profile">
+    <!-- Header -->
+    <top-header title="个人中心" />
 
-		<!-- Topbar-sj: 头像 + 星星罐 + 设置齿轮 -->
-		<view class="topbar-sj">
-			<view class="topbar-left">
-				<view class="topbar-avatar">
-					<image class="topbar-avatar-img" src="/static/logo.png" mode="aspectFill"></image>
-				</view>
-				<text class="topbar-title">星星罐</text>
-			</view>
-			<view class="topbar-action" @tap="goSettings">
-				<text class="topbar-action-icon">⚙️</text>
-			</view>
-		</view>
+    <!-- Content -->
+    <view class="profile-content">
+      <view class="profile-center">
+        <!-- Avatar -->
+        <view class="avatar-section">
+          <view class="avatar-wrap">
+            <image
+              class="avatar"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBO3OgYNJ9rZqzmDNkEKIHYGfXFDgogXx_IP6Ha-pAOnnVwlluXvVVK6NXdweqY-nFV5U0NZt4YO89CLsVGhxHA-poCNmyAAvw0y2BBV2JhG9ESkjXHta2mTroqYkF4bTiQHEohrVUJ8ywLDGaUSrp1695MiH6HStdCF1VAWPgmHUGz7HV1cPn5ZITCCD2FuZ0Rvr8YzbGp1LsXp4l5phGVu7OkC2zxP-0nuu31Y6c0CqnxMaMG0agYpkrMYUcMfEDOn1q3O_LYBDD5"
+              mode="aspectFill"
+            />
+            <view class="avatar-edit-btn">
+              <image class="edit-icon" src="/static/icons/edit.svg" />
+            </view>
+          </view>
+          <text class="profile-name">麦兜</text>
+          <text class="profile-days">已陪伴成长 128 天</text>
+        </view>
 
-		<scroll-view scroll-y class="scroll-area">
-			<!-- 个人资料区 居中 -->
-			<view class="profile-section">
-				<view class="avatar-wrap">
-					<view class="avatar-card-sj">
-						<image class="avatar-img" src="/static/logo.png" mode="aspectFill"></image>
-					</view>
-					<view class="avatar-edit-btn" @tap="editAvatar">
-						<text class="avatar-edit-icon">✏️</text>
-					</view>
-				</view>
-				<text class="user-name">小星星的爸爸</text>
-				<text class="user-days">已陪伴成长 128 天</text>
-			</view>
+        <!-- Stats Grid -->
+        <view class="stats-grid">
+          <view class="stat-card">
+            <text class="stat-emoji">⭐</text>
+            <text class="stat-number">128</text>
+            <text class="stat-label">星星余额</text>
+          </view>
+          <view class="stat-card">
+            <text class="stat-emoji">🎁</text>
+            <text class="stat-number stat-number-secondary">12</text>
+            <text class="stat-label">已兑奖励</text>
+          </view>
+        </view>
 
-			<!-- 统计卡片 2列 -->
-			<view class="stats-grid">
-				<view class="glass-card-sj">
-					<text class="glass-icon">🌟</text>
-					<text class="glass-value">42</text>
-					<text class="glass-label">当前星币</text>
-				</view>
-				<view class="glass-card-sj">
-					<text class="glass-icon">🏆</text>
-					<text class="glass-value">12</text>
-					<text class="glass-label">已兑换奖赏</text>
-				</view>
-			</view>
+        <!-- Settings Menu -->
+        <view class="settings-card">
+          <!-- 宝贝管理 -->
+          <view class="menu-item" hover-class="menu-item-hover">
+            <view class="menu-left">
+              <image class="menu-icon" src="/static/icons/child_care.svg" />
+              <text class="menu-text">宝贝管理</text>
+            </view>
+            <image class="menu-arrow" src="/static/icons/chevron_right.svg" />
+          </view>
 
-			<!-- 导航列表 -->
-			<view class="nav-list">
-				<view class="nav-item" @tap="goBabyManagement">
-					<view class="nav-left">
-						<view class="nav-icon bg-baby">
-							<text class="nav-icon-text">👶</text>
-						</view>
-						<text class="nav-label">宝贝管理</text>
-					</view>
-					<text class="nav-arrow">›</text>
-				</view>
-				<view class="nav-divider"></view>
-				<view class="nav-item" @tap="goSettings">
-					<view class="nav-left">
-						<view class="nav-icon bg-settings">
-							<text class="nav-icon-text">⚙️</text>
-						</view>
-						<text class="nav-label">通用设置</text>
-					</view>
-					<text class="nav-arrow">›</text>
-				</view>
-				<view class="nav-divider"></view>
-				<view class="nav-item" @tap="goPrivacy">
-					<view class="nav-left">
-						<view class="nav-icon bg-privacy">
-							<text class="nav-icon-text">🔒</text>
-						</view>
-						<text class="nav-label">隐私协议</text>
-					</view>
-					<text class="nav-arrow">›</text>
-				</view>
-				<view class="nav-divider"></view>
-				<view class="nav-item" @tap="goAbout">
-					<view class="nav-left">
-						<view class="nav-icon bg-about">
-							<text class="nav-icon-text">📧</text>
-						</view>
-						<text class="nav-label">关于我们</text>
-					</view>
-					<text class="nav-arrow">›</text>
-				</view>
-			</view>
+          <!-- 切换宝贝 -->
+          <view class="menu-item menu-item-border" hover-class="menu-item-hover">
+            <view class="menu-left">
+              <image class="menu-icon" src="/static/icons/swap_horiz.svg" />
+              <text class="menu-text">切换宝贝</text>
+            </view>
+            <image class="menu-arrow" src="/static/icons/chevron_right.svg" />
+          </view>
 
-			<!-- 退出登录按钮: 描边 #ba1a1a 红色文字 -->
-			<view class="logout-btn" @tap="handleLogout">
-				<text class="logout-text">退出登录</text>
-			</view>
+          <!-- 通用设置 -->
+          <view class="menu-item menu-item-border" hover-class="menu-item-hover">
+            <view class="menu-left">
+              <image class="menu-icon" src="/static/icons/settings.svg" />
+              <text class="menu-text">通用设置</text>
+            </view>
+            <image class="menu-arrow" src="/static/icons/chevron_right.svg" />
+          </view>
 
-			<view style="height: 200rpx;"></view>
-		</scroll-view>
-	</view>
+          <!-- 隐私政策 -->
+          <view class="menu-item menu-item-border" hover-class="menu-item-hover">
+            <view class="menu-left">
+              <image class="menu-icon" src="/static/icons/verified_user.svg" />
+              <text class="menu-text">隐私政策</text>
+            </view>
+            <image class="menu-arrow" src="/static/icons/chevron_right.svg" />
+          </view>
+
+          <!-- 关于我们 -->
+          <view class="menu-item menu-item-last" hover-class="menu-item-hover">
+            <view class="menu-left">
+              <image class="menu-icon" src="/static/icons/info.svg" />
+              <text class="menu-text">关于我们</text>
+            </view>
+            <image class="menu-arrow" src="/static/icons/chevron_right.svg" />
+          </view>
+        </view>
+
+        <!-- Logout Button -->
+        <view class="logout-btn" hover-class="logout-btn-active">
+          <text class="logout-text">退出登录</text>
+        </view>
+      </view>
+    </view>
+  </view>
 </template>
 
-<script>
-	export default {
-		data() {
-			return {}
-		},
-		onShow() {
-			if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-				this.getTabBar().setData({ selected: 3 })
-			}
-		},
-		methods: {
-			editAvatar() {
-				uni.showToast({ title: '编辑头像', icon: 'none' })
-			},
-			goBabyManagement() {
-				uni.navigateTo({ url: '/pages/baby-management/baby-management' })
-			},
-			goSettings() {
-				uni.navigateTo({ url: '/pages/settings/settings' })
-			},
-			goPrivacy() {
-				uni.navigateTo({ url: '/pages/privacy/privacy' })
-			},
-			goAbout() {
-				uni.showToast({ title: '关于我们', icon: 'none' })
-			},
-			handleLogout() {
-				uni.navigateTo({ url: '/pages/profile-logout/profile-logout' })
-			}
-		}
-	}
+<script setup lang="ts">
+import { onShow } from '@dcloudio/uni-app'
+import TopHeader from '@/components/top-header/top-header.vue'
+
+onShow(() => {
+  const page = getCurrentPages().pop()
+  if (page && typeof (page as any).getTabBar === 'function' && (page as any).getTabBar()) {
+    ;(page as any).getTabBar().setData({ selected: 3 })
+  }
+})
 </script>
 
 <style scoped>
-	.page {
-		min-height: 100vh;
-		background: #faf9f9;
-		font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif;
-		color: #1a1c1c;
-	}
+.page-profile {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #FFF9EB 0%, #FAFAFA 100%);
+  padding-bottom: 200rpx;
+}
 
-	/* ===== Topbar-sj ===== */
-	.topbar-sj {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 0 40rpx;
-		height: 128rpx;
-		background: rgba(250, 249, 249, 0.4);
-		backdrop-filter: blur(24rpx);
-		-webkit-backdrop-filter: blur(24rpx);
-		border-bottom: 2rpx solid rgba(255, 255, 255, 0.2);
-		box-shadow: 0 60rpx 120rpx -24rpx rgba(255, 132, 0, 0.1);
-		position: fixed;
-		top: var(--status-bar-height);
-		left: 0;
-		width: 100%;
-		z-index: 50;
-	}
+.profile-content {
+  padding-top: 180rpx;
+}
 
-	.topbar-left {
-		display: flex;
-		align-items: center;
-		gap: 20rpx;
-	}
+.profile-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 40rpx;
+}
 
-	/* 头像 80rpx(40px), 圆形, border 4rpx(2px) white + box-shadow 0 0 0 4rpx(2px) #ffd93d */
-	.topbar-avatar {
-		width: 80rpx;
-		height: 80rpx;
-		border-radius: 50%;
-		overflow: hidden;
-		border: 4rpx solid #ffffff;
-		box-shadow: 0 0 0 4rpx #ffd93d;
-	}
+/* Avatar Section */
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-	.topbar-avatar-img {
-		width: 100%;
-		height: 100%;
-	}
+.avatar-wrap {
+  position: relative;
+  margin-bottom: 24rpx;
+}
 
-	.topbar-title {
-		font-size: 48rpx;
-		font-weight: 700;
-		color: #944a00;
-	}
+.avatar {
+  width: 224rpx;
+  height: 224rpx;
+  border-radius: 50%;
+  border: 8rpx solid #ffffff;
+  box-shadow: 0 20rpx 60rpx rgba(0, 0, 0, 0.12);
+}
 
-	.topbar-action {
-		width: 80rpx;
-		height: 80rpx;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
+.avatar-edit-btn {
+  position: absolute;
+  bottom: 16rpx;
+  right: 0;
+  width: 64rpx;
+  height: 64rpx;
+  background: #705d00;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+}
 
-	.topbar-action-icon {
-		font-size: 40rpx;
-		color: #705d00;
-	}
+.edit-icon {
+  width: 32rpx;
+  height: 32rpx;
+}
 
-	/* ===== Scroll Area ===== */
-	.scroll-area {
-		padding: 184rpx 40rpx 0;
-	}
+.profile-name {
+  font-size: 44rpx;
+  font-weight: 900;
+  color: #1a1c1c;
+}
 
-	/* ===== 个人资料区 ===== */
-	.profile-section {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		margin-bottom: 64rpx;
-	}
+.profile-days {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #4d4633;
+  margin-top: 8rpx;
+}
 
-	.avatar-wrap {
-		position: relative;
-		margin-bottom: 28rpx;
-	}
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24rpx;
+  width: 100%;
+  margin-top: 56rpx;
+}
 
-	/* 头像 224rpx(112px), border-radius 24rpx(12px), glass-card-sj */
-	.avatar-card-sj {
-		width: 224rpx;
-		height: 224rpx;
-		border-radius: 24rpx;
-		overflow: hidden;
-		background: rgba(255, 255, 255, 0.4);
-		backdrop-filter: blur(40rpx);
-		-webkit-backdrop-filter: blur(40rpx);
-		border: 3rpx solid rgba(255, 255, 255, 0.6);
-		box-shadow: 0 32rpx 96rpx -16rpx rgba(0, 0, 0, 0.08);
-	}
+.stat-card {
+  background: #ffffff;
+  padding: 40rpx;
+  border-radius: 48rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.03);
+  border: 2rpx solid rgba(245, 245, 245, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-	.avatar-img {
-		width: 100%;
-		height: 100%;
-	}
+.stat-emoji {
+  font-size: 56rpx;
+  margin-bottom: 12rpx;
+}
 
-	/* 编辑按钮 64rpx(32px), 圆形, #fc8200, ✏️白色36rpx(18px) */
-	.avatar-edit-btn {
-		position: absolute;
-		bottom: -12rpx;
-		right: -12rpx;
-		width: 64rpx;
-		height: 64rpx;
-		background: #fc8200;
-		border-radius: 50%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.12);
-	}
+.stat-number {
+  font-size: 44rpx;
+  font-weight: 900;
+  color: #705d00;
+}
 
-	.avatar-edit-icon {
-		font-size: 36rpx;
-		color: #ffffff;
-	}
+.stat-number-secondary {
+  color: #944a00;
+}
 
-	.user-name {
-		font-size: 52rpx;
-		font-weight: 700;
-		color: #1a1c1c;
-		margin-bottom: 8rpx;
-	}
+.stat-label {
+  font-size: 24rpx;
+  font-weight: 700;
+  color: #4d4633;
+}
 
-	.user-days {
-		font-size: 28rpx;
-		color: #4d4633;
-	}
+/* Settings Menu Card */
+.settings-card {
+  width: 100%;
+  margin-top: 56rpx;
+  background: #ffffff;
+  border-radius: 50rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.03);
+  border: 2rpx solid rgba(245, 245, 245, 0.8);
+}
 
-	/* ===== 统计卡片 2列 ===== */
-	.stats-grid {
-		display: flex;
-		gap: 24rpx;
-		width: 100%;
-		margin-bottom: 48rpx;
-	}
+.menu-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 44rpx 48rpx;
+  transition: background 0.2s;
+}
 
-	.glass-card-sj {
-		flex: 1;
-		padding: 40rpx;
-		border-radius: 24rpx;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		background: rgba(255, 255, 255, 0.4);
-		backdrop-filter: blur(40rpx);
-		-webkit-backdrop-filter: blur(40rpx);
-		border: 3rpx solid rgba(255, 255, 255, 0.6);
-		box-shadow: 0 60rpx 120rpx -24rpx rgba(255, 132, 0, 0.1);
-	}
+.menu-item-border {
+  border-bottom: 2rpx solid #fafafa;
+}
 
-	.glass-icon {
-		font-size: 48rpx;
-		color: #fc8200;
-		margin-bottom: 12rpx;
-	}
+.menu-item-last {
+  /* No border for last item */
+}
 
-	.glass-value {
-		font-size: 44rpx;
-		font-weight: 700;
-		color: #705d00;
-		line-height: 1.2;
-	}
+.menu-item-hover {
+  background: #fafafa;
+}
 
-	.glass-label {
-		font-size: 24rpx;
-		font-weight: 500;
-		color: #705d00;
-		margin-top: 6rpx;
-	}
+.menu-left {
+  display: flex;
+  align-items: center;
+  gap: 28rpx;
+}
 
-	/* ===== 导航列表 ===== */
-	.nav-list {
-		width: 100%;
-		background: #f4f3f3;
-		border-radius: 24rpx;
-		overflow: hidden;
-		border: 2rpx solid rgba(255, 255, 255, 0.4);
-		margin-bottom: 40rpx;
-	}
+.menu-icon {
+  width: 44rpx;
+  height: 44rpx;
+}
 
-	.nav-item {
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 40rpx;
-	}
+.menu-text {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #1a1c1c;
+}
 
-	.nav-item:active {
-		opacity: 0.7;
-	}
+.menu-arrow {
+  width: 36rpx;
+  height: 36rpx;
+  opacity: 0.5;
+}
 
-	.nav-left {
-		display: flex;
-		align-items: center;
-		gap: 36rpx;
-	}
+/* Logout Button */
+.logout-btn {
+  margin-top: 72rpx;
+  width: 100%;
+  padding: 32rpx;
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(186, 26, 26, 0.05);
+  border: 2rpx solid rgba(186, 26, 26, 0.1);
+}
 
-	.nav-icon {
-		width: 80rpx;
-		height: 80rpx;
-		border-radius: 50%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
+.logout-btn-active {
+  background: rgba(186, 26, 26, 0.1);
+}
 
-	.nav-icon.bg-baby {
-		background: #ffdcc6;
-	}
-
-	.nav-icon.bg-settings {
-		background: #e6e3d1;
-	}
-
-	.nav-icon.bg-privacy {
-		background: #ffe173;
-	}
-
-	.nav-icon.bg-about {
-		background: #e3e2e2;
-	}
-
-	.nav-icon-text {
-		font-size: 36rpx;
-	}
-
-	.nav-label {
-		font-size: 32rpx;
-		font-weight: 500;
-		color: #1a1c1c;
-	}
-
-	.nav-arrow {
-		font-size: 36rpx;
-		color: #7e7761;
-		font-weight: 300;
-	}
-
-	.nav-divider {
-		height: 1rpx;
-		background: rgba(208, 198, 173, 0.3);
-		margin: 0 40rpx;
-	}
-
-	/* ===== 退出登录按钮: 描边 #ba1a1a 红色文字 ===== */
-	.logout-btn {
-		width: 100%;
-		padding: 28rpx 0;
-		border-radius: 24rpx;
-		border: 2rpx solid #ba1a1a;
-		background: transparent;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logout-btn:active {
-		opacity: 0.7;
-	}
-
-	.logout-text {
-		font-size: 28rpx;
-		font-weight: 700;
-		color: #ba1a1a;
-	}
+.logout-text {
+  font-size: 30rpx;
+  font-weight: 900;
+  color: #ba1a1a;
+}
 </style>

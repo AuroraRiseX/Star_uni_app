@@ -1,0 +1,303 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#111c2c",
+                    "on-secondary-fixed-variant": "#6f3800",
+                    "surface-dim": "#dbdad5",
+                    "energy-purple": "#B19CD9",
+                    "surface-container-highest": "#e4e2dd",
+                    "surface-tint": "#725c00",
+                    "on-primary-container": "#705b00",
+                    "glass-border": "rgba(255, 255, 255, 0.4)",
+                    "primary-fixed-dim": "#edc200",
+                    "primary": "#725c00",
+                    "surface-container-low": "#f5f3ee",
+                    "tertiary-fixed-dim": "#bcc7dd",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#ffd214",
+                    "surface-container": "#f0eee9",
+                    "outline-variant": "#d1c6ab",
+                    "on-secondary-container": "#613100",
+                    "outline": "#7f765f",
+                    "on-tertiary-fixed-variant": "#3c475a",
+                    "on-primary-fixed": "#231b00",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#525d71",
+                    "energy-green": "#A8D672",
+                    "on-secondary-fixed": "#2f1400",
+                    "inverse-primary": "#edc200",
+                    "on-background": "#1b1c19",
+                    "surface": "#fbf9f4",
+                    "on-surface-variant": "#4d4632",
+                    "on-surface": "#1b1c19",
+                    "primary-fixed": "#ffe07e",
+                    "cloud-gray": "#7A869A",
+                    "secondary-fixed": "#ffdcc4",
+                    "tertiary-container": "#ccd7ee",
+                    "secondary": "#924c00",
+                    "inverse-on-surface": "#f2f1ec",
+                    "tertiary-fixed": "#d8e3fa",
+                    "on-tertiary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#fbf9f4",
+                    "tertiary": "#545f72",
+                    "secondary-container": "#fd8b17",
+                    "on-primary-fixed-variant": "#564500",
+                    "inverse-surface": "#30312e",
+                    "on-error-container": "#93000a",
+                    "background": "#fbf9f4",
+                    "surface-variant": "#e4e2dd",
+                    "surface-container-high": "#eae8e3",
+                    "secondary-fixed-dim": "#ffb780",
+                    "surface-cream": "#FFFDF9",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "unit": "8px",
+                    "container-padding": "24px",
+                    "card-inner": "20px",
+                    "section-gap": "32px"
+            },
+            "fontFamily": {
+                    "label-caps": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "hero-numeral": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "hero-numeral": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                    "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-jar {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        .cloud-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-10px) translateX(5px); }
+        }
+        .shimmer-bg {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="w-full sticky top-0 z-50 bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center px-4 h-16 w-full max-w-7xl mx-auto">
+<button class="p-2 -ml-2 hover:bg-surface-variant/50 transition-colors active:scale-95 transition-transform rounded-full">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="ml-2 font-headline-md text-headline-md text-primary">惩罚-生活习惯</h1>
+</div>
+</header>
+<main class="px-container-padding space-y-section-gap pt-4">
+<!-- Hero Zone: Cloud Jar -->
+<section class="flex flex-col items-center py-section-gap px-gutter">
+<div class="relative w-40 h-40 flex items-center justify-center">
+<div class="absolute inset-0 bg-surface-container-high rounded-full opacity-50 scale-110"></div>
+<div class="relative z-10 w-32 h-32 bg-surface-container-highest rounded-full flex items-center justify-center cloud-float shadow-inner">
+<span class="material-symbols-outlined text-[64px] text-cloud-gray" style="font-variation-settings: 'FILL' 1;">cloud</span>
+<span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl">😟</span>
+</div>
+</div>
+<h2 class="mt-6 font-headline-lg-mobile text-headline-lg-mobile text-on-background flex items-center gap-2">
+                惩罚警告 <span class="text-secondary-container">⚡</span>
+</h2>
+<p class="mt-2 text-on-surface-variant text-center px-8 font-body-md">
+                生活习惯决定未来，每一朵乌云都是小小的提醒哦
+            </p>
+</section><section class="px-gutter mb-4">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-on-surface">调整项目</h3>
+<span class="text-label-caps font-label-caps text-on-surface-variant px-3 py-1 bg-surface-container rounded-full">习惯分级</span>
+</div>
+</section>
+<section class="px-gutter space-y-3">
+<div class="bg-surface-cream rounded-lg p-card-inner border border-outline-variant/30 flex items-center justify-between shadow-sm active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-low rounded-full flex items-center justify-center text-2xl shadow-sm">🛁</div>
+<div>
+<h4 class="font-headline-md text-on-surface">不主动洗漱</h4>
+<div class="flex items-center gap-1 text-cloud-gray font-bold mt-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">cloud</span>
+<span class="text-label-caps font-label-caps">+2 乌云</span>
+</div>
+</div>
+</div>
+<button class="bg-surface-container-highest text-on-surface px-5 py-2 rounded-full font-label-caps active:bg-surface-variant transition-colors">记录</button>
+</div>
+<div class="bg-surface-cream rounded-lg p-card-inner border border-outline-variant/30 flex items-center justify-between shadow-sm active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-low rounded-full flex items-center justify-center text-2xl shadow-sm">🎒</div>
+<div>
+<h4 class="font-headline-md text-on-surface">不整理书包课桌</h4>
+<div class="flex items-center gap-1 text-cloud-gray font-bold mt-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">cloud</span>
+<span class="text-label-caps font-label-caps">+1 乌云</span>
+</div>
+</div>
+</div>
+<button class="bg-surface-container-highest text-on-surface px-5 py-2 rounded-full font-label-caps active:bg-surface-variant transition-colors">记录</button>
+</div>
+<div class="bg-surface-cream rounded-lg p-card-inner border border-outline-variant/30 flex items-center justify-between shadow-sm active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-low rounded-full flex items-center justify-center text-2xl shadow-sm">🍽️</div>
+<div>
+<h4 class="font-headline-md text-on-surface">吃饭不认真、挑食</h4>
+<div class="flex items-center gap-1 text-cloud-gray font-bold mt-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">cloud</span>
+<span class="text-label-caps font-label-caps">+2 乌云</span>
+</div>
+</div>
+</div>
+<button class="bg-surface-container-highest text-on-surface px-5 py-2 rounded-full font-label-caps active:bg-surface-variant transition-colors">记录</button>
+</div>
+<div class="bg-surface-cream rounded-lg p-card-inner border border-outline-variant/30 flex items-center justify-between shadow-sm active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-low rounded-full flex items-center justify-center text-2xl shadow-sm">⏰</div>
+<div>
+<h4 class="font-headline-md text-on-surface">吃饭超过30分钟</h4>
+<div class="flex items-center gap-1 text-cloud-gray font-bold mt-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">cloud</span>
+<span class="text-label-caps font-label-caps">+1 乌云</span>
+</div>
+</div>
+</div>
+<button class="bg-surface-container-highest text-on-surface px-5 py-2 rounded-full font-label-caps active:bg-surface-variant transition-colors">记录</button>
+</div>
+<div class="bg-surface-cream rounded-lg p-card-inner border border-outline-variant/30 flex items-center justify-between shadow-sm active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-low rounded-full flex items-center justify-center text-2xl shadow-sm">😴</div>
+<div>
+<h4 class="font-headline-md text-on-surface">睡觉、起床拖拉</h4>
+<div class="flex items-center gap-1 text-cloud-gray font-bold mt-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">cloud</span>
+<span class="text-label-caps font-label-caps">+1 乌云</span>
+</div>
+</div>
+</div>
+<button class="bg-surface-container-highest text-on-surface px-5 py-2 rounded-full font-label-caps active:bg-surface-variant transition-colors">记录</button>
+</div>
+</section>
+<!-- Punishment List -->
+
+<section class="px-gutter mt-section-gap">
+<div class="bg-surface-container rounded-lg p-6 border-dashed border-2 border-outline-variant/50 text-center">
+<p class="font-body-md text-on-surface-variant italic">
+                    “下一次一定会做得更好，加油小主人！”
+                </p>
+</div>
+</section></main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-lg bg-surface-container-lowest shadow-[0_-4px_20px_rgba(0,0,0,0.05)] md:hidden">
+<div class="flex justify-around items-center w-full px-4 py-2 pb-safe">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-4 py-1.5 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<span class="font-label-caps text-label-caps">奖惩</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">stars</span>
+<span class="font-label-caps text-label-caps">星星罐</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-caps text-label-caps">商店</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps">我的</span>
+</a>
+</div>
+</nav>
+<script>
+        let cloudCount = 3;
+        const countDisplay = document.getElementById('cloud-count');
+        const cloudContainer = document.getElementById('cloud-container');
+
+        function addCloud(val) {
+            cloudCount += val;
+            countDisplay.innerText = cloudCount;
+            
+            // Interaction feedback
+            countDisplay.classList.add('scale-125', 'text-error');
+            setTimeout(() => {
+                countDisplay.classList.remove('scale-125', 'text-error');
+            }, 300);
+
+            // Add a mini cloud effect
+            const miniCloud = document.createElement('span');
+            miniCloud.className = 'material-symbols-outlined absolute text-cloud-gray transition-all duration-1000 opacity-0';
+            miniCloud.style.fontSize = '24px';
+            miniCloud.style.left = '50%';
+            miniCloud.style.top = '50%';
+            miniCloud.innerText = 'cloud';
+            cloudContainer.appendChild(miniCloud);
+
+            requestAnimationFrame(() => {
+                miniCloud.style.transform = `translate(${(Math.random()-0.5)*150}px, ${(Math.random()-0.5)*150}px) scale(2)`;
+                miniCloud.style.opacity = '0.4';
+            });
+
+            setTimeout(() => {
+                miniCloud.remove();
+            }, 1000);
+        }
+    </script>
+
+
+</body></html>

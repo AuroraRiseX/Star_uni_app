@@ -1,18 +1,36 @@
-<!-- 自定义底部导航栏 - 1:1 复刻原型设计 -->
-<view class="custom-tab-bar">
-  <view
-    wx:for="{{list}}"
-    wx:key="index"
-    class="nav-item {{selected === index ? 'active' : ''}}"
-    data-path="{{item.pagePath}}"
-    data-index="{{index}}"
-    bindtap="switchTab"
-  >
-    <image
-      class="nav-icon"
-      src="{{selected === index ? item.iconActive : item.iconNormal}}"
-      mode="aspectFit"
-    />
-    <text class="nav-label">{{item.text}}</text>
+<custom-tab-bar index="{{selected}}" bindchange="tabChange">
+  <view class="tab-bar">
+    <view
+      class="tab-item {{selected === 0 ? 'active' : ''}}"
+      data-index="0"
+      bindtap="switchTab"
+    >
+      <image class="tab-icon" src="/static/tabbar/home{{selected === 0 ? '-active' : ''}}.svg" />
+      <text class="tab-text">首页</text>
+    </view>
+    <view
+      class="tab-item {{selected === 1 ? 'active' : ''}}"
+      data-index="1"
+      bindtap="switchTab"
+    >
+      <image class="tab-icon" src="/static/tabbar/stars{{selected === 1 ? '-active' : ''}}.svg" />
+      <text class="tab-text">奖惩</text>
+    </view>
+    <view
+      class="tab-item {{selected === 2 ? 'active' : ''}}"
+      data-index="2"
+      bindtap="switchTab"
+    >
+      <image class="tab-icon" src="/static/tabbar/storefront{{selected === 2 ? '-active' : ''}}.svg" />
+      <text class="tab-text">店铺</text>
+    </view>
+    <view
+      class="tab-item {{selected === 3 ? 'active' : ''}}"
+      data-index="3"
+      bindtap="switchTab"
+    >
+      <image class="tab-icon" src="/static/tabbar/person{{selected === 3 ? '-active' : ''}}.svg" />
+      <text class="tab-text">我的</text>
+    </view>
   </view>
-</view>
+</custom-tab-bar>

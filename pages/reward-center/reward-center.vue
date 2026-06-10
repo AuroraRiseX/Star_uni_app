@@ -1,447 +1,502 @@
 <template>
-	<view class="page">
-		<view style="height: var(--status-bar-height);"></view>
-		<view class="top-bar">
-			<view class="top-bar-left">
-				<view class="avatar-circle">
-					<image
-						class="top-avatar"
-						src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCWRa5gL7QsVQjOzXvZey1ko8RN6HzN2RQlxCM1F3wmY0mPJY4sXT2TD_3eZZfo9LXEcwQf7OJhhACzMjOwnCfPVZWu00eOSkxe_XG5-PZRj9kFdHW2FdeDeEoPfm_WEhZIyTdMdR2wjQkj5oTqiMMN5dK1bQoENbT28X_Repucm0OLpL5gS7M-IX9pI-fVfYO1bQlyJPeEL4OPA15IzLYxmOewlDzCIxgY30n9HjKZfcShRKutDMGeae8teqR4FwsiT92BSdSfhc2"
-						mode="widthFix"
-					></image>
-				</view>
-				<text class="top-title">奖惩中心</text>
-			</view>
-			<view class="detail-btn" @tap="showDetail">
-				<text class="detail-text">明细 &gt;</text>
-			</view>
-		</view>
-		<scroll-view scroll-y class="main-scroll">
-			<!-- Tabs -->
-			<view class="tab-bar">
-				<view class="tab tab-active" @tap="switchTab('reward')">
-					<text class="tab-icon">⭐</text>
-					<text class="tab-label">🌟 奖励赚取</text>
-				</view>
-				<view class="tab tab-inactive" @tap="switchTab('punish')">
-					<text class="tab-icon">☁️</text>
-					<text class="tab-label">☁️ 惩罚记录</text>
-				</view>
-			</view>
-			<!-- Rule Notice -->
-			<view class="rule-card">
-				<text class="rule-icon">💡</text>
-				<text class="rule-text">
-					<text class="rule-bold">星星罐法则:</text>
-					好习惯攒星星，坏习惯攒乌云。积满星星即可打开神秘宝箱，乌云散去才能重见阳光哦！
-				</text>
-			</view>
-			<!-- Category List -->
-			<view class="category-list">
-				<view
-					v-for="(item, index) in categories"
-					:key="index"
-					class="category-card"
-					@tap="goCategoryDetail(item)"
-				>
-					<view class="category-header">
-						<view class="category-left">
-							<view
-								class="category-icon-box"
-								:style="{ background: item.bgColor, color: item.iconColor }"
-							>
-								<text class="category-icon">{{ item.icon }}</text>
-							</view>
-							<view class="category-info">
-								<text class="category-name">{{ item.name }}</text>
-								<text class="category-tag">{{ item.tag }}</text>
-							</view>
-						</view>
-						<text
-							class="category-count"
-							:style="{ color: item.progress >= 1 ? '#725c00' : 'rgba(77, 70, 50, 0.5)' }"
-						>{{ item.current }}/{{ item.total }}</text>
-					</view>
-					<view class="progress-row">
-						<view class="progress-track">
-							<view
-								class="progress-fill"
-								:style="{
-									width: (item.current / item.total * 100) + '%',
-									background: item.progressColor
-								}"
-							>
-								<view class="shimmer"></view>
-							</view>
-						</view>
-						<view
-							v-if="isGiftItem(index)"
-							class="gift-box animate-glow"
-							@tap="openGift"
-						>
-							<text class="gift-icon">🎁</text>
-						</view>
-						<view
-							v-else
-							class="chest-box animate-shake"
-						>
-							<text class="chest-icon">📦</text>
-						</view>
-					</view>
-				</view>
-			</view>
-		</scroll-view>
-	</view>
+  <view class="page-reward">
+    <!-- Header -->
+    <top-header title="奖惩中心" />
+
+    <!-- Content -->
+    <view class="reward-content">
+      <!-- Tab Switcher -->
+      <view class="tab-switcher">
+        <view
+          class="tab-btn"
+          :class="{ 'tab-active': activeTab === 'earn' }"
+          @tap="activeTab = 'earn'"
+        >
+          <text class="tab-text" :class="{ 'tab-text-active': activeTab === 'earn' }">奖励赚取</text>
+        </view>
+        <view
+          class="tab-btn"
+          :class="{ 'tab-active-punish': activeTab === 'punish' }"
+          @tap="activeTab = 'punish'"
+        >
+          <text class="tab-text" :class="{ 'tab-text-active-punish': activeTab === 'punish' }">惩罚记录</text>
+        </view>
+      </view>
+
+      <!-- Reward Earn Section -->
+      <view class="section" v-if="activeTab === 'earn'">
+        <!-- 学习习惯 -->
+        <view class="card-neu">
+          <view class="card-top">
+            <view class="card-icon-row">
+              <view class="icon-box icon-bg-primary">
+                <image class="card-icon" src="/static/icons/menu_book.svg" />
+              </view>
+              <view class="card-info">
+                <text class="card-title">学习习惯</text>
+                <text class="card-desc">坚持阅读与专注</text>
+              </view>
+            </view>
+            <text class="card-score text-primary">4/5</text>
+          </view>
+          <view class="card-progress-row">
+            <view class="progress-bar-bg">
+              <view class="progress-bar-fill progress-primary" style="width: 80%;" />
+            </view>
+            <image class="progress-star-icon" src="/static/icons/stars.svg" />
+          </view>
+        </view>
+
+        <!-- 生活习惯 -->
+        <view class="card-neu">
+          <view class="card-top">
+            <view class="card-icon-row">
+              <view class="icon-box icon-bg-secondary">
+                <image class="card-icon" src="/static/icons/bedtime.svg" />
+              </view>
+              <view class="card-info">
+                <text class="card-title">生活习惯</text>
+                <text class="card-desc">按时作息，独立整理</text>
+              </view>
+            </view>
+            <text class="card-score text-secondary">3/5</text>
+          </view>
+          <view class="card-progress-row">
+            <view class="progress-bar-bg">
+              <view class="progress-bar-fill progress-secondary" style="width: 60%;" />
+            </view>
+            <image class="progress-star-icon" src="/static/icons/stars.svg" />
+          </view>
+        </view>
+
+        <!-- 学习科目 -->
+        <view class="card-neu">
+          <view class="card-top">
+            <view class="card-icon-row">
+              <view class="icon-box icon-bg-green">
+                <image class="card-icon" src="/static/icons/rocket_launch.svg" />
+              </view>
+              <view class="card-info">
+                <text class="card-title">学习科目</text>
+                <text class="card-desc">掌握难点，提升兴趣</text>
+              </view>
+            </view>
+            <text class="card-score text-green">2/5</text>
+          </view>
+          <view class="card-progress-row">
+            <view class="progress-bar-bg">
+              <view class="progress-bar-fill progress-green" style="width: 40%;" />
+            </view>
+            <image class="progress-star-icon" src="/static/icons/stars.svg" />
+          </view>
+        </view>
+
+        <!-- 学习成绩 -->
+        <view class="card-neu">
+          <view class="card-top">
+            <view class="card-icon-row">
+              <view class="icon-box icon-bg-primary">
+                <image class="card-icon" src="/static/icons/trending_up.svg" />
+              </view>
+              <view class="card-info">
+                <text class="card-title">学习成绩</text>
+                <text class="card-desc">考试与测验的突破</text>
+              </view>
+            </view>
+            <text class="card-score text-primary">1/5</text>
+          </view>
+          <view class="card-progress-row">
+            <view class="progress-bar-bg">
+              <view class="progress-bar-fill progress-primary" style="width: 20%;" />
+            </view>
+            <image class="progress-star-icon" src="/static/icons/stars.svg" />
+          </view>
+        </view>
+
+        <!-- 性格养成 -->
+        <view class="card-neu">
+          <view class="card-top">
+            <view class="card-icon-row">
+              <view class="icon-box icon-bg-purple">
+                <image class="card-icon" src="/static/icons/favorite.svg" />
+              </view>
+              <view class="card-info">
+                <text class="card-title">性格养成</text>
+                <text class="card-desc">情绪管理与社交礼仪</text>
+              </view>
+            </view>
+            <text class="card-score text-purple">3/5</text>
+          </view>
+          <view class="card-progress-row">
+            <view class="progress-bar-bg">
+              <view class="progress-bar-fill progress-purple" style="width: 60%;" />
+            </view>
+            <image class="progress-star-icon" src="/static/icons/stars.svg" />
+          </view>
+        </view>
+      </view>
+
+      <!-- Punishment Record Section -->
+      <view class="section" v-if="activeTab === 'punish'">
+        <!-- 学习习惯惩罚 -->
+        <view class="card-neu card-punish">
+          <view class="card-top">
+            <view class="card-icon-row">
+              <view class="icon-box icon-bg-error">
+                <image class="card-icon" src="/static/icons/edit_off.svg" />
+              </view>
+              <view class="card-info">
+                <text class="card-title">学习习惯</text>
+                <text class="card-desc card-desc-error">拖拉作业、逃避背诵</text>
+              </view>
+            </view>
+            <view class="punish-count">
+              <text class="card-score text-error">2</text>
+              <text class="count-unit">次</text>
+            </view>
+          </view>
+          <view class="card-progress-row">
+            <view class="progress-bar-bg">
+              <view class="progress-bar-fill progress-error" style="width: 40%;" />
+            </view>
+            <text class="cloud-emoji">☁️</text>
+          </view>
+        </view>
+
+        <!-- 生活习惯惩罚 -->
+        <view class="card-neu card-punish">
+          <view class="card-top">
+            <view class="card-icon-row">
+              <view class="icon-box icon-bg-error">
+                <image class="card-icon" src="/static/icons/timer_off.svg" />
+              </view>
+              <view class="card-info">
+                <text class="card-title">生活习惯</text>
+                <text class="card-desc card-desc-error">晚睡超过30分钟</text>
+              </view>
+            </view>
+            <view class="punish-count">
+              <text class="card-score text-error">1</text>
+              <text class="count-unit">次</text>
+            </view>
+          </view>
+          <view class="card-progress-row">
+            <view class="progress-bar-bg">
+              <view class="progress-bar-fill progress-error" style="width: 25%;" />
+            </view>
+            <text class="cloud-emoji">☁️</text>
+          </view>
+        </view>
+
+        <!-- 学习成绩惩罚 -->
+        <view class="card-neu card-punish">
+          <view class="card-top">
+            <view class="card-icon-row">
+              <view class="icon-box icon-bg-error">
+                <image class="card-icon" src="/static/icons/assignment_late.svg" />
+              </view>
+              <view class="card-info">
+                <text class="card-title">学习成绩</text>
+                <text class="card-desc card-desc-error">测验退步或未达标</text>
+              </view>
+            </view>
+            <view class="punish-count">
+              <text class="card-score text-error">0</text>
+              <text class="count-unit">次</text>
+            </view>
+          </view>
+          <view class="card-progress-row">
+            <view class="progress-bar-bg">
+              <view class="progress-bar-fill progress-error" style="width: 0%;" />
+            </view>
+            <text class="cloud-emoji cloud-emoji-dim">☁️</text>
+          </view>
+        </view>
+
+        <!-- 性格养成惩罚 -->
+        <view class="card-neu card-punish">
+          <view class="card-top">
+            <view class="card-icon-row">
+              <view class="icon-box icon-bg-error">
+                <image class="card-icon" src="/static/icons/mood_bad.svg" />
+              </view>
+              <view class="card-info">
+                <text class="card-title">性格养成</text>
+                <text class="card-desc card-desc-error">乱发脾气、不守诚信</text>
+              </view>
+            </view>
+            <view class="punish-count">
+              <text class="card-score text-error">2</text>
+              <text class="count-unit">次</text>
+            </view>
+          </view>
+          <view class="card-progress-row">
+            <view class="progress-bar-bg">
+              <view class="progress-bar-fill progress-error" style="width: 40%;" />
+            </view>
+            <text class="cloud-emoji">☁️</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
 </template>
 
-<script>
-	export default {
-		data() {
-			return {
-				activeTab: 'reward',
-				categories: [
-					{
-						name: '学习习惯',
-						tag: '改正拖拉',
-						icon: '📖',
-						bgColor: '#ccd7ee',
-						iconColor: '#525d71',
-						current: 12,
-						total: 20,
-						progressColor: '#7A869A',
-						punishPage: '/pages/punishment-learning/punishment-learning'
-					},
-					{
-						name: '生活习惯',
-						tag: '早睡早起',
-						icon: '🌙',
-						bgColor: 'rgba(168, 214, 114, 0.2)',
-						iconColor: '#A8D672',
-						current: 5,
-						total: 15,
-						progressColor: '#A8D672',
-						punishPage: '/pages/punishment-life/punishment-life'
-					},
-					{
-						name: '学习成绩',
-						tag: '查漏补缺',
-						icon: '🏫',
-						bgColor: 'rgba(177, 156, 217, 0.2)',
-						iconColor: '#B19CD9',
-						current: 8,
-						total: 30,
-						progressColor: '#B19CD9',
-						punishPage: '/pages/punishment-academic/punishment-academic'
-					},
-					{
-						name: '性格养成',
-						tag: '戒骄戒躁',
-						icon: '😊',
-						bgColor: '#ffdcc4',
-						iconColor: '#6f3800',
-						current: 3,
-						total: 20,
-						progressColor: '#7A869A',
-						punishPage: '/pages/punishment-character/punishment-character'
-					}
-				]
-			}
-		},
-		methods: {
-			switchTab(tab) {
-				if (tab === 'punish') {
-					uni.navigateTo({ url: '/pages/punishment-center/punishment-center' })
-				} else {
-					this.activeTab = tab
-				}
-			},
-			showDetail() {
-				uni.navigateTo({ url: '/pages/star-jar-detail/star-jar-detail' })
-			},
-			isGiftItem(index) {
-				return this.categories[index].current >= this.categories[index].total
-			},
-			openGift() {
-				uni.showToast({
-					title: '🎉 恭喜！你成功兑换了一个惊喜宝箱！',
-					icon: 'none',
-					duration: 2000
-				})
-			},
-			goCategoryDetail(item) {
-				const pageMap = {
-					'学习习惯': '/pages/learning-subjects/learning-subjects',
-					'性格养成': '/pages/character-building/character-building',
-					'学习成绩': '/pages/academic-performance/academic-performance',
-					'生活习惯': '/pages/life-habits/life-habits'
-				}
-				const url = pageMap[item.name]
-				if (url) {
-					uni.navigateTo({ url })
-				}
-			},
-			},
-		onShow() {
-			// 设置自定义 tab-bar 选中状态为"奖惩"（index=1）
-			if (typeof this.$mp !== 'undefined' && this.$mp.page) {
-				const tabBar = this.$mp.page.getTabBar && this.$mp.page.getTabBar()
-				if (tabBar) {
-					tabBar.setData({ selected: 1 })
-				}
-			}
-		}
-	}
+<script setup lang="ts">
+import { ref } from 'vue'
+import { onShow } from '@dcloudio/uni-app'
+import TopHeader from '@/components/top-header/top-header.vue'
+
+const activeTab = ref<'earn' | 'punish'>('earn')
+
+onShow(() => {
+  const page = getCurrentPages().pop()
+  if (page && typeof (page as any).getTabBar === 'function' && (page as any).getTabBar()) {
+    ;(page as any).getTabBar().setData({ selected: 1 })
+  }
+})
 </script>
 
-<style lang="scss">
-	.page {
-		min-height: 884px;
-		background-color: #fbf9f4;
-		color: #1b1c19;
-		font-family: 'Plus Jakarta Sans', 'PingFang SC', sans-serif;
-		padding-bottom: 128px;
-	}
-	.top-bar {
-		width: 100%;
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		z-index: 40;
-		background: rgba(251, 249, 244, 0.8);
-		backdrop-filter: blur(12px);
-		-webkit-backdrop-filter: blur(12px);
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 8px 24px;
-	}
-	.top-bar-left {
-		display: flex;
-		align-items: center;
-		gap: 12px;
-	}
-	.avatar-circle {
-		width: 40px;
-		height: 40px;
-		border-radius: 9999px;
-		border: 2px solid #ffe07e;
-		overflow: hidden;
-		background: #eae8e3;
-	}
-	.top-avatar {
-		width: 100%;
-		height: 100%;
-	}
-	.top-title {
-		font-size: 20px;
-		line-height: 1.4;
-		font-weight: 700;
-		color: #924c00;
-		font-family: 'Plus Jakarta Sans', 'PingFang SC', sans-serif;
-	}
-	.detail-btn {
-		padding: 4px 12px;
-		border-radius: 9999px;
-	}
-	.detail-btn:active {
-		background: #eae8e3;
-	}
-	.detail-text {
-		font-size: 12px;
-		font-weight: 700;
-		letter-spacing: 0.05em;
-		color: #725c00;
-		font-family: 'Plus Jakarta Sans', 'PingFang SC', sans-serif;
-	}
-	.main-scroll {
-		padding: 24px 24px;
-		padding-top: 136px;
-		max-width: 672px;
-		margin: 0 auto;
-	}
-	.tab-bar {
-		background: #f5f3ee;
-		padding: 6px;
-		border-radius: 1rem;
-		display: flex;
-		align-items: center;
-		box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
-	}
-	.tab {
-		flex: 1;
-		padding: 12px 0;
-		border-radius: 0.75rem;
-		font-size: 20px;
-		line-height: 1.4;
-		font-weight: 700;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 8px;
-		transition: all 0.3s;
-		font-family: 'Plus Jakarta Sans', 'PingFang SC', sans-serif;
-		&.tab-active {
-			background: #ffffff;
-			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-			color: #725c00;
-		}
-		&.tab-inactive {
-			color: #4d4632;
-		}
-	}
-	.tab-icon {
-		font-size: 20px;
-	}
-	.tab-label {
-		font-size: 20px;
-	}
-	.rule-card {
-		background: rgba(255, 224, 126, 0.3);
-		border: 1px solid #ffe07e;
-		border-radius: 2rem;
-		padding: 20px;
-		display: flex;
-		align-items: flex-start;
-		gap: 12px;
-		margin-top: 24px;
-	}
-	.rule-icon {
-		font-size: 24px;
-		flex-shrink: 0;
-	}
-	.rule-text {
-		font-size: 16px;
-		line-height: 1.5;
-		font-weight: 500;
-		color: #564500;
-		font-family: 'Plus Jakarta Sans', 'PingFang SC', sans-serif;
-	}
-	.rule-bold {
-		font-weight: 700;
-	}
-	.category-list {
-		margin-top: 24px;
-		display: flex;
-		flex-direction: column;
-		gap: 16px;
-	}
-	.category-card {
-		background: #fffdf9;
-		border: 1px solid rgba(209, 198, 171, 0.3);
-		border-radius: 2rem;
-		padding: 20px;
-		box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.03);
-		transition: box-shadow 0.2s;
-	}
-	.category-card:active {
-		box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-	}
-	.category-header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		margin-bottom: 16px;
-	}
-	.category-left {
-		display: flex;
-		align-items: center;
-		gap: 12px;
-	}
-	.category-icon-box {
-		width: 48px;
-		height: 48px;
-		border-radius: 1rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 24px;
-		flex-shrink: 0;
-	}
-	.category-icon {
-		font-size: 24px;
-	}
-	.category-info {
-		display: flex;
-		flex-direction: column;
-	}
-	.category-name {
-		font-size: 20px;
-		line-height: 1.4;
-		font-weight: 700;
-		color: #1b1c19;
-		font-family: 'Plus Jakarta Sans', 'PingFang SC', sans-serif;
-	}
-	.category-tag {
-		font-size: 12px;
-		font-weight: 700;
-		letter-spacing: 0.05em;
-		color: #4d4632;
-		opacity: 0.7;
-		text-transform: uppercase;
-		font-family: 'Plus Jakarta Sans', 'PingFang SC', sans-serif;
-	}
-	.category-count {
-		font-size: 48px;
-		line-height: 1.1;
-		letter-spacing: -0.02em;
-		font-weight: 800;
-		font-family: 'Plus Jakarta Sans', 'PingFang SC', sans-serif;
-	}
-	.progress-row {
-		display: flex;
-		align-items: center;
-		gap: 16px;
-	}
-	.progress-track {
-		flex: 1;
-		height: 16px;
-		background: #e4e2dd;
-		border-radius: 9999px;
-		overflow: hidden;
-		position: relative;
-	}
-	.progress-fill {
-		height: 100%;
-		border-radius: 9999px;
-		position: relative;
-		overflow: hidden;
-	}
-	.shimmer {
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
-		background-size: 200% 100%;
-		animation: shimmer 2s infinite linear;
-	}
-	@keyframes shimmer {
-		0% { background-position: -200% 0; }
-		100% { background-position: 200% 0; }
-	}
-	.gift-box {
-		cursor: pointer;
-		animation: glow 1.5s infinite ease-in-out;
-	}
-	.gift-icon {
-		font-size: 36px;
-		color: #924c00;
-	}
-	.chest-box {
-		opacity: 0.6;
-		animation: shake 0.5s infinite ease-in-out;
-	}
-	.chest-icon {
-		font-size: 36px;
-		color: #4d4632;
-	}
-	@keyframes glow {
-		0%, 100% { filter: drop-shadow(0 0 2px #ffd214); }
-		50% { filter: drop-shadow(0 0 8px #ffd214); }
-	}
-	@keyframes shake {
-		0%, 100% { transform: rotate(0deg); }
-		25% { transform: rotate(-5deg); }
-		75% { transform: rotate(5deg); }
-	}
+<style scoped>
+.page-reward {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #FFF9EB 0%, #FAFAFA 100%);
+  padding-bottom: 200rpx;
+}
+
+.reward-content {
+  padding-top: 180rpx;
+  padding: 180rpx 40rpx 200rpx;
+  max-width: 800rpx;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Tab Switcher */
+.tab-switcher {
+  background: #f4f3f3;
+  padding: 6rpx;
+  border-radius: 32rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+  margin-bottom: 40rpx;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 24rpx 0;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.tab-active {
+  background: #ffffff;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.06);
+}
+
+.tab-active-punish {
+  background: #ffffff;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.06);
+}
+
+.tab-text {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #4d4633;
+}
+
+.tab-text-active {
+  color: #705d00;
+}
+
+.tab-text-active-punish {
+  color: #ba1a1a;
+}
+
+/* Section */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+/* Card Neu */
+.card-neu {
+  background: #ffffff;
+  border-radius: 40rpx;
+  padding: 40rpx;
+  box-shadow: 0 20rpx 50rpx -10rpx rgba(0, 0, 0, 0.05), 0 16rpx 20rpx -12rpx rgba(0, 0, 0, 0.05);
+  border: 2rpx solid rgba(255, 255, 255, 0.8);
+}
+
+.card-punish {
+  border-left: 8rpx solid #ba1a1a;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28rpx;
+}
+
+.card-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 28rpx;
+}
+
+.icon-box {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-bg-primary {
+  background: rgba(255, 217, 61, 0.2);
+}
+
+.icon-bg-secondary {
+  background: rgba(255, 130, 0, 0.15);
+}
+
+.icon-bg-green {
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.icon-bg-purple {
+  background: rgba(168, 85, 247, 0.1);
+}
+
+.icon-bg-error {
+  background: rgba(255, 218, 214, 0.25);
+}
+
+.card-icon {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #1a1c1c;
+}
+
+.card-desc {
+  font-size: 24rpx;
+  color: #4d4633;
+  margin-top: 4rpx;
+}
+
+.card-desc-error {
+  color: rgba(186, 26, 26, 0.6);
+}
+
+.card-score {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.text-primary {
+  color: #705d00;
+}
+
+.text-secondary {
+  color: #944a00;
+}
+
+.text-green {
+  color: #059669;
+}
+
+.text-purple {
+  color: #7c3aed;
+}
+
+.text-error {
+  color: #ba1a1a;
+}
+
+/* Punish Count */
+.punish-count {
+  display: flex;
+  align-items: baseline;
+}
+
+.count-unit {
+  font-size: 24rpx;
+  color: #4d4633;
+  margin-left: 8rpx;
+}
+
+/* Progress Row */
+.card-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 28rpx;
+}
+
+.progress-bar-bg {
+  flex: 1;
+  height: 16rpx;
+  background: rgba(227, 226, 226, 0.3);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+}
+
+.progress-primary {
+  background: #705d00;
+  box-shadow: 0 0 16rpx rgba(112, 93, 0, 0.3);
+}
+
+.progress-secondary {
+  background: #944a00;
+  box-shadow: 0 0 16rpx rgba(148, 74, 0, 0.3);
+}
+
+.progress-green {
+  background: #10b981;
+  box-shadow: 0 0 16rpx rgba(16, 185, 129, 0.3);
+}
+
+.progress-purple {
+  background: #a855f7;
+  box-shadow: 0 0 16rpx rgba(168, 85, 247, 0.3);
+}
+
+.progress-error {
+  background: #ba1a1a;
+  box-shadow: 0 0 16rpx rgba(186, 26, 26, 0.3);
+}
+
+.progress-star-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.cloud-emoji {
+  font-size: 40rpx;
+}
+
+.cloud-emoji-dim {
+  opacity: 0.3;
+}
 </style>
