@@ -13,7 +13,7 @@
       data-index="1"
       bindtap="switchTab"
     >
-      <image class="tab-icon" src="/static/tabbar/stars{{selected === 1 ? '-active' : ''}}.svg" />
+      <image class="tab-icon" src="/static/tabbar/award{{selected === 1 ? '-active' : ''}}.svg" />
       <text class="tab-text">奖惩</text>
     </view>
     <view
@@ -21,7 +21,7 @@
       data-index="2"
       bindtap="switchTab"
     >
-      <image class="tab-icon" src="/static/tabbar/storefront{{selected === 2 ? '-active' : ''}}.svg" />
+      <image class="tab-icon" src="/static/tabbar/shop{{selected === 2 ? '-active' : ''}}.svg" />
       <text class="tab-text">店铺</text>
     </view>
     <view

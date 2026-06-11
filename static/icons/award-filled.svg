@@ -1,0 +1,11 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Yellow background rounded square -->
+  <rect x="0" y="0" width="120" height="120" rx="28" fill="#FFD93D"/>
+  
+  <!-- Circle background (deep brown) -->
+  <circle cx="60" cy="50" r="24" fill="#3E3A2F"/>
+  
+  <!-- Star inside circle (yellow, matching background) -->
+  <path d="M60 30L65.32 42.68H78.94L66.81 50.46L72.13 63.14L60 55.36L47.87 63.14L53.19 50.46L41.06 42.68H54.68L60 30Z" fill="#FFD93D"/>
+
+</svg>

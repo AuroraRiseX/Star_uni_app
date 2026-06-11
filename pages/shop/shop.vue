@@ -218,7 +218,7 @@ onShow(() => {
 /* Tab Switcher */
 .tab-switcher {
   background: #f4f3f3;
-  padding: 6rpx;
+  padding: 12rpx;
   border-radius: 32rpx;
   display: flex;
   align-items: center;

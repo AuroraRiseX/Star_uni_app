@@ -247,7 +247,7 @@ import { ref } from 'vue'
 import { onShow } from '@dcloudio/uni-app'
 import TopHeader from '@/components/top-header/top-header.vue'
 
-const activeTab = ref<'earn' | 'punish'>('earn')
+const activeTab = ref<'earn' | 'punish'>('punish')
 
 onShow(() => {
   const page = getCurrentPages().pop()
@@ -275,12 +275,12 @@ onShow(() => {
 /* Tab Switcher */
 .tab-switcher {
   background: #f4f3f3;
-  padding: 6rpx;
+  padding: 12rpx;
   border-radius: 32rpx;
   display: flex;
   align-items: center;
-  box-shadow: inset 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
-  margin-bottom: 40rpx;
+  box-shadow: inset 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  margin-bottom: 48rpx;
 }
 
 .tab-btn {
@@ -295,12 +295,12 @@ onShow(() => {
 
 .tab-active {
   background: #ffffff;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.1);
 }
 
 .tab-active-punish {
   background: #ffffff;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.1);
 }
 
 .tab-text {
@@ -327,10 +327,11 @@ onShow(() => {
 /* Card Neu */
 .card-neu {
   background: #ffffff;
-  border-radius: 40rpx;
-  padding: 40rpx;
-  box-shadow: 0 20rpx 50rpx -10rpx rgba(0, 0, 0, 0.05), 0 16rpx 20rpx -12rpx rgba(0, 0, 0, 0.05);
-  border: 2rpx solid rgba(255, 255, 255, 0.8);
+  border-radius: 48rpx;
+  padding: 32rpx;
+  box-shadow: 0 10rpx 25rpx -5rpx rgba(0, 0, 0, 0.05), 0 8rpx 10rpx -6rpx rgba(0, 0, 0, 0.05);
+  border: 1rpx solid rgba(255, 255, 255, 0.8);
+  transition: all 0.2s ease;
 }
 
 .card-punish {
@@ -341,42 +342,44 @@ onShow(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 28rpx;
+  margin-bottom: 24rpx;
 }
 
 .card-icon-row {
   display: flex;
   align-items: center;
-  gap: 28rpx;
+  gap: 24rpx;
+  flex: 1;
 }
 
 .icon-box {
   width: 96rpx;
   height: 96rpx;
-  border-radius: 28rpx;
+  border-radius: 32rpx;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .icon-bg-primary {
-  background: rgba(255, 217, 61, 0.2);
+  background: rgba(255, 217, 61, 0.25);
 }
 
 .icon-bg-secondary {
-  background: rgba(255, 130, 0, 0.15);
+  background: rgba(255, 130, 0, 0.2);
 }
 
 .icon-bg-green {
-  background: rgba(16, 185, 129, 0.1);
+  background: rgba(16, 185, 129, 0.15);
 }
 
 .icon-bg-purple {
-  background: rgba(168, 85, 247, 0.1);
+  background: rgba(168, 85, 247, 0.15);
 }
 
 .icon-bg-error {
-  background: rgba(255, 218, 214, 0.25);
+  background: rgba(255, 218, 214, 0.3);
 }
 
 .card-icon {
@@ -387,10 +390,11 @@ onShow(() => {
 .card-info {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .card-title {
-  font-size: 28rpx;
+  font-size: 32rpx;
   font-weight: 700;
   color: #1a1c1c;
 }
@@ -402,11 +406,11 @@ onShow(() => {
 }
 
 .card-desc-error {
-  color: rgba(186, 26, 26, 0.6);
+  color: rgba(186, 26, 26, 0.7);
 }
 
 .card-score {
-  font-size: 36rpx;
+  font-size: 40rpx;
   font-weight: 700;
 }
 
@@ -446,13 +450,13 @@ onShow(() => {
 .card-progress-row {
   display: flex;
   align-items: center;
-  gap: 28rpx;
+  gap: 24rpx;
 }
 
 .progress-bar-bg {
   flex: 1;
-  height: 16rpx;
-  background: rgba(227, 226, 226, 0.3);
+  height: 8rpx;
+  background: rgba(227, 226, 226, 0.4);
   border-radius: 9999px;
   overflow: hidden;
 }
@@ -464,27 +468,27 @@ onShow(() => {
 
 .progress-primary {
   background: #705d00;
-  box-shadow: 0 0 16rpx rgba(112, 93, 0, 0.3);
+  box-shadow: 0 0 16rpx rgba(112, 93, 0, 0.35);
 }
 
 .progress-secondary {
   background: #944a00;
-  box-shadow: 0 0 16rpx rgba(148, 74, 0, 0.3);
+  box-shadow: 0 0 16rpx rgba(148, 74, 0, 0.35);
 }
 
 .progress-green {
   background: #10b981;
-  box-shadow: 0 0 16rpx rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 16rpx rgba(16, 185, 129, 0.35);
 }
 
 .progress-purple {
   background: #a855f7;
-  box-shadow: 0 0 16rpx rgba(168, 85, 247, 0.3);
+  box-shadow: 0 0 16rpx rgba(168, 85, 247, 0.35);
 }
 
 .progress-error {
   background: #ba1a1a;
-  box-shadow: 0 0 16rpx rgba(186, 26, 26, 0.3);
+  box-shadow: 0 0 16rpx rgba(186, 26, 26, 0.35);
 }
 
 .progress-star-icon {

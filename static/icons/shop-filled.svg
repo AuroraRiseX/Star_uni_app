@@ -1,0 +1,15 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Yellow background rounded square -->
+  <rect x="0" y="0" width="120" height="120" rx="28" fill="#FFD93D"/>
+  
+  <!-- Shopping bag - filled version -->
+  <!-- Bag body - filled square -->
+  <rect x="40" y="30" width="40" height="40" rx="4" fill="#3E3A2F"/>
+  
+  <!-- Handle connection lines - cutouts/negative space -->
+  <rect x="44" y="24" width="4" height="6" fill="#FFD93D"/>
+  <rect x="72" y="24" width="4" height="6" fill="#FFD93D"/>
+  
+  <!-- Handle - semi-circle -->
+  <path d="M44 24C44 14 50 8 60 8C70 8 76 14 76 24" fill="none" stroke="#3E3A2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
