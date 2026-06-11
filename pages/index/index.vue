@@ -94,14 +94,30 @@ onShow(() => {
 .page-home {
   min-height: 100vh;
   background: radial-gradient(circle at top, #FFF9EB 0%, #FAFAFA 100%);
-  padding-bottom: 200rpx;
+  /* 底部安全区 + tabbar 留白（避让系统手势栏） */
+  padding-bottom: calc(200rpx + env(safe-area-inset-bottom));
+  padding-bottom: calc(200rpx + constant(safe-area-inset-bottom));
 }
 
 .home-content {
-  padding-top: 180rpx;
+  /*
+   * 顶部留白修复：必须 >= top-header 实际高度
+   *   = JS 注入的 statusBarHeight / safeAreaInsets.top（px）
+   *   + header-inner 高度 128rpx
+   *   + 60rpx 呼吸空间
+   * 灵动岛机型额外约 5px，calc 自适应
+   */
+  padding-top: calc(180rpx + env(safe-area-inset-top));
+  padding-top: calc(180rpx + constant(safe-area-inset-top));
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* 左右留白 */
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Star Jar Area */

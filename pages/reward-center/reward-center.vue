@@ -261,12 +261,21 @@ onShow(() => {
 .page-reward {
   min-height: 100vh;
   background: radial-gradient(circle at top, #FFF9EB 0%, #FAFAFA 100%);
-  padding-bottom: 200rpx;
+  /* 底部安全区 + tabbar 留白 */
+  padding-bottom: calc(200rpx + env(safe-area-inset-bottom));
+  padding-bottom: calc(200rpx + constant(safe-area-inset-bottom));
 }
 
 .reward-content {
-  padding-top: 180rpx;
-  padding: 180rpx 40rpx 200rpx;
+  /*
+   * 顶部留白修复：>= top-header 实际高度
+   * 修复"奖惩中心"左上角图标被状态栏/灵动岛遮挡
+   */
+  padding-top: calc(180rpx + env(safe-area-inset-top));
+  padding-top: calc(180rpx + constant(safe-area-inset-top));
+  padding-bottom: 200rpx;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
   max-width: 800rpx;
   margin: 0 auto;
   box-sizing: border-box;

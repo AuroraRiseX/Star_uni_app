@@ -2,8 +2,14 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 8rpx 0 40rpx;
+  padding: 8rpx 0;
+  /*
+   * 底部安全区：避让系统手势栏与 Home Indicator
+   *  - constant 兼容 iOS < 11.2
+   *  - env 兼容 iOS ≥ 11.2（含 iPhone X+ 全面屏）
+   */
   padding-bottom: calc(8rpx + env(safe-area-inset-bottom));
+  padding-bottom: calc(8rpx + constant(safe-area-inset-bottom));
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -11,6 +17,8 @@
   box-shadow: 0 -20rpx 80rpx rgba(0, 0, 0, 0.05);
   position: relative;
   z-index: 999;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .tab-item {
@@ -22,6 +30,7 @@
   height: 120rpx;
   border-radius: 32rpx;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .tab-item.active {
@@ -35,7 +44,7 @@
 }
 
 .tab-item.active .tab-icon {
-  /* Active icon is already the filled version from the SVG file */
+  /* Active icon is the filled version */
 }
 
 .tab-text {

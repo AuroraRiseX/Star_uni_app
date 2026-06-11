@@ -109,11 +109,18 @@ onShow(() => {
 .page-profile {
   min-height: 100vh;
   background: radial-gradient(circle at top, #FFF9EB 0%, #FAFAFA 100%);
-  padding-bottom: 200rpx;
+  /* 底部安全区 + tabbar 留白 */
+  padding-bottom: calc(200rpx + env(safe-area-inset-bottom));
+  padding-bottom: calc(200rpx + constant(safe-area-inset-bottom));
 }
 
 .profile-content {
-  padding-top: 180rpx;
+  /*
+   * 顶部留白修复：>= top-header 实际高度
+   * 修复"个人中心"页面顶部被状态栏/灵动岛遮挡
+   */
+  padding-top: calc(180rpx + env(safe-area-inset-top));
+  padding-top: calc(180rpx + constant(safe-area-inset-top));
 }
 
 .profile-center {
