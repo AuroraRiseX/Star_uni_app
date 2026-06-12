@@ -64,7 +64,14 @@ Component({
     },
 
     switchTab(e) {
-      const index = e.currentTarget.dataset.index
+      const index = Number(e.currentTarget.dataset.index)
+      const selected = this.data.selected
+      
+      // 重复点击当前已高亮的图标：保持高亮状态，不重复跳转
+      if (index === selected) {
+        return
+      }
+      
       this.setData({ selected: index })
       const url = this.data.list[index].pagePath
       wx.switchTab({ url })

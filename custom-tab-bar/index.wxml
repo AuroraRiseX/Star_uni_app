@@ -1,36 +1,34 @@
-<custom-tab-bar index="{{selected}}" bindchange="tabChange">
-  <view class="tab-bar" style="padding-bottom: {{safeBottom + 8}}px;">
-    <view
-      class="tab-item {{selected === 0 ? 'active' : ''}}"
-      data-index="0"
-      bindtap="switchTab"
-    >
-      <image class="tab-icon" src="/static/tabbar/home{{selected === 0 ? '-active' : ''}}.svg" />
-      <text class="tab-text">首页</text>
-    </view>
-    <view
-      class="tab-item {{selected === 1 ? 'active' : ''}}"
-      data-index="1"
-      bindtap="switchTab"
-    >
-      <image class="tab-icon" src="/static/tabbar/award{{selected === 1 ? '-active' : ''}}.svg" />
-      <text class="tab-text">奖惩</text>
-    </view>
-    <view
-      class="tab-item {{selected === 2 ? 'active' : ''}}"
-      data-index="2"
-      bindtap="switchTab"
-    >
-      <image class="tab-icon" src="/static/tabbar/shop{{selected === 2 ? '-active' : ''}}.svg" />
-      <text class="tab-text">店铺</text>
-    </view>
-    <view
-      class="tab-item {{selected === 3 ? 'active' : ''}}"
-      data-index="3"
-      bindtap="switchTab"
-    >
-      <image class="tab-icon" src="/static/tabbar/person{{selected === 3 ? '-active' : ''}}.svg" />
-      <text class="tab-text">我的</text>
-    </view>
+<view class="tab-bar" style="padding-bottom: {{safeBottom + 8}}px;">
+  <view
+    class="tab-item {{selected === 0 ? 'active' : ''}}"
+    data-index="0"
+    bindtap="switchTab"
+  >
+    <image class="tab-icon" src="/static/tabbar/home{{selected === 0 ? '-active' : ''}}.svg" />
+    <text class="tab-text">首页</text>
   </view>
-</custom-tab-bar>
+  <view
+    class="tab-item {{selected === 1 ? 'active' : ''}}"
+    data-index="1"
+    bindtap="switchTab"
+  >
+    <image class="tab-icon" src="/static/tabbar/award{{selected === 1 ? '-active' : ''}}.svg" />
+    <text class="tab-text">奖惩</text>
+  </view>
+  <view
+    class="tab-item {{selected === 2 ? 'active' : ''}}"
+    data-index="2"
+    bindtap="switchTab"
+  >
+    <image class="tab-icon" src="/static/tabbar/shop{{selected === 2 ? '-active' : ''}}.svg" />
+    <text class="tab-text">店铺</text>
+  </view>
+  <view
+    class="tab-item {{selected === 3 ? 'active' : ''}}"
+    data-index="3"
+    bindtap="switchTab"
+  >
+    <image class="tab-icon" src="/static/tabbar/person{{selected === 3 ? '-active' : ''}}.svg" />
+    <text class="tab-text">我的</text>
+  </view>
+</view>
