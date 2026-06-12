@@ -116,11 +116,12 @@ onShow(() => {
 
 .profile-content {
   /*
-   * 顶部留白修复：>= top-header 实际高度
+   * 顶部留白修复：必须 >= top-header 实际高度
+   * 128rpx(header-inner) + 60rpx(呼吸) + 60px(灵动岛安全区) + env()
    * 修复"个人中心"页面顶部被状态栏/灵动岛遮挡
    */
-  padding-top: calc(180rpx + env(safe-area-inset-top));
-  padding-top: calc(180rpx + constant(safe-area-inset-top));
+  padding-top: calc(128rpx + 60rpx + 60px + env(safe-area-inset-top));
+  padding-top: calc(128rpx + 60rpx + 60px + constant(safe-area-inset-top));
 }
 
 .profile-center {

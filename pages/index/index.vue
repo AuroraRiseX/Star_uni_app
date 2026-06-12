@@ -109,10 +109,12 @@ onShow(() => {
    *   = JS 注入的 statusBarHeight / safeAreaInsets.top（px）
    *   + header-inner 高度 128rpx
    *   + 60rpx 呼吸空间
-   * 灵动岛机型额外约 5px，calc 自适应
+   * 灵动岛机型 statusBarHeight ≈ 54-59px (iPhone 14 Pro+ = 59px)
+   * 128rpx + 60rpx = 188rpx ≈ 94px
+   * 加上 59px 状态栏 = 153px，远大于 188rpx=94px，所以用 px 计算
    */
-  padding-top: calc(180rpx + env(safe-area-inset-top));
-  padding-top: calc(180rpx + constant(safe-area-inset-top));
+  padding-top: calc(128rpx + 60rpx + 60px + env(safe-area-inset-top));
+  padding-top: calc(128rpx + 60rpx + 60px + constant(safe-area-inset-top));
   display: flex;
   flex-direction: column;
   align-items: center;
