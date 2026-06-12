@@ -261,9 +261,9 @@ onShow(() => {
 .page-reward {
   min-height: 100vh;
   background: radial-gradient(circle at top, #FFF9EB 0%, #FAFAFA 100%);
-  /* 底部安全区 + tabbar 留白 */
-  padding-bottom: calc(200rpx + env(safe-area-inset-bottom));
-  padding-bottom: calc(200rpx + constant(safe-area-inset-bottom));
+  /* 底部留白：TabBar 高度 + 安全区 */
+  padding-bottom: calc(90px + env(safe-area-inset-bottom));
+  padding-bottom: calc(90px + constant(safe-area-inset-bottom));
 }
 
 .reward-content {

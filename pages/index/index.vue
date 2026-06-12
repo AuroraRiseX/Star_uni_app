@@ -94,9 +94,13 @@ onShow(() => {
 .page-home {
   min-height: 100vh;
   background: radial-gradient(circle at top, #FFF9EB 0%, #FAFAFA 100%);
-  /* 底部安全区 + tabbar 留白（避让系统手势栏） */
-  padding-bottom: calc(200rpx + env(safe-area-inset-bottom));
-  padding-bottom: calc(200rpx + constant(safe-area-inset-bottom));
+  /*
+   * 底部留白：TabBar 高度 + 安全区
+   * TabBar: padding(16px) + content(56px) + safeBottom
+   * 使用 env() 作为 CSS 后备，JS 动态设置优先
+   */
+  padding-bottom: calc(90px + env(safe-area-inset-bottom));
+  padding-bottom: calc(90px + constant(safe-area-inset-bottom));
 }
 
 .home-content {

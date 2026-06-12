@@ -1,5 +1,5 @@
 <custom-tab-bar index="{{selected}}" bindchange="tabChange">
-  <view class="tab-bar">
+  <view class="tab-bar" style="padding-bottom: {{safeBottom + 8}}px;">
     <view
       class="tab-item {{selected === 0 ? 'active' : ''}}"
       data-index="0"
