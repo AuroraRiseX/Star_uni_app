@@ -4,7 +4,7 @@
     <top-header title="麦兜的星星罐" :show-action="true" action-text="明细" @action="showSheet = true" />
 
     <!-- Content -->
-    <view class="home-content">
+    <view class="home-content" :style="{ paddingTop: headerPaddingTop }">
       <!-- Star Jar -->
       <view class="jar-area">
         <view class="jar-glow" />
@@ -79,8 +79,10 @@ import { ref } from 'vue'
 import { onShow } from '@dcloudio/uni-app'
 import TopHeader from '@/components/top-header/top-header.vue'
 import DetailSheet from '@/components/detail-sheet/detail-sheet.vue'
+import { useHeaderPadding } from '@/composables/useHeaderPadding'
 
 const showSheet = ref(false)
+const { headerPaddingTop } = useHeaderPadding()
 
 onShow(() => {
   const page = getCurrentPages().pop()
@@ -105,16 +107,9 @@ onShow(() => {
 
 .home-content {
   /*
-   * 顶部留白修复：必须 >= top-header 实际高度
-   *   = JS 注入的 statusBarHeight / safeAreaInsets.top（px）
-   *   + header-inner 高度 128rpx
-   *   + 60rpx 呼吸空间
-   * 灵动岛机型 statusBarHeight ≈ 54-59px (iPhone 14 Pro+ = 59px)
-   * 128rpx + 60rpx = 188rpx ≈ 94px
-   * 加上 59px 状态栏 = 153px，远大于 188rpx=94px，所以用 px 计算
+   * 顶部留白：由 useHeaderPadding() 动态计算
+   * 通过 :style="{ paddingTop: headerPaddingTop }" 内联设置
    */
-  padding-top: calc(128rpx + 60rpx + 60px + env(safe-area-inset-top));
-  padding-top: calc(128rpx + 60rpx + 60px + constant(safe-area-inset-top));
   display: flex;
   flex-direction: column;
   align-items: center;

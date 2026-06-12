@@ -4,7 +4,7 @@
     <top-header title="个人中心" />
 
     <!-- Content -->
-    <view class="profile-content">
+    <view class="profile-content" :style="{ paddingTop: headerPaddingTop }">
       <view class="profile-center">
         <!-- Avatar -->
         <view class="avatar-section">
@@ -96,6 +96,9 @@
 <script setup lang="ts">
 import { onShow } from '@dcloudio/uni-app'
 import TopHeader from '@/components/top-header/top-header.vue'
+import { useHeaderPadding } from '@/composables/useHeaderPadding'
+
+const { headerPaddingTop } = useHeaderPadding()
 
 onShow(() => {
   const page = getCurrentPages().pop()
@@ -115,13 +118,7 @@ onShow(() => {
 }
 
 .profile-content {
-  /*
-   * 顶部留白修复：必须 >= top-header 实际高度
-   * 128rpx(header-inner) + 60rpx(呼吸) + 60px(灵动岛安全区) + env()
-   * 修复"个人中心"页面顶部被状态栏/灵动岛遮挡
-   */
-  padding-top: calc(128rpx + 60rpx + 60px + env(safe-area-inset-top));
-  padding-top: calc(128rpx + 60rpx + 60px + constant(safe-area-inset-top));
+  /* 顶部留白由 useHeaderPadding() 动态计算 */
 }
 
 .profile-center {

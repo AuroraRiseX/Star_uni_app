@@ -4,7 +4,7 @@
     <top-header title="奖惩中心" />
 
     <!-- Content -->
-    <view class="reward-content">
+    <view class="reward-content" :style="{ paddingTop: headerPaddingTop }">
       <!-- Tab Switcher -->
       <view class="tab-switcher">
         <view
@@ -246,8 +246,10 @@
 import { ref } from 'vue'
 import { onShow } from '@dcloudio/uni-app'
 import TopHeader from '@/components/top-header/top-header.vue'
+import { useHeaderPadding } from '@/composables/useHeaderPadding'
 
 const activeTab = ref<'earn' | 'punish'>('punish')
+const { headerPaddingTop } = useHeaderPadding()
 
 onShow(() => {
   const page = getCurrentPages().pop()
@@ -267,13 +269,7 @@ onShow(() => {
 }
 
 .reward-content {
-  /*
-   * 顶部留白修复：必须 >= top-header 实际高度
-   * 128rpx(header-inner) + 60rpx(呼吸) + 60px(灵动岛安全区) + env()
-   * 修复"奖惩中心"左上角图标被状态栏/灵动岛遮挡
-   */
-  padding-top: calc(128rpx + 60rpx + 60px + env(safe-area-inset-top));
-  padding-top: calc(128rpx + 60rpx + 60px + constant(safe-area-inset-top));
+  /* 顶部留白由 useHeaderPadding() 动态计算 */
   padding-bottom: 200rpx;
   padding-left: 40rpx;
   padding-right: 40rpx;

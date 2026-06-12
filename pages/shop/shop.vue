@@ -4,7 +4,7 @@
     <top-header title="兑换小店" />
 
     <!-- Content -->
-    <view class="shop-content">
+    <view class="shop-content" :style="{ paddingTop: headerPaddingTop }">
       <!-- Tab Switcher -->
       <view class="tab-switcher">
         <view
@@ -190,8 +190,10 @@
 import { ref } from 'vue'
 import { onShow } from '@dcloudio/uni-app'
 import TopHeader from '@/components/top-header/top-header.vue'
+import { useHeaderPadding } from '@/composables/useHeaderPadding'
 
 const activeTab = ref<'star' | 'cloud'>('star')
+const { headerPaddingTop } = useHeaderPadding()
 
 onShow(() => {
   const page = getCurrentPages().pop()
@@ -211,12 +213,7 @@ onShow(() => {
 }
 
 .shop-content {
-  /*
-   * 顶部留白修复：必须 >= top-header 实际高度
-   * 128rpx(header-inner) + 60rpx(呼吸) + 60px(灵动岛安全区) + env()
-   */
-  padding-top: calc(128rpx + 60rpx + 60px + env(safe-area-inset-top));
-  padding-top: calc(128rpx + 60rpx + 60px + constant(safe-area-inset-top));
+  /* 顶部留白由 useHeaderPadding() 动态计算 */
   padding-bottom: 200rpx;
   padding-left: 40rpx;
   padding-right: 40rpx;
